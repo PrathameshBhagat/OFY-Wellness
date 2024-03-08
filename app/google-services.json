@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "993827141903",
+    "project_id": "ofy-wellness",
+    "storage_bucket": "ofy-wellness.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:993827141903:android:115b8c242b9b198685a67a",
+        "android_client_info": {
+          "package_name": "com.example.ofywellness"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBek5jECWYM9iPJ-dEMJZgSNLIKitsjgA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
