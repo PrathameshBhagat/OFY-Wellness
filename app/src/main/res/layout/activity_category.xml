@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent">
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_gravity="center"
     android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
                     android:layout_height="100dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="10dp"
-                    android:background="@drawable/homeleaning" />
+                    android:background="@drawable/skintreatment" />
             </TableRow>
         </TableLayout>
     </LinearLayout>
@@ -114,15 +114,14 @@
                     <ImageButton
                         android:layout_width="75dp"
                         android:layout_height="75dp"
-                        android:layout_marginHorizontal="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginBottom="4dp"
-                        android:background="@drawable/mop" />
+                        android:layout_margin="10dp"
+                        android:background="@drawable/haircare" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Home Cleaning"
+                        android:layout_marginBottom="10dp"
+                        android:text="Hair Treatment"
                         android:textAlignment="center"
                         android:textColor="#1E295C"
                         android:textStyle="bold" />
@@ -142,7 +141,7 @@
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="4dp"
-                        android:background="@drawable/floorcleaninghc" />
+                        android:background="@drawable/headimage" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -166,7 +165,7 @@
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="4dp"
-                        android:background="@drawable/drycleaning"
+                        android:background="@drawable/hairtreatment"
                         android:scaleY="0.9" />
 
                     <TextView
@@ -202,7 +201,7 @@
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="4dp"
-                        android:background="@drawable/glasscleaning" />
+                        android:background="@drawable/skinwhitening" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -227,7 +226,7 @@
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="4dp"
-                        android:background="@drawable/sanitisation" />
+                        android:background="@drawable/mole" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -251,7 +250,7 @@
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="4dp"
-                        android:background="@drawable/toilethc" />
+                        android:background="@drawable/hairremoval" />
 
                     <TextView
                         android:layout_width="match_parent"

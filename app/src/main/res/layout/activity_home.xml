@@ -30,6 +30,9 @@
                 android:orientation="vertical"
                 android:background="@drawable/home_background"
                 android:layout_height="match_parent">
+
+                <!--Top bar Section Starts -->
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -55,6 +58,7 @@
                             android:id="@+id/name"
                             android:layout_width="wrap_content"
                             android:layout_height="40dp"
+                            android:layout_gravity="center"
                             android:textSize="20sp"
                             android:layout_marginEnd="5dp"
                             android:textColor="#000000"
@@ -78,9 +82,13 @@
                             android:padding="5dp"
                             android:src="@drawable/home"
                             android:layout_alignParentStart="true"
-                            android:background="#4e54ff" />
+                            android:background="#76b5c5" />
                     </androidx.cardview.widget.CardView>
                 </RelativeLayout>
+
+                <!--Top Bar Ends -->
+                <!--Head Section Starts -->
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -88,34 +96,64 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/profile_container"
                     android:orientation="horizontal">
-                    <TextView
-                        android:layout_marginLeft="16dp"
-                        android:id="@+id/question"
-                        android:layout_width="0dp"
+                    <LinearLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="What service do you need?"
-                        android:textColor="#013333"
-                        android:layout_weight="2"
-                        android:textSize="40sp" /><!--
-                <TextView
-                    android:layout_marginLeft="16dp"
-                    android:id="@+id/name"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="What service do you need?"
-                    android:textColor="#013333"
-                    android:layout_weight="2"
-                    android:textSize="40sp" />-->
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        >
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <ImageView
+                                android:id="@+id/logo"
+                                android:layout_width="0dp"
+                                android:layout_height="100dp"
+                                android:layout_marginVertical="10dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/logo_white_nobg_cropped"
+                                android:onClick="categorystart" />
+                            <TextView
+                                android:id="@+id/topic"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginVertical="10dp"
+                                android:layout_weight="1"
+                                android:text="OFY Clinics"
+                                android:textAlignment="center"
+                                android:textColor="#ffffff"
+                                android:textSize="35sp"
+                                android:textStyle="bold"
+                                android:layout_gravity="center"/>
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/topic1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Meet a better you"
+                            android:textAlignment="center"
+                            android:textColor="#ffffff"
+                            android:textSize="20sp"
+                            android:layout_gravity="center"/>
+                    </LinearLayout>
+
                     <ImageView
                         android:id="@+id/heading_image"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:onClick="categorystart"
-                        android:layout_marginVertical="10dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/floorcleaninghc"/>
+                        android:layout_margin="10dp"
+                        android:layout_weight="2"
+                        android:background="@drawable/headimage"
+                        android:onClick="categorystart" />
                 </LinearLayout>
             </LinearLayout>
+
+            <!--Head Section Ends -->
+            <!--Category Section Starts -->
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -147,52 +185,57 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
+
                             <LinearLayout
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:background="#F0F0F0"
+                                android:layout_height="136dp"
                                 android:layout_margin="5dp"
-                                android:gravity="center">
+                                android:background="#F0F0F0"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
                                 <ImageButton
                                     android:layout_width="80dp"
                                     android:layout_height="80dp"
                                     android:layout_margin="10dp"
-                                    android:onClick="categorystart"
-                                    android:background="@drawable/mop"/>
+                                    android:background="@drawable/haircare"
+                                    android:onClick="categorystart" />
                                 <TextView
-                                    android:layout_height="wrap_content"
                                     android:layout_width="wrap_content"
-                                    android:textSize="16sp"
-                                    android:text="Cleaning"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="10dp"
+                                    android:text="Hair Care"
                                     android:textColor="#121529"
-                                    android:textStyle="bold"
-                                    />
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
 
                             </LinearLayout>
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:background="#F0F0F0"
                                 android:layout_margin="5dp"
-                                android:gravity="center">
+                                android:background="#F0F0F0"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
                                 <ImageButton
                                     android:layout_width="80dp"
                                     android:layout_height="80dp"
                                     android:layout_margin="10dp"
-                                    android:onClick="categorystart"
-                                    android:background="@drawable/reparing2"/>
+                                    android:background="@drawable/skincare"
+                                    android:onClick="categorystart" />
+
                                 <TextView
-                                    android:layout_height="wrap_content"
                                     android:layout_width="wrap_content"
-                                    android:textSize="16sp"
-                                    android:text="Repairing"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="10dp"
+                                    android:text="Skin Care"
                                     android:textColor="#121529"
-                                    android:textStyle="bold"
-                                    />
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
                             </LinearLayout>
+
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -201,40 +244,19 @@
                                 android:background="#F0F0F0"
                                 android:layout_margin="5dp"
                                 android:gravity="center">
+
                                 <ImageButton
-                                    android:layout_width="80dp"
+                                    android:layout_width="75dp"
                                     android:layout_height="80dp"
                                     android:layout_margin="10dp"
-                                    android:onClick="categorystart"
-                                    android:background="@drawable/laundary1"
-                                    />
+                                    android:background="@drawable/skinwhitening"
+                                    android:onClick="categorystart" />
                                 <TextView
                                     android:layout_height="wrap_content"
                                     android:layout_width="wrap_content"
+                                    android:layout_marginBottom="10dp"
                                     android:textSize="16sp"
-                                    android:text="Laundary"
-                                    android:textColor="#121529"
-                                    android:textStyle="bold"
-                                    />
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:background="#F0F0F0"
-                                android:layout_margin="5dp"
-                                android:gravity="center">
-                                <ImageButton
-                                    android:layout_width="80dp"
-                                    android:layout_height="80dp"
-                                    android:layout_margin="10dp"
-                                    android:onClick="categorystart"
-                                    android:background="@drawable/painting"/>
-                                <TextView
-                                    android:layout_height="wrap_content"
-                                    android:layout_width="wrap_content"
-                                    android:textSize="16sp"
-                                    android:text="Paintaing"
+                                    android:text="Face Care"
                                     android:textColor="#121529"
                                     android:textStyle="bold"
                                     />
@@ -246,22 +268,45 @@
                                 android:background="#F0F0F0"
                                 android:layout_margin="5dp"
                                 android:gravity="center">
-
                                 <ImageButton
                                     android:layout_width="80dp"
                                     android:layout_height="80dp"
                                     android:layout_margin="10dp"
                                     android:onClick="categorystart"
-                                    android:background="@drawable/plumber" />
-
+                                    android:background="@drawable/mole" />
                                 <TextView
                                     android:layout_height="wrap_content"
                                     android:layout_width="wrap_content"
+                                    android:layout_marginBottom="10dp"
                                     android:textSize="16sp"
-                                    android:text="Plumber"
+                                    android:text="Mole Care"
+                                    android:textColor="#121529"
+                                    android:textStyle="bold"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:background="#F0F0F0"
+                                android:layout_margin="5dp"
+                                android:gravity="center">
+                                <ImageButton
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    android:layout_margin="10dp"
+                                    android:onClick="categorystart"
+                                    android:background="@drawable/consultation"
+                                    />
+                                <TextView
+                                    android:layout_height="wrap_content"
+                                    android:layout_width="wrap_content"
+                                    android:layout_marginBottom="10dp"
+                                    android:textSize="16sp"
+                                    android:text="Consult"
                                     android:textColor="#121529"
                                     android:textStyle="bold"
                                     />
+
                             </LinearLayout>
                         </LinearLayout>
                     </HorizontalScrollView>
@@ -290,6 +335,10 @@
                         android:textColor="#02307C"
                         android:textSize="25dp"
                         android:textStyle="bold" />
+
+                    <!--Category Section Ends -->
+                    <!--Recommended Section Starts -->
+
                     <ScrollView android:layout_height="wrap_content"
                         android:layout_width="match_parent">
                         <LinearLayout
@@ -306,8 +355,8 @@
                                     android:onClick="categorystart"
                                     android:layout_width="125dp"
                                     android:layout_height="125dp"
-                                    android:layout_margin="10dp"
-                                    android:background="@drawable/homeleaning"/>
+                                    android:layout_margin="5dp"
+                                    android:background="@drawable/bodyshaping"/>
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -341,7 +390,7 @@
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Home Cleaning"
+                                        android:text="Body Shaping"
                                         android:textStyle="bold"
                                         android:textColor="#006666"
                                         android:textSize="20sp" />
@@ -349,7 +398,7 @@
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="By Vishnu Prakash "
+                                        android:text="By Alice Jane"
                                         android:textColor="#49569E"
                                         android:textStyle="bold"
                                         android:textSize="15sp" />
@@ -370,11 +419,11 @@
                                 android:background="#F0F0F0">
 
                                 <ImageButton
-                                    android:onClick="categorystart"
                                     android:layout_width="125dp"
                                     android:layout_height="125dp"
                                     android:layout_margin="10dp"
-                                    android:background="@drawable/floorcleaning"/>
+                                    android:background="@drawable/hairtreatment"
+                                    android:onClick="categorystart" />
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -408,7 +457,7 @@
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Floor Cleaning"
+                                        android:text="Hair Cleansing "
                                         android:textStyle="bold"
                                         android:textColor="#006666"
                                         android:textSize="20sp" />
@@ -441,7 +490,7 @@
                                     android:layout_width="125dp"
                                     android:layout_height="125dp"
                                     android:layout_margin="10dp"
-                                    android:background="@drawable/clothcleaning" />
+                                    android:background="@drawable/hairremoval" />
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -508,7 +557,7 @@
                                     android:layout_width="125dp"
                                     android:layout_height="125dp"
                                     android:layout_margin="10dp"
-                                    android:background="@drawable/officecleaning3" />
+                                    android:background="@drawable/mole" />
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -542,7 +591,7 @@
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Office Cleaning"
+                                        android:text="Mole Removal"
                                         android:textStyle="bold"
                                         android:textColor="#006666"
                                         android:textSize="20sp" />
@@ -550,7 +599,7 @@
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="By Ram Manohar "
+                                        android:text="By Riya Memon "
                                         android:textColor="#49569E"
                                         android:textStyle="bold"
                                         android:textSize="15sp" />
@@ -574,7 +623,7 @@
                                     android:layout_width="125dp"
                                     android:layout_height="125dp"
                                     android:layout_margin="10dp"
-                                    android:background="@drawable/roomcleaning"
+                                    android:background="@drawable/skintreatment"
                                     android:onClick="categorystart" />
 
                                 <LinearLayout
@@ -609,7 +658,7 @@
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Room Cleaning"
+                                        android:text="Scar Removal"
                                         android:textStyle="bold"
                                         android:textColor="#006666"
                                         android:textSize="20sp" />
@@ -617,7 +666,7 @@
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="By Prem Vyas "
+                                        android:text="By Dr. Riya Mathur "
                                         android:textColor="#49569E"
                                         android:textStyle="bold"
                                         android:textSize="15sp" />
@@ -638,6 +687,10 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
+    <!--Main Content End -->
+    <!--Bottom Navigation Start -->
+
     <LinearLayout
         android:id="@+id/nav_dr"
         android:layout_width="match_parent"
