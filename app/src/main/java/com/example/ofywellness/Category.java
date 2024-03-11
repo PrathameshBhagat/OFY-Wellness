@@ -42,4 +42,8 @@ public class Category extends AppCompatActivity {
         startActivity(category.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP));
         finish();
     }
+    public void next(View view) {
+        Intent category= new Intent(Category.this,MeetActivity.class);
+        startActivity(category.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP));
+    }
 }
