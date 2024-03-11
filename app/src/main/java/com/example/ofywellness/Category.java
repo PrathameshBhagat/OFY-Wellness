@@ -21,6 +21,7 @@ public class Category extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
+        /* his code was used to add profile log out button  on click of image button which is removed
         profile= findViewById(R.id.profile);
         gso= new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         gsc= GoogleSignIn.getClient(this,gso);
@@ -32,7 +33,7 @@ public class Category extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"Logged Out !, Signin Again ",Toast.LENGTH_SHORT).show();
 
             });
-        });
+        });*/
     }
 
     public void returnhome(View view) {

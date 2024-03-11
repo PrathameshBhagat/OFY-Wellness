@@ -92,7 +92,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="30dp"
+                    android:paddingBottom="10dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/profile_container"
                     android:orientation="horizontal">
@@ -143,8 +143,8 @@
                     <ImageView
                         android:id="@+id/heading_image"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_margin="10dp"
+                        android:layout_height="160dp"
+                        android:layout_marginEnd="5dp"
                         android:layout_weight="2"
                         android:background="@drawable/headimage"
                         android:onClick="categorystart" />
@@ -188,7 +188,7 @@
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
-                                android:layout_height="136dp"
+                                android:layout_height="wrap_content"
                                 android:layout_margin="5dp"
                                 android:background="#F0F0F0"
                                 android:gravity="center"
@@ -490,73 +490,6 @@
                                     android:layout_width="125dp"
                                     android:layout_height="125dp"
                                     android:layout_margin="10dp"
-                                    android:background="@drawable/hairremoval" />
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:orientation="vertical">
-
-                                    <RelativeLayout
-                                        android:layout_width="fill_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="16dp"
-                                        >
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="4.1"
-                                            android:textStyle="bold"
-                                            android:textColor="@color/black"
-                                            android:textSize="15sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_alignParentEnd="true"
-                                            android:layout_gravity="right"
-                                            android:text="Off 30%"
-                                            android:textColor="#393998"
-                                            android:textSize="15sp" />
-                                    </RelativeLayout>
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Cloth Cleaning"
-                                        android:textStyle="bold"
-                                        android:textColor="#006666"
-                                        android:textSize="20sp" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="By Om Bhatt "
-                                        android:textColor="#49569E"
-                                        android:textStyle="bold"
-                                        android:textSize="15sp" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="@string/_250"
-                                        android:textColor="#0A1250"
-                                        android:layout_margin="5dp"
-                                        android:textSize="20sp" />
-                                </LinearLayout>
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_marginVertical="5dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="#F0F0F0">
-
-                                <ImageButton
-                                    android:onClick="categorystart"
-                                    android:layout_width="125dp"
-                                    android:layout_height="125dp"
-                                    android:layout_margin="10dp"
                                     android:background="@drawable/mole" />
 
                                 <LinearLayout
@@ -620,10 +553,77 @@
                                 android:background="#F0F0F0">
 
                                 <ImageButton
+                                    android:onClick="categorystart"
                                     android:layout_width="125dp"
                                     android:layout_height="125dp"
                                     android:layout_margin="10dp"
-                                    android:background="@drawable/skintreatment"
+                                    android:background="@drawable/yoga" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical">
+
+                                    <RelativeLayout
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="16dp"
+                                        >
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="4.1"
+                                            android:textStyle="bold"
+                                            android:textColor="@color/black"
+                                            android:textSize="15sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentEnd="true"
+                                            android:layout_gravity="right"
+                                            android:text="Off 30%"
+                                            android:textColor="#393998"
+                                            android:textSize="15sp" />
+                                    </RelativeLayout>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Yoga"
+                                        android:textStyle="bold"
+                                        android:textColor="#006666"
+                                        android:textSize="20sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="By Om Bhatt "
+                                        android:textColor="#49569E"
+                                        android:textStyle="bold"
+                                        android:textSize="15sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/_250"
+                                        android:textColor="#0A1250"
+                                        android:layout_margin="5dp"
+                                        android:textSize="20sp" />
+                                </LinearLayout>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_marginVertical="5dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="#F0F0F0">
+
+                                <ImageButton
+                                    android:layout_width="125dp"
+                                    android:layout_height="125dp"
+                                    android:layout_margin="10dp"
+                                    android:background="@drawable/scarremoval"
                                     android:onClick="categorystart" />
 
                                 <LinearLayout

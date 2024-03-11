@@ -10,6 +10,6 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="_250">₹<b><big><big>100</big></big></b>/hr</string>
-    <string name="home_cleaning">Home\nCleaning</string>
+    <string name="home_cleaning">Body\nToning </string>
 
 </resources>
