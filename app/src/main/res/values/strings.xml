@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">OFYWellness</string>
+    <string name="price">₹<b><big><big>100</big></big></b>/hr</string>
 </resources>

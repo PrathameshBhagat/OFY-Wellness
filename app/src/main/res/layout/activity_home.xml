@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
+    <!-- TODO:Add proper comments till tab layout-->
+
+    <!--Top bar Section Starts -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/top_container"
+        android:orientation="vertical"
+        android:background="@drawable/home_background"
+        android:layout_height="wrap_content">
+
+        <!--Top bar Section Starts -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="10dp"
+            android:id="@+id/profile_container"
+            android:orientation="horizontal"
+            >
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginEnd="10dp">
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:textSize="20sp"
+                    android:layout_marginEnd="5dp"
+                    android:textColor="#000000"
+                    android:text="prathamesh"/>
+                <ImageButton
+                    android:id="@+id/profile"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/profile1"
+                    />
+
+            </LinearLayout>
+            <androidx.cardview.widget.CardView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                app:cardCornerRadius="40sp">
+                <ImageView
+                    android:id="@+id/heading_image1"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="5dp"
+                    android:src="@drawable/home"
+                    android:layout_alignParentStart="true"
+                    android:background="#76b5c5" />
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+
+        <!--Top Bar Ends -->
+        <!--Head Section Starts -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profile_container"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                >
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/logo"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/logo_white_nobg_cropped"
+                        android:onClick="categorystart" />
+                    <TextView
+                        android:id="@+id/topic"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="10dp"
+                        android:layout_weight="1"
+                        android:text="OFY Clinics"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:textSize="35sp"
+                        android:textStyle="bold"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/topic1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Meet a better you"
+                    android:textAlignment="center"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/heading_image"
+                android:layout_width="wrap_content"
+                android:layout_height="160dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/headimage"
+                android:onClick="categorystart" />
+        </LinearLayout>
+    </LinearLayout>
+    <!--Top Bar Ends -->
+
+    <!-- Layout to show the tab head  -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#4e54ff"
+        android:layout_below="@+id/top_container"
+        app:tabIndicatorColor="@color/white"
+        app:tabTextColor="@color/white">
+
+        <!-- Tab items -->
+        <!-- Track Tab -->
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Track" />
+
+        <!-- Services Tab -->
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Services" />
+
+        <!-- Meal Tab -->
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Meal" />
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <!-- Viewer to show the tab content  -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tab_layout" />
+
+</RelativeLayout>
