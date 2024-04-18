@@ -1,17 +1,20 @@
 package com.ofywellness.modals;
 
-import java.io.File;
-
-// Meal stores data of the Meal
+// Meal stores data of the Meal has getters and constructors for Database use
 public class Meal {
-    private File Image;
+    private String Image;
+    private String Name;
     private int Energy;
     private int Proteins;
     private int Fats;
     private int Carbohydrates;
 
-    public File getImage() {
+    public String getImage() {
         return Image;
+    }
+
+    public String getName() {
+        return Name;
     }
 
     public int getEnergy() {
@@ -30,8 +33,9 @@ public class Meal {
         return Carbohydrates;
     }
 
-    public Meal(File image, int energy, int proteins, int fats, int carbohydrates) {
+    public Meal(String image, String name, int energy, int proteins, int fats, int carbohydrates) {
         Image = image;
+        Name = name;
         Energy = energy;
         Proteins = proteins;
         Fats = fats;

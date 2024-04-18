@@ -1,5 +1,6 @@
 package com.ofywellness;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -42,8 +43,13 @@ public class RegisterActivity extends AppCompatActivity {
                         Integer.parseInt(heightText.getText().toString())
                 );
 
-                // Add user to the database
-                ofyDatabase.addUser(ofyNewUser);
+                // Add user to the database and get UserID
+                String userID = ofyDatabase.addUser(ofyNewUser);
+                // Create intent to move to next activity and provide it the UserID
+                Intent nextActivity = new Intent(RegisterActivity.this,HomeActivity.class);
+                nextActivity.putExtra("ID",userID);
+                // Start the Intent
+                startActivity(nextActivity);
 
             }
         });

@@ -11,6 +11,8 @@ import android.widget.Spinner;
 import androidx.fragment.app.Fragment;
 
 import com.ofywellness.R;
+import com.ofywellness.db.ofyDatabase;
+import com.ofywellness.modals.Meal;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +22,7 @@ import java.util.List;
  */
 public class AddMealTab extends Fragment {
     Spinner mealTypeSpinner;
-    private EditText mealNameTextView, mealEnergyTextView, mealProteinsTextView, mealFatsTextView, mealCarbohydratesTextView, mealType;
+    private EditText mealNameTextView, mealEnergyTextView, mealProteinsTextView, mealFatsTextView, mealCarbohydratesTextView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,13 +43,31 @@ public class AddMealTab extends Fragment {
         mealFatsTextView = view.findViewById(R.id.meal_fats_field);
         mealCarbohydratesTextView = view.findViewById(R.id.meal_carbohydrates_field);
 
-        // WARNING Careful!!
-        mealTypeSpinner.getSelectedItem().toString();
+        // Add button to upload today's meal to the database
+        view.findViewById(R.id.upload_meal_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                // Create new meal object to add to database with random url
+                Meal newMeal = new Meal(
+                        "imageulr",
+                        mealNameTextView.getText().toString(),
+                        Integer.parseInt(mealEnergyTextView.getText().toString()),
+                        Integer.parseInt(mealProteinsTextView.getText().toString()),
+                        Integer.parseInt(mealFatsTextView.getText().toString()),
+                        Integer.parseInt(mealCarbohydratesTextView.getText().toString())
+                );
+
+                // Add meal to the database
+                ofyDatabase.addMeal(newMeal,mealTypeSpinner.getSelectedItem().toString());
+
+            }
+        });
 
         return view;
     }
 
+    // Method to add spinner for meal type to layout
     private void addSpinnerForMealType() {
 
         // Array List to add options to spinner
