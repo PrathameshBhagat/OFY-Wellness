@@ -11,7 +11,7 @@ public class User {
     private String Gender;
     private int Age;
     private int Weight;
-    private float Height;
+    private int Height;
 
     private List<Diet> DietRecord;
 
@@ -39,7 +39,7 @@ public class User {
         return Weight;
     }
 
-    public float getHeight() {
+    public int getHeight() {
         return Height;
     }
 
@@ -47,7 +47,7 @@ public class User {
         return Gender;
     }
 
-    public User(String email, String firstName, String lastName, String phone, String gender, int age, int weight, float height) {
+    public User(String email, String firstName, String lastName, String phone, String gender, int age, int weight, int height) {
         Email = email;
         FirstName = firstName;
         LastName = lastName;
@@ -56,6 +56,9 @@ public class User {
         Age = age;
         Weight = weight;
         Height = height;
+    }
+
+    public User(){
     }
 
 }

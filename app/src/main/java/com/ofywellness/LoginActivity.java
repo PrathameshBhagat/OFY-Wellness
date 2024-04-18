@@ -65,8 +65,8 @@ public class LoginActivity extends AppCompatActivity {
                 // Show a Toast message
                 Toast.makeText(getApplicationContext(), "Google account: " + account.getDisplayName(), Toast.LENGTH_SHORT).show();
 
-                // Get details from email and move to next step
-                getDetailsAndNext(account.getEmail());
+                // Move to next activity on success
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
 
             } catch (Exception e) {
                 //Log Error
@@ -77,10 +77,5 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
             }
         }
-    }
-    void getDetailsAndNext(String email){
-        //This method gets user details from DB if found then OK else ask to fill details
-        //dbr.push().setValue(new User("a@gmail.com","","","","","",""));*/
-        startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
     }
 }
