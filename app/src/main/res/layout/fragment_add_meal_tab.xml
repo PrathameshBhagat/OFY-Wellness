@@ -1,8 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.AddMealTab">
 
-</FrameLayout>
+    <!-- TODO: Add proper comments -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/meal_name_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="32dp"
+            android:text="Name"
+            android:textColor="#49569E"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/meal_name_field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Rice bowl"
+            android:inputType="text"
+            android:textColor="#006666"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/meal_name_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/meal_name_label"
+            app:layout_constraintTop_toTopOf="@+id/meal_name_label" />
+
+        <TextView
+            android:id="@+id/meal_energy_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:text="Energy"
+            android:textColor="#49569E"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/meal_name_label" />
+
+        <EditText
+            android:id="@+id/meal_energy_field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="650Cal"
+            android:inputType="number|numberDecimal"
+            android:textColor="#006666"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/meal_energy_label"
+            app:layout_constraintStart_toStartOf="@+id/meal_name_field"
+            app:layout_constraintTop_toTopOf="@+id/meal_energy_label" />
+
+        <TextView
+            android:id="@+id/meal_protein_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:text="Protein"
+            android:textColor="#49569E"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/meal_energy_label" />
+
+
+        <EditText
+            android:id="@+id/meal_protein_field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="60g"
+            android:inputType="number|numberDecimal"
+            android:textColor="#006666"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/meal_protein_label"
+            app:layout_constraintStart_toEndOf="@+id/meal_protein_label"
+            app:layout_constraintStart_toStartOf="@+id/meal_name_field"
+            app:layout_constraintTop_toTopOf="@+id/meal_protein_label"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/meal_fats_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:hint="60g"
+            android:text="Fats"
+            android:textColor="#49569E"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/meal_protein_label" />
+
+        <EditText
+            android:id="@+id/meal_fats_field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="60g"
+            android:inputType="number|numberDecimal"
+            android:textColor="#006666"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/meal_fats_label"
+            app:layout_constraintStart_toStartOf="@+id/meal_name_field"
+            app:layout_constraintTop_toTopOf="@+id/meal_fats_label" />
+
+        <TextView
+            android:id="@+id/meal_carbohydrates_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:text="Carbohydrates"
+            android:textColor="#49569E"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/meal_fats_label" />
+
+
+        <EditText
+            android:id="@+id/meal_carbohydrates_field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="26dp"
+            android:hint="60g"
+            android:inputType="number|numberDecimal"
+            android:textColor="#006666"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/meal_carbohydrates_label"
+            app:layout_constraintStart_toEndOf="@+id/meal_carbohydrates_label"
+            app:layout_constraintTop_toTopOf="@+id/meal_carbohydrates_label"
+            app:layout_constraintVertical_bias="0.851" />
+
+        <Button
+            android:id="@+id/save_meal_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="32dp"
+            android:backgroundTint="#1EC826"
+            android:text="Upload Image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/meal_carbohydrates_field" />
+
+        <Button
+            android:id="@+id/upload_meal_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="32dp"
+            android:layout_marginHorizontal="80dp"
+            android:layout_marginVertical="30dp"
+            android:backgroundTint="#000000"
+            android:text="Save"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/save_meal_button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
