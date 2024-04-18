@@ -12,6 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
+        <!-- Label for meal name -->
         <TextView
             android:id="@+id/meal_name_label"
             android:layout_width="wrap_content"
@@ -24,6 +26,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- Meal name field -->
         <EditText
             android:id="@+id/meal_name_field"
             android:layout_width="wrap_content"
@@ -38,6 +41,29 @@
             app:layout_constraintStart_toEndOf="@+id/meal_name_label"
             app:layout_constraintTop_toTopOf="@+id/meal_name_label" />
 
+        <!-- Label for meal type content -->
+        <TextView
+            android:id="@+id/meal_type_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:text="Meal"
+            android:textColor="#49569E"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/meal_name_label" />
+
+        <!-- Spinner for meal type  -->
+        <Spinner
+            android:id="@+id/meal_type_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/meal_type_label"
+            app:layout_constraintStart_toStartOf="@+id/meal_name_field"
+            app:layout_constraintTop_toTopOf="@+id/meal_type_label" />
+
         <TextView
             android:id="@+id/meal_energy_label"
             android:layout_width="wrap_content"
@@ -49,8 +75,9 @@
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/meal_name_label" />
+            app:layout_constraintTop_toBottomOf="@+id/meal_type_label" />
 
+        <!-- Meal energy content field -->
         <EditText
             android:id="@+id/meal_energy_field"
             android:layout_width="wrap_content"
@@ -64,6 +91,7 @@
             app:layout_constraintStart_toStartOf="@+id/meal_name_field"
             app:layout_constraintTop_toTopOf="@+id/meal_energy_label" />
 
+        <!-- Label for meal protein content-->
         <TextView
             android:id="@+id/meal_protein_label"
             android:layout_width="wrap_content"
@@ -77,7 +105,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/meal_energy_label" />
 
-
+        <!-- Meal protein content field -->
         <EditText
             android:id="@+id/meal_protein_field"
             android:layout_width="wrap_content"
@@ -90,9 +118,10 @@
             app:layout_constraintBottom_toBottomOf="@+id/meal_protein_label"
             app:layout_constraintStart_toEndOf="@+id/meal_protein_label"
             app:layout_constraintStart_toStartOf="@+id/meal_name_field"
-            app:layout_constraintTop_toTopOf="@+id/meal_protein_label"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toTopOf="@+id/meal_protein_label" />
 
+
+        <!-- Label for meal fats content -->
         <TextView
             android:id="@+id/meal_fats_label"
             android:layout_width="wrap_content"
@@ -107,6 +136,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/meal_protein_label" />
 
+        <!-- Meal fats content field -->
         <EditText
             android:id="@+id/meal_fats_field"
             android:layout_width="wrap_content"
@@ -120,6 +150,8 @@
             app:layout_constraintStart_toStartOf="@+id/meal_name_field"
             app:layout_constraintTop_toTopOf="@+id/meal_fats_label" />
 
+
+        <!-- Label for meal carbohydrates content -->
         <TextView
             android:id="@+id/meal_carbohydrates_label"
             android:layout_width="wrap_content"
@@ -133,7 +165,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/meal_fats_label" />
 
-
+        <!-- Meal content carbohydrates field -->
         <EditText
             android:id="@+id/meal_carbohydrates_field"
             android:layout_width="wrap_content"
@@ -147,28 +179,37 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/meal_carbohydrates_label"
             app:layout_constraintStart_toEndOf="@+id/meal_carbohydrates_label"
-            app:layout_constraintTop_toTopOf="@+id/meal_carbohydrates_label"
-            app:layout_constraintVertical_bias="0.851" />
+            app:layout_constraintTop_toTopOf="@+id/meal_carbohydrates_label" />
 
+        <!-- ImageView for uploading the image -->
+        <ImageView
+            android:id="@+id/meal_add_image_view"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_margin="32dp"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/meal_carbohydrates_field" />
+
+        <!-- Button to select image -->
         <Button
             android:id="@+id/save_meal_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="32dp"
-            android:backgroundTint="#1EC826"
-            android:text="Upload Image"
+            android:text="Select Image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/meal_carbohydrates_field" />
+            app:layout_constraintTop_toBottomOf="@+id/meal_add_image_view" />
 
+        <!-- Button to upload the meal -->
         <Button
             android:id="@+id/upload_meal_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="32dp"
-            android:layout_marginHorizontal="80dp"
-            android:layout_marginVertical="30dp"
-            android:backgroundTint="#000000"
+            android:backgroundTint="#1EB026"
             android:text="Save"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
