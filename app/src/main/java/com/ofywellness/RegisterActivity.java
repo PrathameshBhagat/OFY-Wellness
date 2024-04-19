@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.ofywellness.db.ofyDatabase;
 import com.ofywellness.modals.User;
-
+/* TODO : Comments required and renaming and remove images from drawable */
 public class RegisterActivity extends AppCompatActivity {
 
     @Override

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        tools:context=".Category">
+
+        <LinearLayout
+            android:id="@+id/cleaning_head_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/img_head_background"
+            android:orientation="vertical"
+            android:paddingBottom="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:id="@+id/profile_container"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/heading_im6age"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentStart="true"
+                    android:background="@drawable/back1"
+                    android:onClick="returnhome" />
+
+            </RelativeLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/profile_container">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/heading"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginBottom="1dp"
+                        android:text="Body\nShaping"
+                        android:textColor="#006666"
+                        android:textSize="50sp"
+                        android:textStyle="bold" />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/cleaning_subheading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Category"
+            android:textColor="#0420AA"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cleaning_head_container" />
+
+        <TableLayout
+            android:id="@+id/tableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:gravity="center_horizontal"
+            android:weightSum="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cleaning_subheading">
+
+            <HorizontalScrollView>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginStart="10dp"
+                        android:background="#F0F0F0"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:layout_marginHorizontal="16dp"
+                            android:layout_marginTop="16dp"
+                            android:background="@drawable/haircare" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:text="Transplant"
+                            android:textAlignment="center"
+                            android:textColor="#1E295C"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginStart="10dp"
+                        android:background="#F0F0F0"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:layout_marginHorizontal="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="4dp"
+                            android:background="@drawable/headimage" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:text="Skin Care"
+                            android:textAlignment="center"
+                            android:textColor="#1E295C"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="#F0F0F0"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:layout_marginHorizontal="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="4dp"
+                            android:background="@drawable/hairtreatment"
+                            android:scaleY="0.9" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:text="Shampoo"
+                            android:textAlignment="center"
+                            android:textColor="#1E295C"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </TableRow>
+            </HorizontalScrollView>
+
+            <HorizontalScrollView>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginStart="10dp"
+                        android:background="#F0F0F0"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:layout_marginHorizontal="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="4dp"
+                            android:background="@drawable/skinwhitening" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:text="Whitening"
+                            android:textAlignment="center"
+                            android:textColor="#1E295C"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginStart="10dp"
+                        android:background="#F0F0F0"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:layout_marginHorizontal="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="4dp"
+                            android:background="@drawable/mole" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:text="Mole removal"
+                            android:textAlignment="center"
+                            android:textColor="#1E295C"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="#F0F0F0"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:layout_marginHorizontal="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="4dp"
+                            android:background="@drawable/hairremoval" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:text="Hair Removal"
+                            android:textAlignment="center"
+                            android:textColor="#1E295C"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </TableRow>
+            </HorizontalScrollView>
+        </TableLayout>
+        <!-- Image Of Fitness Trainer -->
+        <ImageButton
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="-10dp"
+            android:background="@drawable/bodyshapingfullbody"
+            android:scaleX="0.8"
+            android:scaleY="1.35"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="30dp"
+            android:onClick="next"
+            android:paddingHorizontal="100dp"
+            android:paddingVertical="15dp"
+            android:text="Next"
+            android:textSize="20sp"
+            app:cornerRadius="300dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
