@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MeetActivity">
 
+    <!-- Linear Layout for head section-->
     <LinearLayout
         android:id="@+id/cleaning_head_container"
         android:layout_width="match_parent"
@@ -17,24 +18,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <RelativeLayout
-            android:id="@+id/profile_container"
-            android:layout_width="match_parent"
+        <!-- Back button -->
+        <ImageButton
+            android:id="@+id/heading_im6age"
+            android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginHorizontal="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            android:background="@drawable/back1"
+            android:onClick="returnhome" />
 
-            <ImageButton
-                android:id="@+id/heading_im6age"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentStart="true"
-                android:background="@drawable/back1"
-                android:onClick="returnhome" />
-
-        </RelativeLayout>
-
+        <!-- Heading Label -->
         <TextView
             android:id="@+id/heading"
             android:layout_width="fill_parent"
@@ -46,17 +40,9 @@
             android:textSize="50sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="1dp"
-            android:text=" Meet"
-            android:textColor="#f0f0f0"
-            android:textSize="25sp"
-            android:textStyle="bold" />
     </LinearLayout>
 
+    <!-- Linear Layout for content label -->
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
@@ -68,6 +54,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cleaning_head_container">
 
+        <!-- Content head -->
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
@@ -82,6 +69,7 @@
             app:layout_constraintTop_toBottomOf="@+id/cleaning_head_container"
             app:layout_constraintVertical_bias="0.0" />
 
+        <!-- Content label -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -98,6 +86,7 @@
 
     </LinearLayout>
 
+    <!-- Content image -->
     <ImageView
         android:layout_width="200dp"
         android:layout_height="200dp"
@@ -111,6 +100,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/cleaning_head_container" />
 
+    <!-- Re-start button-->
     <Button
         android:id="@+id/back"
         android:layout_width="wrap_content"
@@ -127,6 +117,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
+    <!-- Review button-->
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"

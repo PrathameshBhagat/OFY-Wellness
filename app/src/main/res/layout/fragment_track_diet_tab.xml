@@ -4,157 +4,143 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- TODO: Add proper comments -->
-
+    <!-- Constrained layout for responsiveness -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!-- Head label -->
 
-        <!-- Label for meal name -->
+        <!-- Label for tracking energy content -->
         <TextView
-            android:id="@+id/meal_name_label"
+            android:id="@+id/track_name_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="25dp"
-            android:layout_marginTop="32dp"
             android:text="Total intake of nutrients"
-            android:textColor="#006666"
+            android:textColor="#2A2AA5"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Meal name field -->
-
-
         <TextView
-            android:id="@+id/meal_energy_label"
+            android:id="@+id/track_energy_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="25dp"
+            android:layout_margin="25dp"
             android:text="Energy : "
             android:textColor="#49569E"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/meal_name_label" />
+            app:layout_constraintTop_toBottomOf="@+id/track_name_label" />
 
-        <!-- Meal energy content field -->
-
-        <!-- Label for meal protein content-->
+        <!-- Field for tracking energy content-->
         <TextView
-            android:id="@+id/meal_protein_label"
+            android:id="@+id/track_energy_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginStart="50dp"
+            android:text="6500Cal"
+            android:textColor="#006666"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/track_energy_label"
+            app:layout_constraintStart_toEndOf="@+id/track_energy_label"
+            app:layout_constraintTop_toTopOf="@+id/track_energy_label" />
+
+        <!-- Label for tracking protein content -->
+        <TextView
+            android:id="@+id/track_protein_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
             android:text="Protein : "
             android:textColor="#49569E"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/meal_energy_label" />
+            app:layout_constraintTop_toBottomOf="@+id/track_energy_label" />
 
-        <!-- Meal protein content field -->
-
-
-        <!-- Label for meal fats content -->
+        <!-- Field for tracking protein content-->
         <TextView
-            android:id="@+id/meal_fats_label"
+            android:id="@+id/track_protein_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="25dp"
+            android:text="250g"
+            android:textColor="#006666"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/track_protein_label"
+            app:layout_constraintStart_toStartOf="@+id/track_energy_field"
+            app:layout_constraintTop_toTopOf="@+id/track_protein_label" />
+
+        <!-- Label for tracking fats content -->
+        <TextView
+            android:id="@+id/track_fats_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
             android:text="Fats : "
             android:textColor="#49569E"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/meal_protein_label" />
+            app:layout_constraintTop_toBottomOf="@id/track_protein_label" />
 
-        <!-- Meal fats content field -->
-
-
-        <!-- Label for meal carbohydrates content -->
+        <!-- Field for tracking fats content -->
         <TextView
-            android:id="@+id/meal_carbohydrates_label"
+            android:id="@+id/track_fats_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="50dp"
-            android:text="Carbohydrates : "
-            android:textColor="#49569E"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/meal_fats_label" />
-
-        <!-- Meal content carbohydrates field -->
-        <TextView
-            android:id="@+id/meal_carbohydrates_field"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
-            android:inputType="number|numberDecimal"
             android:text="60g"
             android:textColor="#006666"
             android:textSize="34sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/meal_carbohydrates_label"
-            app:layout_constraintStart_toEndOf="@+id/meal_carbohydrates_label"
-            app:layout_constraintTop_toTopOf="@+id/meal_carbohydrates_label" />
+            app:layout_constraintBottom_toBottomOf="@+id/track_fats_label"
+            app:layout_constraintStart_toStartOf="@+id/track_energy_field"
+            app:layout_constraintTop_toTopOf="@+id/track_fats_label" />
 
+        <!-- Label for tracking carbohydrates content -->
         <TextView
-            android:id="@+id/meal_energy_field"
+            android:id="@+id/track_carbohydrates_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:inputType="number|numberDecimal"
-            android:text="6500Cal"
-            android:textColor="#006666"
-            android:textSize="34sp"
+            android:layout_margin="25dp"
+            android:text="Carbohydrates : "
+            android:textColor="#49569E"
+            android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/meal_energy_label"
-            app:layout_constraintStart_toEndOf="@+id/meal_energy_label"
-            app:layout_constraintTop_toTopOf="@+id/meal_energy_label" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/track_fats_label" />
 
+        <!-- Field for tracking carbohydrates content -->
         <TextView
-            android:id="@+id/meal_protein_field"
+            android:id="@+id/track_carbohydrates_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number|numberDecimal"
+            android:layout_marginStart="44dp"
             android:text="250g"
             android:textColor="#006666"
             android:textSize="34sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/meal_protein_label"
-            app:layout_constraintStart_toStartOf="@+id/meal_energy_field"
-            app:layout_constraintTop_toTopOf="@+id/meal_protein_label"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintBottom_toBottomOf="@+id/track_carbohydrates_label"
+            app:layout_constraintStart_toEndOf="@+id/track_carbohydrates_label"
+            app:layout_constraintTop_toTopOf="@+id/track_carbohydrates_label" />
 
-        <TextView
-            android:id="@+id/meal_fats_field"
+        <!-- Button to update tracking data  -->
+        <Button
+            android:id="@+id/track_update_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number|numberDecimal"
-            android:text="150g"
-            android:textColor="#006666"
-            android:textSize="34sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/meal_fats_label"
-            app:layout_constraintStart_toStartOf="@+id/meal_energy_field"
-            app:layout_constraintTop_toTopOf="@+id/meal_fats_label"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <!-- ImageView for uploading the image -->
-
-        <!-- Button to select image -->
-
-        <!-- Button to upload the meal -->
+            android:layout_margin="24dp"
+            android:text="Update"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/track_carbohydrates_field" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </ScrollView>
