@@ -8,6 +8,7 @@
 
     <!-- TODO: Add proper comments -->
 
+    <!-- Constrained Layout for responsiveness -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -49,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginTop="25dp"
-            android:text="Meal"
+            android:text="Meal type"
             android:textColor="#49569E"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -65,6 +66,7 @@
             app:layout_constraintStart_toStartOf="@+id/meal_name_field"
             app:layout_constraintTop_toTopOf="@+id/meal_type_label" />
 
+        <!-- Label for meal energy content -->
         <TextView
             android:id="@+id/meal_energy_label"
             android:layout_width="wrap_content"
@@ -194,27 +196,39 @@
 
         <!-- Button to select image -->
         <Button
-            android:id="@+id/save_meal_button"
+            android:id="@+id/meal_select_image_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="32dp"
             android:text="Select Image"
+            android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/meal_add_image_view" />
+
+        <!-- Progress bar to show upload progress -->
+        <ProgressBar
+            android:id="@+id/meal_upload_meal_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/meal_select_image_button" />
 
         <!-- Button to upload the meal -->
         <Button
             android:id="@+id/upload_meal_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="32dp"
+            android:layout_marginBottom="32dp"
             android:backgroundTint="#1EB026"
-            android:text="Save"
+            android:text="Save meal"
+            android:textSize="25sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/save_meal_button" />
+            app:layout_constraintTop_toBottomOf="@+id/meal_upload_meal_progress_bar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
