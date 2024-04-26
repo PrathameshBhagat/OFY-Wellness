@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <!-- TODO : Add proper comments and layout naming and clean code Category, Meet and Home activity-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,16 +40,6 @@
 
             </RelativeLayout>
 
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/profile_container">
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
                     <TextView
                         android:id="@+id/heading"
                         android:layout_width="fill_parent"
@@ -59,8 +50,7 @@
                         android:textColor="#006666"
                         android:textSize="50sp"
                         android:textStyle="bold" />
-                </TableRow>
-            </TableLayout>
+
         </LinearLayout>
 
         <TextView

@@ -10,8 +10,6 @@
         android:layout_height="wrap_content">
 
         <!-- Head label -->
-
-        <!-- Label for tracking energy content -->
         <TextView
             android:id="@+id/track_name_label"
             android:layout_width="wrap_content"
@@ -24,6 +22,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- Label for tracking energy content -->
         <TextView
             android:id="@+id/track_energy_label"
             android:layout_width="wrap_content"
@@ -38,11 +37,11 @@
 
         <!-- Field for tracking energy content-->
         <TextView
-            android:id="@+id/track_energy_field"
+            android:id="@+id/track_energy_display_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            android:text="6500Cal"
+            android:text="0Cal"
             android:textColor="#006666"
             android:textSize="34sp"
             android:textStyle="bold"
@@ -65,15 +64,15 @@
 
         <!-- Field for tracking protein content-->
         <TextView
-            android:id="@+id/track_protein_field"
+            android:id="@+id/track_protein_display_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="250g"
+            android:text="0g"
             android:textColor="#006666"
             android:textSize="34sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/track_protein_label"
-            app:layout_constraintStart_toStartOf="@+id/track_energy_field"
+            app:layout_constraintStart_toStartOf="@+id/track_energy_display_label"
             app:layout_constraintTop_toTopOf="@+id/track_protein_label" />
 
         <!-- Label for tracking fats content -->
@@ -91,15 +90,15 @@
 
         <!-- Field for tracking fats content -->
         <TextView
-            android:id="@+id/track_fats_field"
+            android:id="@+id/track_fats_display_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="60g"
+            android:text="0g"
             android:textColor="#006666"
             android:textSize="34sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/track_fats_label"
-            app:layout_constraintStart_toStartOf="@+id/track_energy_field"
+            app:layout_constraintStart_toStartOf="@+id/track_protein_display_label"
             app:layout_constraintTop_toTopOf="@+id/track_fats_label" />
 
         <!-- Label for tracking carbohydrates content -->
@@ -117,16 +116,16 @@
 
         <!-- Field for tracking carbohydrates content -->
         <TextView
-            android:id="@+id/track_carbohydrates_field"
+            android:id="@+id/track_carbohydrates_display_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
             android:text="250g"
             android:textColor="#006666"
             android:textSize="34sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/track_carbohydrates_label"
-            app:layout_constraintStart_toEndOf="@+id/track_carbohydrates_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/track_energy_display_label"
             app:layout_constraintTop_toTopOf="@+id/track_carbohydrates_label" />
 
         <!-- Button to update tracking data  -->
@@ -136,10 +135,12 @@
             android:layout_height="wrap_content"
             android:layout_margin="24dp"
             android:text="Update"
+            android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/track_carbohydrates_field" />
+            app:layout_constraintTop_toBottomOf="@+id/track_carbohydrates_display_label" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

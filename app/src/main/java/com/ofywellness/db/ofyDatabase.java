@@ -1,6 +1,8 @@
 package com.ofywellness.db;
 
-import android.util.Log;
+import android.content.Context;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -12,6 +14,7 @@ import com.ofywellness.modals.Meal;
 import com.ofywellness.modals.User;
 
 import java.util.Date;
+import java.util.HashMap;
 
 // Single class for all database operations
 public class ofyDatabase {
@@ -36,15 +39,47 @@ public class ofyDatabase {
 
     }
 
-    public static void trackDiet() {
+    public static void getTrackDietDataAndSetView(Context c, TextView energyValueLabel, TextView proteinsValueLabel, TextView fatsValueLabel, TextView carbohydratesValueLabel) {
+
+        // Get the DataSnapshot to get tracking data, calculate it
+        // And display it to user by updating the text views
         ofyDatabaseref.child("Diet").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NotNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error getting data", task.getException());
-                }
-                else {
-                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                // Check if the task to get data was successful
+                if (task.isSuccessful()) {
+                    // Tracking data variables
+                    int totalEnergy = 0, totalProteins = 0, totalFats = 0, totalCarbohydrates = 0;
+
+                    // Loop through all the days
+                    for (DataSnapshot ofyDateDataSnapshot : task.getResult().getChildren()) {
+                        // Loop through all the meals
+                        for (DataSnapshot ofyMealSnapshot : ofyDateDataSnapshot.getChildren()) {
+                            // Get the content in the HashMap
+                            HashMap mealContent = (HashMap) ofyMealSnapshot.getValue();
+
+                            // Calculate the data
+                            totalEnergy += Integer.parseInt(mealContent.get("energy").toString());
+                            totalProteins += Integer.parseInt(mealContent.get("proteins").toString());
+                            totalFats += Integer.parseInt(mealContent.get("fats").toString());
+                            totalCarbohydrates += Integer.parseInt(mealContent.get("carbohydrates").toString());
+
+                        }
+
+                    }
+
+                    // Set the text views to show the data
+                    energyValueLabel.setText(String.format("%sCal", totalEnergy));
+                    proteinsValueLabel.setText(String.format("%sg", totalProteins));
+                    fatsValueLabel.setText(String.format("%sg", totalFats));
+                    carbohydratesValueLabel.setText(String.format("%sg", totalCarbohydrates));
+
+                    // Show a toast message
+                    Toast.makeText(c, "Updated the data", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    // Show a toast error message
+                    Toast.makeText(c, "Error getting data from firebase", Toast.LENGTH_SHORT).show();
                 }
             }
         });
