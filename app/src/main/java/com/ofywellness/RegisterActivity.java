@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,26 +32,32 @@ public class RegisterActivity extends AppCompatActivity {
         findViewById(R.id.register).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                try{
 
-                // Create new User to add to database
-                User ofyNewUser = new User(getIntent().getStringExtra("email"),
-                        firstNameText.getText().toString(),
-                        lastNameText.getText().toString(),
-                        phoneText.getText().toString(),
-                        genderText.getText().toString(),
-                        Integer.parseInt(AgeText.getText().toString()),
-                        Integer.parseInt(weightText.getText().toString()),
-                        Integer.parseInt(heightText.getText().toString())
-                );
+                    // Create new User to add to database
+                    User ofyNewUser = new User(getIntent().getStringExtra("email"),
+                            firstNameText.getText().toString(),
+                            lastNameText.getText().toString(),
+                            phoneText.getText().toString(),
+                            genderText.getText().toString(),
+                            Integer.parseInt(AgeText.getText().toString()),
+                            Integer.parseInt(weightText.getText().toString()),
+                            Integer.parseInt(heightText.getText().toString())
+                    );
 
-                // Add user to the database and get UserID
-                String userID = ofyDatabase.addNewUserToFirebaseDatabase(ofyNewUser);
-                // Create intent to move to next activity and provide it the UserID
-                Intent nextActivity = new Intent(RegisterActivity.this,HomeActivity.class);
-                nextActivity.putExtra("ID",userID);
-                // Start the Intent
-                startActivity(nextActivity);
+                    // Add user to the database and get UserID
+                    String userID = ofyDatabase.addNewUserToFirebaseDatabase(ofyNewUser);
+                    // Create intent to move to next activity and provide it the UserID
+                    Intent nextActivity = new Intent(RegisterActivity.this,HomeActivity.class);
+                    nextActivity.putExtra("ID",userID);
+                    // Start the Intent
+                    startActivity(nextActivity);
 
+                }
+                catch(Exception e){
+                    Toast.makeText(RegisterActivity.this,"Please check input and internet",Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
             }
         });
 

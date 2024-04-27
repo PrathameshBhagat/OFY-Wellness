@@ -127,28 +127,37 @@ public class AddMealTab extends Fragment {
                     @Override
                     public void onSuccess(Uri linkToFirebaseStorageImage) {
 
-                        // Now uri points to firebase location, if it has http
-                        if( linkToFirebaseStorageImage.toString().contains("http")) {
+                        // Simple try catch block to catch any errors and exceptions
+                        try{
+                            // Now uri points to firebase location, if it has http
+                            if( linkToFirebaseStorageImage.toString().contains("http")) {
 
-                            // Create new meal object to add to database with image url
-                            Meal newMeal = new Meal(linkToFirebaseStorageImage.toString(),
-                                    mealNameEditText.getText().toString(),
-                                    Integer.parseInt(mealEnergyEditText.getText().toString()),
-                                    Integer.parseInt(mealProteinsEditText.getText().toString()),
-                                    Integer.parseInt(mealFatsEditText.getText().toString()),
-                                    Integer.parseInt(mealCarbohydratesEditText.getText().toString()));
+                                // Create new meal object to add to database with image url
+                                Meal newMeal = new Meal(linkToFirebaseStorageImage.toString(),
+                                        mealNameEditText.getText().toString(),
+                                        Integer.parseInt(mealEnergyEditText.getText().toString()),
+                                        Integer.parseInt(mealProteinsEditText.getText().toString()),
+                                        Integer.parseInt(mealFatsEditText.getText().toString()),
+                                        Integer.parseInt(mealCarbohydratesEditText.getText().toString()));
 
-                            // Add meal to the database
-                            ofyDatabase.addMeal(newMeal, mealTypeSpinner.getSelectedItem().toString());
+                                // Add meal to the database
+                                ofyDatabase.addMeal(newMeal, mealTypeSpinner.getSelectedItem().toString());
 
-                            // Show toast messages
-                            Toast.makeText(requireActivity(),"Successfully added the meal",Toast.LENGTH_SHORT).show();
+                                // Show toast messages
+                                Toast.makeText(requireActivity(),"Successfully added the meal",Toast.LENGTH_SHORT).show();
 
+                            }
+                            else {
+                                // Show toast messages
+                                Toast.makeText(requireActivity(),"Successfully added the meal, but unable to retrive link, aborted",Toast.LENGTH_SHORT).show();
+                            }
                         }
-                        else {
-                            // Show toast messages
-                            Toast.makeText(requireActivity(),"Successfully added the meal, but unable to retrive link, aborted",Toast.LENGTH_SHORT).show();
+                        catch(Exception e ){
+                            // Catch exception and show toast message
+                            Toast.makeText(requireActivity(),"Please check inputs and internet",Toast.LENGTH_SHORT).show();
+                            e.printStackTrace();
                         }
+
                     }
                 });
 

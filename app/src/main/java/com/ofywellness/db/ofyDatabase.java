@@ -5,6 +5,7 @@ import static androidx.core.content.ContextCompat.startActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -116,10 +117,10 @@ public class ofyDatabase {
     /**
      * Track user's  diet and set TextViews to the tracking data
      *
-     * @param c The context to show toast message
-     * @param energyValueLabel All others are TextViews to set tracking data
+     * @param context The context to show toast message
+     * @param energyValueLabel All others are TextViews and Progress Bars to set tracking data
      */
-    public static void getTrackDietDataAndSetView(Context c, TextView energyValueLabel, TextView proteinsValueLabel, TextView fatsValueLabel, TextView carbohydratesValueLabel) {
+    public static void getTrackDietDataAndSetData(Context context, TextView energyValueLabel, TextView proteinsValueLabel, TextView fatsValueLabel, TextView carbohydratesValueLabel, ProgressBar energyProgressBar, ProgressBar proteinsProgressBar,ProgressBar fatsProgressBar,ProgressBar carbohydratesProgressBar) {
 
         // Get the DataSnapshot to get tracking data, calculate it
         // And display it to user by updating the text views
@@ -154,12 +155,29 @@ public class ofyDatabase {
                     fatsValueLabel.setText(String.format("%sg", totalFats));
                     carbohydratesValueLabel.setText(String.format("%sg", totalCarbohydrates));
 
-                    // Show a toast message
-                    Toast.makeText(c, "Updated the data", Toast.LENGTH_SHORT).show();
+                    // Calculate total intake of nutrients for progress bars inputs
+                    int total = Integer.parseInt(energyValueLabel.getText().toString().replace("Cal", ""));
+                    total += Integer.parseInt(proteinsValueLabel.getText().toString().replace("g", ""));
+                    total += Integer.parseInt(fatsValueLabel.getText().toString().replace("g", ""));
+                    total += Integer.parseInt(carbohydratesValueLabel.getText().toString().replace("g", ""));
 
+                    // Set total 1 to avoid zivision by zero if no data present
+                    total = (total == 0) ? 1 : total;
+
+                    // Set the progress bars to proper percentage values of data they represent
+                    energyProgressBar.setProgress(Integer.parseInt(energyValueLabel.getText().toString().replace("Cal", "")) * 100 / total);
+
+                    proteinsProgressBar.setProgress(Integer.parseInt(proteinsValueLabel.getText().toString().replace("g", "")) * 100 / total);
+
+                    fatsProgressBar.setProgress(Integer.parseInt(fatsValueLabel.getText().toString().replace("g", "")) * 100 / total);
+
+                    carbohydratesProgressBar.setProgress(Integer.parseInt(carbohydratesValueLabel.getText().toString().replace("g", "")) * 100 / total);
+
+                    // Show a toast message
+                    Toast.makeText(context, "Updated the data", Toast.LENGTH_SHORT).show();
                 } else {
                     // Show a toast error message
-                    Toast.makeText(c, "Error getting data from firebase", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Error getting data from firebase", Toast.LENGTH_SHORT).show();
                 }
             }
         });
