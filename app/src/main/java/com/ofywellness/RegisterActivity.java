@@ -44,7 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
                 );
 
                 // Add user to the database and get UserID
-                String userID = ofyDatabase.addUser(ofyNewUser);
+                String userID = ofyDatabase.addNewUserToFirebaseDatabase(ofyNewUser);
                 // Create intent to move to next activity and provide it the UserID
                 Intent nextActivity = new Intent(RegisterActivity.this,HomeActivity.class);
                 nextActivity.putExtra("ID",userID);

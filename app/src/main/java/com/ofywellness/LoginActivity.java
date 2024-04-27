@@ -13,26 +13,23 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.ofywellness.db.ofyDatabase;
 
 public class LoginActivity extends AppCompatActivity {
     private GoogleSignInClient ofyGoogleSignInClient;
-    private DatabaseReference ofyDBReference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // Get database reference
-        ofyDBReference = FirebaseDatabase.getInstance().getReference().child("Users");
-
         // Make the user signIn to his google account
         signInToGoogleAccount();
 
     }
-    void signInToGoogleAccount(){
-        //Implementing Google Sign-In
+
+    //Implementing Google Sign-In
+    void signInToGoogleAccount() {
 
         // Objects required
         SignInButton ofyGoogleSignInButton = findViewById(R.id.google_image);
@@ -60,13 +57,13 @@ public class LoginActivity extends AppCompatActivity {
             try {
                 //Get Signed Account
                 GoogleSignInAccount account = GoogleSignIn.getSignedInAccountFromIntent(data).getResult();
-                // Finish current activity
-                finish();
+
                 // Show a Toast message
                 Toast.makeText(getApplicationContext(), "Google account: " + account.getDisplayName(), Toast.LENGTH_SHORT).show();
 
-                // Move to next activity on success
-                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                // Check if the user is present in Firebase Database with email
+                // And if found move to next activity
+                ofyDatabase.findUserInFirebaseAndNext(LoginActivity.this, account.getEmail());
 
             } catch (Exception e) {
                 //Log Error

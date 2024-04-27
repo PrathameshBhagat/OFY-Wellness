@@ -1,6 +1,10 @@
 package com.ofywellness.db;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -10,6 +14,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.annotations.NotNull;
+import com.ofywellness.HomeActivity;
+import com.ofywellness.RegisterActivity;
 import com.ofywellness.modals.Meal;
 import com.ofywellness.modals.User;
 
@@ -20,7 +26,13 @@ import java.util.HashMap;
 public class ofyDatabase {
     private static DatabaseReference ofyDatabaseref;
 
-    public static String addUser(User ofyUser) {
+    /**
+     * Add new user to Firebase Database
+     *
+     * @param ofyUser The user data model object
+     * @return The auto-generated UserID of this user
+     */
+    public static String addNewUserToFirebaseDatabase(User ofyUser) {
         // Get database reference
         ofyDatabaseref = FirebaseDatabase.getInstance().getReference();
         // Set operation to push to automatically get unique UserID with a storage location
@@ -31,6 +43,69 @@ public class ofyDatabase {
         return ofyDatabaseref.getKey();
     }
 
+    /**
+     * Get UserID from  Firebase Database if user exists
+     * @param ofyUserEmail The email of current user to find in database
+     */
+    public static void findUserInFirebaseAndNext(Context context, String ofyUserEmail) {
+
+        // Get the Firebase Database reference to users
+        ofyDatabaseref = FirebaseDatabase.getInstance().getReference().child("Users");
+
+        // Get the users data and add on complete listener to run method on obtaining data
+        ofyDatabaseref.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NotNull Task<DataSnapshot> task) {
+
+                // boolean to check if we moved to next activity
+                boolean moved = false;
+
+                // if task is successful move forward
+                if (task.isSuccessful()) {
+
+                    // Loop through all individual users
+                    for (DataSnapshot individualUser : task.getResult().getChildren()) {
+
+                        // Get individual users details and map to a hashmap
+                        HashMap userDetail = (HashMap) individualUser.getValue();
+
+                        // If user detail has email field with value equal to the obtained email
+                        // Then finish current activity and move to next activity
+                        if (userDetail.containsKey("email") && userDetail.get("email").toString().equals(ofyUserEmail)) {
+
+                            ((Activity) context).finish();
+                            startActivity(context, new Intent(context, HomeActivity.class).putExtra("UserID", individualUser.getKey()), null);
+
+                            // Also  set this boolean to indicate we moved to next activity and break the loop
+                            moved = true;
+                            break;
+
+                        }
+
+                    }
+
+                }
+
+                // If not moved to next activity as moved is false
+                // user details was not found and ask user to register his details
+                // by moving to register activity with email address
+                if (!moved) {
+                    // Finish current activity and move to register activity with email as extra
+                    ((Activity) context).finish();
+                    startActivity(context, new Intent(context, RegisterActivity.class)
+                            .putExtra("email", ofyUserEmail), null);
+                }
+            }
+        });
+
+    }
+
+    /**
+     * Add meal to user's diet in Firebase Database
+     *
+     * @param ofyMeal  The meal details
+     * @param mealType The type of meal breakfast, lunch, dinner
+     */
     public static void addMeal(Meal ofyMeal, String mealType) {
 
         // Add meal to proper location,
@@ -38,7 +113,12 @@ public class ofyDatabase {
         ofyDatabaseref.child("Diet").child(String.valueOf(new Date())).child(mealType).setValue(ofyMeal);
 
     }
-
+    /**
+     * Track user's  diet and set TextViews to the tracking data
+     *
+     * @param c The context to show toast message
+     * @param energyValueLabel All others are TextViews to set tracking data
+     */
     public static void getTrackDietDataAndSetView(Context c, TextView energyValueLabel, TextView proteinsValueLabel, TextView fatsValueLabel, TextView carbohydratesValueLabel) {
 
         // Get the DataSnapshot to get tracking data, calculate it
