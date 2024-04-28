@@ -143,21 +143,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/track_carbohydrates_display_label" />
 
-
+        <!-- Card View for energy progress-->
         <androidx.cardview.widget.CardView
             android:id="@+id/track_energy_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
+            app:cardElevation="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/track_update_button"
-            app:layout_constraintBottom_toTopOf="@id/track_protein_card">
+            app:layout_constraintTop_toBottomOf="@+id/track_update_button">
 
+            <!-- Linear Layout for energy progress bar and label -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <!-- TextView for energy tracking progress bar-->
                 <TextView
                     android:id="@+id/track_energy_progress_bar_label"
                     android:layout_width="wrap_content"
@@ -170,6 +172,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/track_update_button" />
 
+                <!-- Progress bar for energy tracking-->
                 <ProgressBar
                     android:id="@+id/track_energy_progress_bar"
                     style="?android:attr/progressBarStyleHorizontal"
@@ -186,19 +189,23 @@
 
         </androidx.cardview.widget.CardView>
 
+        <!-- Card View for protein progress-->
         <androidx.cardview.widget.CardView
             android:id="@+id/track_protein_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
+            app:cardElevation="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/track_energy_card">
 
+            <!-- Linear Layout for protein progress bar and label -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <!-- TextView for protein tracking progress bar-->
                 <TextView
                     android:id="@+id/track_protein_progress_bar_label"
                     android:layout_width="wrap_content"
@@ -211,6 +218,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/track_update_button" />
 
+                <!-- Progress bar for protein tracking-->
                 <ProgressBar
                     android:id="@+id/track_protein_progress_bar"
                     style="?android:attr/progressBarStyleHorizontal"
@@ -225,31 +233,36 @@
 
         </androidx.cardview.widget.CardView>
 
+        <!-- Card View for fats progress-->
         <androidx.cardview.widget.CardView
+            android:id="@id/track_fats_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:id="@id/track_fats_card"
+            app:cardElevation="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/track_protein_card">
 
+            <!-- Linear Layout for fats progress bar and label -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <!-- TextView for fats tracking progress bar-->
                 <TextView
                     android:id="@+id/track_fats_progress_bar_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
-                    android:text="Fats : "
+                    android:text="Fats :      "
                     android:textColor="#49569E"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/track_update_button" />
 
+                <!-- Progress bar for fats tracking-->
                 <ProgressBar
                     android:id="@+id/track_fats_progress_bar"
                     style="?android:attr/progressBarStyleHorizontal"
@@ -264,31 +277,37 @@
 
         </androidx.cardview.widget.CardView>
 
+        <!-- Card View for carbohydrates progress-->
         <androidx.cardview.widget.CardView
+            android:id="@+id/track_carbohydrates_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
+            app:cardElevation="40dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/track_fats_card">
 
+            <!-- Linear Layout for carbohydrates progress bar and label -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <!-- TextView for carbohydrates tracking progress bar-->
                 <TextView
                     android:id="@+id/track_carbohydrates_progress_bar_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
-                    android:text="Carbohydrates : "
+                    android:text="Carbs. : "
                     android:textColor="#49569E"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/track_update_button" />
 
+                <!-- Progress bar for carbohydrates tracking-->
                 <ProgressBar
                     android:id="@+id/track_carbohydrates_progress_bar"
                     style="?android:attr/progressBarStyleHorizontal"
@@ -304,8 +323,6 @@
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
-        <!-- Label for tracking energy content -->
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

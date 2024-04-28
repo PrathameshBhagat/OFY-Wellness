@@ -135,7 +135,7 @@ public class ofyDatabase {
         try {
             // Add meal to proper location,
             // Database ref is already pointing current user
-            ofyDatabaseref.child("Diet").child(String.valueOf(new Date())).child(mealType).setValue(ofyMeal);
+            ofyDatabaseref.child("Diet").child(String.valueOf(LocalDate.now())).child(mealType + " at : " + new Date()).setValue(ofyMeal);
         } catch (Exception e) {
             // Catch exception, show a toast error message and print error stack
             Toast.makeText(context, "Error adding the meal", Toast.LENGTH_SHORT).show();
