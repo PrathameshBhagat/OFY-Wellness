@@ -141,7 +141,7 @@ public class AddMealTab extends Fragment {
                                         Integer.parseInt(mealCarbohydratesEditText.getText().toString()));
 
                                 // Add meal to the database
-                                ofyDatabase.addMeal(newMeal, mealTypeSpinner.getSelectedItem().toString());
+                                ofyDatabase.addMeal(newMeal, mealTypeSpinner.getSelectedItem().toString(),getContext());
 
                                 // Show toast messages
                                 Toast.makeText(requireActivity(),"Successfully added the meal",Toast.LENGTH_SHORT).show();

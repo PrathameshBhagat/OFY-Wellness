@@ -32,8 +32,8 @@ public class RegisterActivity extends AppCompatActivity {
         findViewById(R.id.register).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try{
-
+                // Simple try catch block
+                try {
                     // Create new User to add to database
                     User ofyNewUser = new User(getIntent().getStringExtra("email"),
                             firstNameText.getText().toString(),
@@ -46,16 +46,18 @@ public class RegisterActivity extends AppCompatActivity {
                     );
 
                     // Add user to the database and get UserID
-                    String userID = ofyDatabase.addNewUserToFirebaseDatabase(ofyNewUser);
-                    // Create intent to move to next activity and provide it the UserID
-                    Intent nextActivity = new Intent(RegisterActivity.this,HomeActivity.class);
-                    nextActivity.putExtra("ID",userID);
-                    // Start the Intent
-                    startActivity(nextActivity);
+                    String userID = ofyDatabase.addNewUserToFirebase(ofyNewUser, getApplicationContext());
+                    // If userID is not empty
+                    if (!userID.isEmpty()) {
+                        // Create intent to move to next activity and provide it the UserID
+                        Intent nextActivity = new Intent(RegisterActivity.this, HomeActivity.class);
+                        nextActivity.putExtra("ID", userID);
+                        // Start the Intent
+                        startActivity(nextActivity);
+                    }
 
-                }
-                catch(Exception e){
-                    Toast.makeText(RegisterActivity.this,"Please check input and internet",Toast.LENGTH_SHORT).show();
+               } catch(Exception e){
+                    Toast.makeText(RegisterActivity.this, "Please check input and internet", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
             }
