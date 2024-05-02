@@ -1,5 +1,6 @@
 package com.ofywellness.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,9 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.ofywellness.R;
+import com.ofywellness.UpdateDietTargetActivity;
 import com.ofywellness.db.ofyDatabase;
+import com.ofywellness.modals.Meal;
 
 /**
  * Fragment for DietTrack tab in Home page
@@ -46,8 +49,28 @@ public class TrackDietTab extends Fragment {
         view.findViewById(R.id.track_update_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Update tracking data each time user clicks update button
+                // Update tracking data each time user clicks update intake button
                 updateDietTrackingData();
+            }
+        });
+
+        // Add on click listener to the update diet target button
+        view.findViewById(R.id.track_update_target_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Move to update diet target activity
+                startActivity(new Intent(requireActivity(),UpdateDietTargetActivity.class));
+
+            }
+        });
+
+        // Add on click listener to the update the progress
+        view.findViewById(R.id.track_update_progress_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Update progress each time user clicks update progress button
+                updateProgress();
+
             }
         });
 
@@ -61,7 +84,37 @@ public class TrackDietTab extends Fragment {
         try {
 
             // Call the method to get the "updated" tracking data and set the text views to the tracking data
-            ofyDatabase.getTrackDietDataAndSetData(requireActivity(), energyValueLabel, proteinsValueLabel, fatsValueLabel, carbohydratesValueLabel, energyProgressBar, proteinsProgressBar, fatsProgressBar, carbohydratesProgressBar);
+            ofyDatabase.getTrackDietDataAndSetData(requireActivity(), energyValueLabel, proteinsValueLabel, fatsValueLabel, carbohydratesValueLabel);
+
+        } catch (Exception e) {
+            // Catch exception and show toast message
+            Toast.makeText(requireActivity(), "Error:" + e, Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+    }
+
+    void updateProgress() {
+
+        // Simple try catch block to catch any errors and exceptions
+        try {
+            // Variables required to get current total diet intake
+            int currentEnergy, currentProteins , currentFats, currentCarbohydrates;
+
+            // Get the current progress
+            currentEnergy = Integer.parseInt(energyValueLabel.getText().toString().replace("Cal", ""));
+            currentProteins = Integer.parseInt(proteinsValueLabel.getText().toString().replace("g", ""));
+            currentFats = Integer.parseInt(fatsValueLabel.getText().toString().replace("g", ""));
+            currentCarbohydrates = Integer.parseInt(carbohydratesValueLabel.getText().toString().replace("g", ""));
+
+            // Store in a meal object
+            Meal currentProgress = new Meal(null,null,
+                    currentEnergy ,
+                    currentProteins ,
+                    currentFats ,
+                    currentCarbohydrates );
+
+            // Call the method to update the progress
+            ofyDatabase.updateDietProgress( requireActivity(), currentProgress,energyProgressBar, proteinsProgressBar, fatsProgressBar, carbohydratesProgressBar) ;
 
         } catch (Exception e) {
             // Catch exception and show toast message

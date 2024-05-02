@@ -150,7 +150,7 @@ public class ofyDatabase {
      * @param context          The context to show toast message
      * @param energyValueLabel All others are TextViews and Progress Bars to set tracking data
      */
-    public static void getTrackDietDataAndSetData(Context context, TextView energyValueLabel, TextView proteinsValueLabel, TextView fatsValueLabel, TextView carbohydratesValueLabel, ProgressBar energyProgressBar, ProgressBar proteinsProgressBar, ProgressBar fatsProgressBar, ProgressBar carbohydratesProgressBar) throws Exception {
+    public static void getTrackDietDataAndSetData(Context context, TextView energyValueLabel, TextView proteinsValueLabel, TextView fatsValueLabel, TextView carbohydratesValueLabel) {
 
         // Get the DataSnapshot to get tracking data, calculate it
         // And display it to user by updating the text views
@@ -186,26 +186,74 @@ public class ofyDatabase {
                         fatsValueLabel.setText(String.format("%sg", totalFats));
                         carbohydratesValueLabel.setText(String.format("%sg", totalCarbohydrates));
 
-                        // Calculate total intake of nutrients for progress bars inputs
-                        int total = Integer.parseInt(energyValueLabel.getText().toString().replace("Cal", ""));
-                        total += Integer.parseInt(proteinsValueLabel.getText().toString().replace("g", ""));
-                        total += Integer.parseInt(fatsValueLabel.getText().toString().replace("g", ""));
-                        total += Integer.parseInt(carbohydratesValueLabel.getText().toString().replace("g", ""));
-
-                        // Set total 1 to avoid division by zero if no data present
-                        total = (total == 0) ? 1 : total;
-
-                        // Set the progress bars to proper percentage values of data they represent
-                        energyProgressBar.setProgress(Integer.parseInt(energyValueLabel.getText().toString().replace("Cal", "")) * 100 / total);
-
-                        proteinsProgressBar.setProgress(Integer.parseInt(proteinsValueLabel.getText().toString().replace("g", "")) * 100 / total);
-
-                        fatsProgressBar.setProgress(Integer.parseInt(fatsValueLabel.getText().toString().replace("g", "")) * 100 / total);
-
-                        carbohydratesProgressBar.setProgress(Integer.parseInt(carbohydratesValueLabel.getText().toString().replace("g", "")) * 100 / total);
-
                         // Show a toast message
                         Toast.makeText(context, "Updated the data", Toast.LENGTH_SHORT).show();
+                    } else {
+                        // Show a toast error message
+                        Toast.makeText(context, "Error getting data from firebase", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (Exception e) {
+                    // Catch exception, show a toast error message and print error stack
+                    Toast.makeText(context, "Error in getting and setting data", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    public static void addDietTarget(Meal ofyMeal, Context context) {
+        // simple try catch block
+        try {
+            // Add meal to proper location,
+            // Database ref is already pointing current user
+            ofyDatabaseref.child("Target").setValue(ofyMeal);
+        } catch (Exception e) {
+            // Catch exception, show a toast error message and print error stack
+            Toast.makeText(context, "Error updating the target ", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void updateDietProgress(Context context, Meal currentProgress, ProgressBar energyProgressBar, ProgressBar proteinsProgressBar, ProgressBar fatsProgressBar, ProgressBar carbohydratesProgressBar) {
+
+        // Database ref is already pointing current user just get the target and update progress
+        ofyDatabaseref.child("Target").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NotNull Task<DataSnapshot> task) {
+                // Simple try catch block
+                try {
+                    // Check if the task to get data was successful
+                    if (task.isSuccessful()) {
+                        // Diet target  variables
+                        int targetEnergy, targetProteins , targetFats, targetCarbohydrates;
+
+                        // Current diet values
+                        int currentEnergy, currentProteins , currentFats, currentCarbohydrates;
+
+                        // Get current progress
+                        currentEnergy = currentProgress.getEnergy();
+                        currentProteins = currentProgress.getProteins();
+                        currentFats = currentProgress.getFats();
+                        currentCarbohydrates = currentProgress.getCarbohydrates();
+
+                        // Get the diet target from DataSnapshot from the task and convert to HashMap
+                        HashMap target = (HashMap) task.getResult().getValue();
+
+                        // Get the target values from the map
+                        targetEnergy = Integer.parseInt(target.get("energy").toString());
+                        targetProteins =  Integer.parseInt(target.get("proteins").toString());
+                        targetFats = Integer.parseInt(target.get("fats").toString());
+                        targetCarbohydrates = Integer.parseInt(target.get("carbohydrates").toString());
+
+                        // Set the progress bars to proper percentage values they represent
+                        energyProgressBar.setProgress( currentEnergy * 100 / targetEnergy );
+                        proteinsProgressBar.setProgress( currentProteins * 100 / targetProteins );
+                        fatsProgressBar.setProgress( currentFats * 100 / targetFats );
+                        carbohydratesProgressBar.setProgress( currentCarbohydrates * 100 / targetCarbohydrates );
+
+                        // Show a toast message
+                        Toast.makeText(context, "Updated the progress", Toast.LENGTH_SHORT).show();
                     } else {
                         // Show a toast error message
                         Toast.makeText(context, "Error getting data from firebase", Toast.LENGTH_SHORT).show();

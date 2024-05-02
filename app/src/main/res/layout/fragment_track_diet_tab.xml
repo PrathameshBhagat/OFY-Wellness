@@ -28,6 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
+            app:cardElevation="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/track_name_label">
@@ -70,6 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
+            app:cardElevation="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/track_energy_display_card">
@@ -112,6 +114,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
+            app:cardElevation="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/track_protein_display_card">
@@ -154,6 +157,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
+            app:cardElevation="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/track_fats_display_card">
@@ -196,12 +200,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="24dp"
-            android:text="Update"
+            android:text="Update intake"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/track_carbohydrates_display_card" />
+
+        <!-- TextView for progress tracking label-->
+        <TextView
+            android:id="@+id/track_progress_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="50dp"
+            android:text="Target progress :"
+            android:textColor="#2A2AA5"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/track_update_button" />
 
         <!-- Card View for energy progress-->
         <androidx.cardview.widget.CardView
@@ -212,7 +230,7 @@
             app:cardElevation="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/track_update_button">
+            app:layout_constraintTop_toBottomOf="@+id/track_progress_label">
 
             <!-- Linear Layout for energy progress bar and label -->
             <LinearLayout
@@ -255,7 +273,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            app:cardElevation="40dp"
+            app:cardElevation="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/track_energy_card">
@@ -343,8 +361,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            app:cardElevation="40dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:cardElevation="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/track_fats_card">
@@ -381,6 +398,55 @@
                     app:layout_constraintTop_toBottomOf="@+id/track_update_button" />
 
             </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Card View for update progress button -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/track_update_progress_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="@android:color/transparent"
+            app:cardElevation="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/track_carbohydrates_card">
+
+            <!-- Button to update progress -->
+            <Button
+                android:id="@+id/track_update_progress_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Update progress"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Card View for update target button -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/track_update_target_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:backgroundTint="@android:color/transparent"
+            app:cardElevation="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/track_update_progress_card">
+
+            <!-- Button to update target -->
+            <Button
+                android:id="@+id/track_update_target_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Update target"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
         </androidx.cardview.widget.CardView>
 
