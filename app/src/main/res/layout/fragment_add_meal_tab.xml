@@ -91,7 +91,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="20dp"
-                    android:text="Meal type"
+                    android:text="Type"
                     android:textColor="#49569E"
                     android:textSize="20sp"
                     android:textStyle="bold"/>
@@ -256,7 +256,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="20dp"
-                    android:text="Carbohydrates"
+                    android:text="Carbs."
                     android:textColor="#49569E"
                     android:textSize="20sp"
                     android:textStyle="bold" />

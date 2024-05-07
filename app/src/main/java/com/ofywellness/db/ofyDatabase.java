@@ -21,12 +21,14 @@ import com.ofywellness.modals.Meal;
 import com.ofywellness.modals.User;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
 // Single class for all database operations
 public class ofyDatabase {
     private static DatabaseReference ofyDatabaseref;
+    private static ArrayList<Meal> allMealsFound;
 
     /**
      * Add new user to Firebase Database
@@ -201,6 +203,12 @@ public class ofyDatabase {
         });
     }
 
+    /**
+     * Add or change the diet target
+     *
+     * @param context The context to show toast message
+     * @param ofyMeal The meal object with the diet target data
+     */
     public static void addDietTarget(Meal ofyMeal, Context context) {
         // simple try catch block
         try {
@@ -215,6 +223,12 @@ public class ofyDatabase {
 
     }
 
+    /**
+     * Method to update current progress according to the diet target
+     *
+     * @param context          The context to show toast message
+     * @param currentProgress  The meal object with the current diet data
+     */
     public static void updateDietProgress(Context context, Meal currentProgress, ProgressBar energyProgressBar, ProgressBar proteinsProgressBar, ProgressBar fatsProgressBar, ProgressBar carbohydratesProgressBar) {
 
         // Database ref is already pointing current user just get the target and update progress
@@ -265,5 +279,72 @@ public class ofyDatabase {
                 }
             }
         });
+    }
+
+    /**
+     * Get all the meals of the date provided and store them in an ArrayList object
+     *
+     * @param context The context to show toast message
+     * @param year The year of the date
+     * @param month The month of the date
+     * @param dayOfMonth The day of the date
+     */
+    public static void setMealsOfTheDay(Context context, int year, int month, int dayOfMonth) {
+
+        // Initialise the ArrayList object
+        allMealsFound = new ArrayList<>();
+
+        // Get all the meals eaten on the date provided and them to the ArrayList
+        ofyDatabaseref.child("Diet").child(LocalDate.of(year, month + 1, dayOfMonth).toString()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+
+            @Override
+            public void onComplete(Task<DataSnapshot> task) {
+
+                // Simple try catch block
+                try {
+                    // Check if the task to get data was successful
+                    if (task.isSuccessful()) {
+
+                        // Loop through all the days
+                        for (DataSnapshot ofyDateDataSnapshot : task.getResult().getChildren()) {
+
+                            // Get the meal from DataSnapshot and convert to HashMap
+                            HashMap received = (HashMap) ofyDateDataSnapshot.getValue();
+
+                            // Get the meal content from the map
+                            Meal receivedMeal = new Meal(
+                                    ofyDateDataSnapshot.getKey(),
+                                    received.get("name").toString(),
+                                    Integer.parseInt(received.get("energy").toString()),
+                                    Integer.parseInt(received.get("proteins").toString()),
+                                    Integer.parseInt(received.get("fats").toString()),
+                                    Integer.parseInt(received.get("carbohydrates").toString()));
+
+                            // Add all the meals to later retrieve them received
+                            allMealsFound.add(receivedMeal);
+
+                        }
+
+                    } else {
+                        // Show a toast error message
+                        Toast.makeText(context, "Error, Please set the date again", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (Exception e) {
+                    // Catch exception, show a toast error message and print error stack
+                    Toast.makeText(context, "Error, Please set the date again", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
+    }
+
+    /**
+     *   Get all the meals eaten in a day which was stored earlier */
+    public static ArrayList<Meal> getMeals() {
+
+        return allMealsFound;
+
     }
 }
