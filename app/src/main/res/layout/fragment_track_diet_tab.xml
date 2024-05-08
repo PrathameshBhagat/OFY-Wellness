@@ -571,83 +571,56 @@
 
                 </LinearLayout>
 
-                <!-- Card View for meal name to view a particular meal -->
+                <!-- Card View for meal name, image, and type to view a particular meal -->
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/track_view_meal_name_card"
+                    android:id="@+id/track_view_meal_image_card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_margin="20dp"
                     app:cardElevation="50dp">
 
-                    <!-- LinearLayout for meal name to view a particular meal -->
+
+                    <!-- LinearLayout for meal name, image, and type to view a particular meal -->
                     <LinearLayout
-                        android:id="@+id/track_view_meal_name_linear_layout"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center">
 
-                        <!-- Label for meal name to view a particular meal -->
-                        <TextView
-                            android:id="@+id/track_view_meal_name_label"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                        <ImageView
+                            android:id="@+id/track_view_meal_meal_image"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:layout_gravity="center"
-                            android:padding="20dp"
-                            android:text="Name"
-                            android:textColor="#49569E"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
+                            android:layout_margin="10dp"
+                            android:src="@mipmap/ic_launcher" />
 
-                        <!-- Display label for meal name to view a particular meal -->
-                        <TextView
-                            android:id="@+id/track_view_meal_name_field"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_margin="20dp"
-                            android:text="Meal Name"
-                            android:textColor="#006666"
-                            android:textSize="25sp"
-                            android:textStyle="bold" />
+                            android:orientation="vertical">
 
-                    </LinearLayout>
+                            <TextView
+                                android:id="@+id/track_view_meal_name_field"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="Meal Name"
+                                android:textColor="#006666"
+                                android:textSize="25sp"
+                                android:textStyle="bold" />
 
-                </androidx.cardview.widget.CardView>
-
-                <!-- CardView for meal type to view a particular meal -->
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/track_view_meal_type_card"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    app:cardElevation="50dp">
-
-                    <!-- LinearLayout for meal type to view a particular meal -->
-                    <LinearLayout
-                        android:id="@+id/track_view_meal_type_linear_layout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <!-- Label for meal type to view a particular meal  -->
-                        <TextView
-                            android:id="@+id/track_view_meal_type_label"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="20dp"
-                            android:text="Type"
-                            android:textColor="#49569E"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-
-                        <!-- Display label for meal type to view a particular meal -->
-                        <TextView
-                            android:id="@+id/track_view_meal_type_field"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="20dp"
-                            android:text="Type"
-                            android:textColor="#006666"
-                            android:textSize="25sp"
-                            android:textStyle="bold" />
+                            <TextView
+                                android:id="@+id/track_view_meal_type_field"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="Type"
+                                android:textColor="#49569E"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
 
                     </LinearLayout>
 

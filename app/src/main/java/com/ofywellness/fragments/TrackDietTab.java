@@ -2,11 +2,15 @@ package com.ofywellness.fragments;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +22,9 @@ import com.ofywellness.UpdateDietTargetActivity;
 import com.ofywellness.db.ofyDatabase;
 import com.ofywellness.modals.Meal;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -30,6 +37,7 @@ public class TrackDietTab extends Fragment {
 
     private TextView energyValueLabel, proteinsValueLabel, fatsValueLabel, carbohydratesValueLabel, dietDateLabel, mealEnergyLabel, mealProteinsLabel, mealFatsLabel, mealCarbohydratesLabel, mealTypeLabel, mealNameLabel, mealNumberLabel;
     private ProgressBar energyProgressBar, proteinsProgressBar, fatsProgressBar, carbohydratesProgressBar;
+    private ImageView mealImageLabel;
     private int INDEX_OF_MEAL_TO_VIEW;
 
     @Override
@@ -52,7 +60,7 @@ public class TrackDietTab extends Fragment {
         mealTypeLabel = view.findViewById(R.id.track_view_meal_type_field);
         mealNameLabel = view.findViewById(R.id.track_view_meal_name_field);
         mealNumberLabel = view.findViewById(R.id.track_view_meal_meal_number_field);
-
+        mealImageLabel = view.findViewById(R.id.track_view_meal_meal_image);
         // Set the meal viewing index to zero to view the first meal
         INDEX_OF_MEAL_TO_VIEW = 0;
 
@@ -142,6 +150,12 @@ public class TrackDietTab extends Fragment {
 
         try {
 
+            // If  date not set, show toast message and return
+            if (dietDateLabel.getText().equals("DD/MM/YYYY")) {
+                Toast.makeText(requireActivity(), "Please set the date first", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             // Obtain all meals ( of a particular day, from cache not database)
             ArrayList<Meal> obtainedMeals = ofyDatabase.getMeals();
 
@@ -170,10 +184,35 @@ public class TrackDietTab extends Fragment {
             mealFatsLabel.setText(String.format("%sg", mealToView.getFats()));
             mealCarbohydratesLabel.setText(String.format("%sg", mealToView.getCarbohydrates()));
 
-            // Meal type is in elongated format, reduce it then set it
+            // Meal type is in elongated format and also has image source,
+            // So we first get the meal type and set it
             String mealType = mealToView.getImage();
             mealType = mealType.substring(0, mealType.indexOf("at"));
             mealTypeLabel.setText(mealType);
+
+            // Now we get the image address and set the url
+            String imageAdderess = mealToView.getImage();
+            imageAdderess = imageAdderess.substring(imageAdderess.indexOf("https:"));
+            URL newurl  = new URL(imageAdderess);
+            mealImageLabel.setImageBitmap(null);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+
+                    try {
+                       // URL newurl  = new URL("https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+                        Bitmap mIcon_val = BitmapFactory.decodeStream(newurl.openConnection().getInputStream());
+                        requireActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                mealImageLabel.setImageBitmap(mIcon_val);
+                            }
+                        });
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }).start();
 
         } catch (Exception e) {
             // Catch exception, show a toast error message and print error stack

@@ -313,7 +313,7 @@ public class ofyDatabase {
 
                             // Get the meal content from the map
                             Meal receivedMeal = new Meal(
-                                    ofyDateDataSnapshot.getKey(),
+                                    ofyDateDataSnapshot.getKey()+"::"+received.get("image").toString(),
                                     received.get("name").toString(),
                                     Integer.parseInt(received.get("energy").toString()),
                                     Integer.parseInt(received.get("proteins").toString()),

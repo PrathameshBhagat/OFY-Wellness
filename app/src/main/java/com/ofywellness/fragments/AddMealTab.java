@@ -13,12 +13,15 @@ import android.webkit.MimeTypeMap;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -43,7 +46,9 @@ public class AddMealTab extends Fragment {
     private Uri mealImageUri;
     private ImageView mealImageView;
     private EditText mealNameEditText, mealEnergyEditText, mealProteinsEditText, mealFatsEditText, mealCarbohydratesEditText;
-    private ProgressBar mealUploadProgressBar;
+    private CardView mealUploadProgressBar;
+    ConstraintLayout content;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -67,7 +72,9 @@ public class AddMealTab extends Fragment {
         mealUploadProgressBar = view.findViewById(R.id.meal_upload_meal_progress_bar);
 
         // Hide the progress bar
-        mealUploadProgressBar.setVisibility(View.INVISIBLE);
+        mealUploadProgressBar.setVisibility(View.GONE);
+        content = view.findViewById(R.id.content);
+
 
         // Add button to upload today's meal to the "DATABASE"
         view.findViewById(R.id.upload_meal_button).setOnClickListener(new View.OnClickListener() {
@@ -162,20 +169,23 @@ public class AddMealTab extends Fragment {
                 });
 
                 //Hide the progress bar
-                mealUploadProgressBar.setVisibility(View.INVISIBLE);
+                mealUploadProgressBar.setVisibility(View.GONE);
+                content.setVisibility(View.VISIBLE);
             }
         }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
                 // Show the progress bar
                 mealUploadProgressBar.setVisibility(View.VISIBLE);
+                content.setVisibility(View.GONE);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
 
                 // Hide the progress bar
-                mealUploadProgressBar.setVisibility(View.INVISIBLE);
+                mealUploadProgressBar.setVisibility(View.GONE);
+                content.setVisibility(View.VISIBLE);
 
                 // If failed to upload image abort and show error message
                 Toast.makeText(requireActivity(), "Failed to upload image, hence aborted", Toast.LENGTH_SHORT).show();
