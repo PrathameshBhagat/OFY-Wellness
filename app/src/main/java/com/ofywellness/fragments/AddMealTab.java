@@ -13,8 +13,6 @@ import android.webkit.MimeTypeMap;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -46,8 +44,8 @@ public class AddMealTab extends Fragment {
     private Uri mealImageUri;
     private ImageView mealImageView;
     private EditText mealNameEditText, mealEnergyEditText, mealProteinsEditText, mealFatsEditText, mealCarbohydratesEditText;
-    private CardView mealUploadProgressBar;
-    ConstraintLayout content;
+    private CardView mealUploadProgressBarCardView;
+    private ConstraintLayout addMealConstrainedLayout;
 
 
     @Override
@@ -69,11 +67,13 @@ public class AddMealTab extends Fragment {
         mealFatsEditText = view.findViewById(R.id.meal_fats_field);
         mealCarbohydratesEditText = view.findViewById(R.id.meal_carbohydrates_field);
         mealImageView = view.findViewById(R.id.meal_add_image_view);
-        mealUploadProgressBar = view.findViewById(R.id.meal_upload_meal_progress_bar);
+        mealUploadProgressBarCardView = view.findViewById(R.id.meal_upload_meal_progress_bar_card);
+
+        // Constrained Layout to hide content when uploading/saving content
+        addMealConstrainedLayout = view.findViewById(R.id.content);
 
         // Hide the progress bar
-        mealUploadProgressBar.setVisibility(View.GONE);
-        content = view.findViewById(R.id.content);
+        mealUploadProgressBarCardView.setVisibility(View.GONE);
 
 
         // Add button to upload today's meal to the "DATABASE"
@@ -81,7 +81,7 @@ public class AddMealTab extends Fragment {
             @Override
             public void onClick(View v) {
 
-               // Check if mealImageUri is not null (an image is selected)
+                // Check if mealImageUri is not null (an image is selected)
                 if (mealImageUri != null) {
 
                     // Upload meal to firebase database
@@ -115,7 +115,7 @@ public class AddMealTab extends Fragment {
     public void uploadMealToDatabase(Uri uri) {
 
         // Check if previous upload is currently in progress
-        if( mealUploadProgressBar.getVisibility() == View.VISIBLE ){
+        if (mealUploadProgressBarCardView.getVisibility() == View.VISIBLE) {
             // Show toast messages
             Toast.makeText(requireActivity(),"Please wait until previous upload",Toast.LENGTH_SHORT).show();
             return ;
@@ -168,24 +168,29 @@ public class AddMealTab extends Fragment {
                     }
                 });
 
-                //Hide the progress bar
-                mealUploadProgressBar.setVisibility(View.GONE);
-                content.setVisibility(View.VISIBLE);
+                //Hide the progress bar's Card View
+                mealUploadProgressBarCardView.setVisibility(View.GONE);
+                // Display the add meals Constrained Layout
+                addMealConstrainedLayout.setVisibility(View.VISIBLE);
             }
         }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+
                 // Show the progress bar
-                mealUploadProgressBar.setVisibility(View.VISIBLE);
-                content.setVisibility(View.GONE);
+                mealUploadProgressBarCardView.setVisibility(View.VISIBLE);
+                // Hide the add meals Constrained Layout
+                addMealConstrainedLayout.setVisibility(View.GONE);
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
 
                 // Hide the progress bar
-                mealUploadProgressBar.setVisibility(View.GONE);
-                content.setVisibility(View.VISIBLE);
+                mealUploadProgressBarCardView.setVisibility(View.GONE);
+                // Display the add meals Constrained Layout
+                addMealConstrainedLayout.setVisibility(View.VISIBLE);
 
                 // If failed to upload image abort and show error message
                 Toast.makeText(requireActivity(), "Failed to upload image, hence aborted", Toast.LENGTH_SHORT).show();

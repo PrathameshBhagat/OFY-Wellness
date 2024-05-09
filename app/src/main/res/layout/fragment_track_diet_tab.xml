@@ -583,12 +583,13 @@
 
                     <!-- LinearLayout for meal name, image, and type to view a particular meal -->
                     <LinearLayout
+                        android:id="@+id/track_view_meal_image_linear_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center">
 
                         <ImageView
-                            android:id="@+id/track_view_meal_meal_image"
+                            android:id="@+id/track_view_meal_meal_image_field"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_gravity="center"
@@ -596,6 +597,7 @@
                             android:src="@mipmap/ic_launcher" />
 
                         <LinearLayout
+                            android:id="@+id/track_view_meal_image_data_linear_layout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"

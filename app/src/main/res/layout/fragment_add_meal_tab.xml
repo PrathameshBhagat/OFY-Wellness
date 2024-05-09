@@ -6,359 +6,370 @@
     android:layout_height="match_parent"
     tools:context=".fragments.AddMealTab">
 
-    <!-- Constrained Layout for responsiveness -->
+    <!-- LinearLayout to hold all the views -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!-- Constrained Layout for responsiveness -->
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/content">
-        <!-- Add new meal label -->
-        <TextView
-            android:id="@+id/meal_add_meal_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="25dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:text="Add today's meal"
-            android:textColor="#2A2AA5"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="wrap_content">
 
-        <!-- CardView for meal name -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/meal_name_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/meal_add_meal_label">
+            <!-- Add new meal label -->
+            <TextView
+                android:id="@+id/meal_add_meal_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="25dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:text="Add today's meal"
+                android:textColor="#2A2AA5"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- LinearLayout for meal name -->
-            <LinearLayout
-                android:id="@+id/meal_name_linear_layout"
+            <!-- CardView for meal name -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/meal_name_card"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/meal_add_meal_label">
 
-                <!-- Label for meal name -->
-                <TextView
-                    android:id="@+id/meal_name_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="20dp"
-                    android:text="Name"
-                    android:textColor="#49569E"
-                    android:textSize="25sp"
-                    android:textStyle="bold"/>
-
-                <!-- Meal name field -->
-                <EditText
-                    android:id="@+id/meal_name_field"
+                <!-- LinearLayout for meal name -->
+                <LinearLayout
+                    android:id="@+id/meal_name_linear_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:hint="Rice bowl"
-                    android:inputType="text"
-                    android:textColor="#006666"
-                    android:textSize="25sp"
-                    android:textStyle="bold"/>
+                    android:layout_height="wrap_content">
 
-            </LinearLayout>
+                    <!-- Label for meal name -->
+                    <TextView
+                        android:id="@+id/meal_name_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:text="Name"
+                        android:textColor="#49569E"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
 
-        </androidx.cardview.widget.CardView>
+                    <!-- Meal name field -->
+                    <EditText
+                        android:id="@+id/meal_name_field"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:hint="Rice bowl"
+                        android:inputType="text"
+                        android:textColor="#006666"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
 
-        <!-- CardView for meal type -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/meal_type_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/meal_name_card">
+                </LinearLayout>
 
-            <!-- LinearLayout for meal type -->
-            <LinearLayout
-                android:id="@+id/meal_type_linear_layout"
+            </androidx.cardview.widget.CardView>
+
+            <!-- CardView for meal type -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/meal_type_card"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/meal_name_card">
 
-                <!-- Label for meal type content -->
-                <TextView
-                    android:id="@+id/meal_type_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="20dp"
-                    android:text="Type"
-                    android:textColor="#49569E"
-                    android:textSize="20sp"
-                    android:textStyle="bold"/>
-
-                <!-- Spinner for meal type  -->
-                <Spinner
-                    android:id="@+id/meal_type_spinner"
+                <!-- LinearLayout for meal type -->
+                <LinearLayout
+                    android:id="@+id/meal_type_linear_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content">
 
-            </LinearLayout>
+                    <!-- Label for meal type content -->
+                    <TextView
+                        android:id="@+id/meal_type_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:text="Type"
+                        android:textColor="#49569E"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-        </androidx.cardview.widget.CardView>
+                    <!-- Spinner for meal type  -->
+                    <Spinner
+                        android:id="@+id/meal_type_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-        <!-- CardView for meal energy -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/meal_energy_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/meal_type_card">
+                </LinearLayout>
 
-            <!-- LinearLayout for meal energy -->
-            <LinearLayout
-                android:id="@+id/meal_energy_linear_layout"
+            </androidx.cardview.widget.CardView>
+
+            <!-- CardView for meal energy -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/meal_energy_card"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/meal_type_card">
 
-                <!-- Label for meal energy content -->
-                <TextView
-                    android:id="@+id/meal_energy_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="20dp"
-                    android:text="Energy"
-                    android:textColor="#49569E"
-                    android:textSize="20sp"
-                    android:textStyle="bold"/>
-
-                <!-- Meal energy content field -->
-                <EditText
-                    android:id="@+id/meal_energy_field"
+                <!-- LinearLayout for meal energy -->
+                <LinearLayout
+                    android:id="@+id/meal_energy_linear_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:hint="650Cal"
-                    android:inputType="number|numberDecimal"
-                    android:textColor="#006666"
-                    android:textSize="25sp"
-                    android:textStyle="bold" />
+                    android:layout_height="wrap_content">
 
-            </LinearLayout>
+                    <!-- Label for meal energy content -->
+                    <TextView
+                        android:id="@+id/meal_energy_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:text="Energy"
+                        android:textColor="#49569E"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-        </androidx.cardview.widget.CardView>
+                    <!-- Meal energy content field -->
+                    <EditText
+                        android:id="@+id/meal_energy_field"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:hint="650Cal"
+                        android:inputType="number|numberDecimal"
+                        android:textColor="#006666"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
 
-        <!-- CardView for meal protein -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/meal_protein_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/meal_energy_card">
+                </LinearLayout>
 
-            <!-- LinearLayout for meal protein -->
-            <LinearLayout
-                android:id="@+id/meal_protein_linear_layout"
+            </androidx.cardview.widget.CardView>
+
+            <!-- CardView for meal protein -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/meal_protein_card"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/meal_energy_card">
 
-                <!-- Label for meal protein content-->
-                <TextView
-                    android:id="@+id/meal_protein_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="20dp"
-                    android:text="Protein"
-                    android:textColor="#49569E"
-                    android:textSize="20sp"
-                    android:textStyle="bold"/>
-
-                <!-- Meal protein content field -->
-                <EditText
-                    android:id="@+id/meal_protein_field"
+                <!-- LinearLayout for meal protein -->
+                <LinearLayout
+                    android:id="@+id/meal_protein_linear_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:hint="60g"
-                    android:inputType="number|numberDecimal"
-                    android:textColor="#006666"
-                    android:textSize="25sp"
-                    android:textStyle="bold"/>
+                    android:layout_height="wrap_content">
 
-            </LinearLayout>
+                    <!-- Label for meal protein content-->
+                    <TextView
+                        android:id="@+id/meal_protein_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:text="Protein"
+                        android:textColor="#49569E"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-        </androidx.cardview.widget.CardView>
+                    <!-- Meal protein content field -->
+                    <EditText
+                        android:id="@+id/meal_protein_field"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:hint="60g"
+                        android:inputType="number|numberDecimal"
+                        android:textColor="#006666"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
 
-        <!-- CardView for meal fats -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/meal_fats_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/meal_protein_card">
+                </LinearLayout>
 
-            <!-- LinearLayout for meal fats -->
-            <LinearLayout
-                android:id="@+id/meal_fats_linear_layout"
+            </androidx.cardview.widget.CardView>
+
+            <!-- CardView for meal fats -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/meal_fats_card"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/meal_protein_card">
 
-                <!-- Label for meal fats content -->
-                <TextView
-                    android:id="@+id/meal_fats_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="20dp"
-                    android:text="Fats      "
-                    android:textColor="#49569E"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <!-- Meal fats content field -->
-                <EditText
-                    android:id="@+id/meal_fats_field"
+                <!-- LinearLayout for meal fats -->
+                <LinearLayout
+                    android:id="@+id/meal_fats_linear_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:hint="60g"
-                    android:inputType="number|numberDecimal"
-                    android:textColor="#006666"
-                    android:textSize="25sp"
-                    android:textStyle="bold" />
+                    android:layout_height="wrap_content">
 
-            </LinearLayout>
+                    <!-- Label for meal fats content -->
+                    <TextView
+                        android:id="@+id/meal_fats_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:text="Fats      "
+                        android:textColor="#49569E"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-        </androidx.cardview.widget.CardView>
+                    <!-- Meal fats content field -->
+                    <EditText
+                        android:id="@+id/meal_fats_field"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:hint="60g"
+                        android:inputType="number|numberDecimal"
+                        android:textColor="#006666"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
 
-        <!-- CardView for meal carbohydrates -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/meal_carbohydrates_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/meal_fats_card">
+                </LinearLayout>
 
-            <!-- LinearLayout for meal carbohydrates -->
-            <LinearLayout
-                android:id="@+id/meal_carbohydrates_linear_layout"
+            </androidx.cardview.widget.CardView>
+
+            <!-- CardView for meal carbohydrates -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/meal_carbohydrates_card"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <!-- Label for meal carbohydrates content -->
-                <TextView
-                    android:id="@+id/meal_carbohydrates_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="20dp"
-                    android:text="Carbs."
-                    android:textColor="#49569E"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/meal_fats_card">
 
-                <!-- Meal content carbohydrates field -->
-                <EditText
-                    android:id="@+id/meal_carbohydrates_field"
+                <!-- LinearLayout for meal carbohydrates -->
+                <LinearLayout
+                    android:id="@+id/meal_carbohydrates_linear_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:hint="60g"
-                    android:inputType="number|numberDecimal"
-                    android:textColor="#006666"
-                    android:textSize="25sp"
-                    android:textStyle="bold"/>
+                    android:layout_height="wrap_content">
+                    <!-- Label for meal carbohydrates content -->
+                    <TextView
+                        android:id="@+id/meal_carbohydrates_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:text="Carbs."
+                        android:textColor="#49569E"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-            </LinearLayout>
+                    <!-- Meal content carbohydrates field -->
+                    <EditText
+                        android:id="@+id/meal_carbohydrates_field"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:hint="60g"
+                        android:inputType="number|numberDecimal"
+                        android:textColor="#006666"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
 
-        </androidx.cardview.widget.CardView>
+                </LinearLayout>
 
-        <!-- ImageView for uploading the image -->
-        <ImageView
-            android:id="@+id/meal_add_image_view"
-            android:layout_width="250dp"
-            android:layout_height="250dp"
-            android:layout_margin="32dp"
-            android:padding="20dp"
-            android:background="@drawable/home_background"
-            android:src="@drawable/logo_white_nobg_cropped"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/meal_carbohydrates_card" />
+            </androidx.cardview.widget.CardView>
 
-        <!-- Button to select image -->
-        <Button
-            android:id="@+id/meal_select_image_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:text="Select Image"
-            android:textSize="25sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/meal_add_image_view" />
+            <!-- ImageView for uploading the image -->
+            <ImageView
+                android:id="@+id/meal_add_image_view"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_margin="32dp"
+                android:background="@drawable/home_background"
+                android:padding="20dp"
+                android:src="@drawable/logo_white_nobg_cropped"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/meal_carbohydrates_card" />
+
+            <!-- Button to select image -->
+            <Button
+                android:id="@+id/meal_select_image_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="Select Image"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/meal_add_image_view" />
 
 
-        <!-- Button to upload the meal -->
-        <Button
-            android:id="@+id/upload_meal_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:backgroundTint="#1EB026"
-            android:text="Save meal"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/meal_select_image_button" />
+            <!-- Button to upload the meal -->
+            <Button
+                android:id="@+id/upload_meal_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:backgroundTint="#1EB026"
+                android:text="Save meal"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/meal_select_image_button" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <!-- CardView for the progress bar to show upload progress -->
         <androidx.cardview.widget.CardView
-            android:id="@+id/meal_upload_meal_progress_bar"
+            android:id="@+id/meal_upload_meal_progress_bar_card"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="50dp"
+            app:cardElevation="500dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:cardElevation="500dp"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- LinearLayout to show progress text and progress bar -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-            <TextView
-                android:id="@+id/track_view_meal_name_field"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Saving.."
-                android:textColor="#006666"
-                android:textSize="50sp"
-                android:textStyle="bold" />
-            <!-- Progress bar to show upload progress -->
-            <ProgressBar
-                android:id="@+id/meal_progress_bar_card"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_gravity="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:backgroundTint="#00ff00"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/meal_select_image_button" />
+
+                <!-- Text View to show we are currently saving the meal -->
+                <TextView
+                    android:id="@+id/track_view_meal_name_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Saving.."
+                    android:textColor="#006666"
+                    android:textSize="50sp"
+                    android:textStyle="bold" />
+
+                <!-- Progress bar to show upload progress -->
+                <ProgressBar
+                    android:id="@+id/meal_upload_progress_bar"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:backgroundTint="#00ff00"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/meal_select_image_button" />
+
             </LinearLayout>
+
         </androidx.cardview.widget.CardView>
+
     </LinearLayout>
 
 </ScrollView>

@@ -4,7 +4,6 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,8 +21,6 @@ import com.ofywellness.UpdateDietTargetActivity;
 import com.ofywellness.db.ofyDatabase;
 import com.ofywellness.modals.Meal;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -51,7 +48,7 @@ public class TrackDietTab extends Fragment {
         fatsValueLabel = view.findViewById(R.id.track_fats_display_label);
         carbohydratesValueLabel = view.findViewById(R.id.track_carbohydrates_display_label);
 
-        // Assign the text views so that the meal can be viewed
+        // Assign the views so that the meal can be viewed
         dietDateLabel = view.findViewById(R.id.track_view_meal_date_field);
         mealEnergyLabel = view.findViewById(R.id.track_view_meal_energy_field);
         mealProteinsLabel = view.findViewById(R.id.track_view_meal_protein_field);
@@ -60,7 +57,8 @@ public class TrackDietTab extends Fragment {
         mealTypeLabel = view.findViewById(R.id.track_view_meal_type_field);
         mealNameLabel = view.findViewById(R.id.track_view_meal_name_field);
         mealNumberLabel = view.findViewById(R.id.track_view_meal_meal_number_field);
-        mealImageLabel = view.findViewById(R.id.track_view_meal_meal_image);
+        mealImageLabel = view.findViewById(R.id.track_view_meal_meal_image_field);
+
         // Set the meal viewing index to zero to view the first meal
         INDEX_OF_MEAL_TO_VIEW = 0;
 
@@ -194,26 +192,41 @@ public class TrackDietTab extends Fragment {
             String imageAdderess = mealToView.getImage();
             imageAdderess = imageAdderess.substring(imageAdderess.indexOf("https:"));
             URL newurl  = new URL(imageAdderess);
-            mealImageLabel.setImageBitmap(null);
+
+            // Set the image view to default logo image
+            mealImageLabel.setImageResource(R.drawable.logo_white_nobg_cropped);
+
+            // Now we will download the image from provided url in a background thread
             new Thread(new Runnable() {
                 @Override
                 public void run() {
 
                     try {
-                       // URL newurl  = new URL("https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+                        // Get the image from internet/database
                         Bitmap mIcon_val = BitmapFactory.decodeStream(newurl.openConnection().getInputStream());
+                        // Now we need to update the image view,
+                        // But for this we need to be on the UI thread so
+                        // Set the image on the UI thread
                         requireActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                // Set the image view
                                 mealImageLabel.setImageBitmap(mIcon_val);
                             }
                         });
                     } catch (Exception e) {
-                        throw new RuntimeException(e);
+                        // If file not found show toast message
+                        // But we need to be in UI thread for this
+                        requireActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(requireActivity(),"Image not found!",Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
                 }
             }).start();
-
+            // Above start call starts the thread
         } catch (Exception e) {
             // Catch exception, show a toast error message and print error stack
             Toast.makeText(requireActivity(), "Error in getting and setting data", Toast.LENGTH_SHORT).show();
