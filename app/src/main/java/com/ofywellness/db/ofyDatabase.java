@@ -311,9 +311,10 @@ public class ofyDatabase {
                             // Get the meal from DataSnapshot and convert to HashMap
                             HashMap received = (HashMap) ofyDateDataSnapshot.getValue();
 
-                            // Get the meal content from the map
+                            // Get the meal content from the map into a new Meal object,
+                            // But, Image will contain meal type, time and image url for ease of transfer
                             Meal receivedMeal = new Meal(
-                                    ofyDateDataSnapshot.getKey(),
+                                    ofyDateDataSnapshot.getKey()+"::"+received.get("image").toString(),
                                     received.get("name").toString(),
                                     Integer.parseInt(received.get("energy").toString()),
                                     Integer.parseInt(received.get("proteins").toString()),
