@@ -20,6 +20,10 @@ public class AdapterForTabs extends FragmentStateAdapter {
                 return new ServicesOfferedTab();
             case 2:
                 return new AddMealTab();
+            case 3:
+                return new ViewMeal();
+            case 4:
+                return new ProfileTab();
             default:
                 return new TrackDietTab();
         }
@@ -27,6 +31,6 @@ public class AdapterForTabs extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 5;
     }
 }

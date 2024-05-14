@@ -14,7 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/home_background"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_scrollFlags="">
 
         <!--Top bar Section Starts -->
 
@@ -153,19 +154,31 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Track Diet" />
+            android:text="Track" />
 
         <!-- Services Tab -->
         <com.google.android.material.tabs.TabItem
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Our Services" />
+            android:text="Services" />
 
         <!-- Meal Tab -->
         <com.google.android.material.tabs.TabItem
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add  meal" />
+            android:text="Add" />
+
+        <!-- View Meal Tab -->
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View"/>
+
+        <!-- Profile Tab -->
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/headimage"/>
 
     </com.google.android.material.tabs.TabLayout>
 
