@@ -5,7 +5,5 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.OFYWellness" parent="Base.Theme.OFYWellness">
-        <item name="android:fontFamily">@font/montserrat_bold</item>>
-</style>
+    <style name="Theme.OFYWellness" parent="Base.Theme.OFYWellness"/>
 </resources>

@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/track_view_meal_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:cardElevation="70dp">
+    <!-- Linear Layout (Vertical) to contain all other Layouts and views -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- TextView for progress tracking label-->
+        <TextView
+            android:id="@+id/track_view_meal_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="View a particular meal :"
+            android:textColor="#2A2AA5"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <!-- Card View for selecting date to view a particular meal -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/track_view_meal_date_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:cardElevation="70dp">
+
+            <!-- Linear Layout for selecting date to view a particular meal -->
+            <LinearLayout
+                android:id="@+id/track_view_meal_date_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3">
+
+                <!-- TextView for display date selection to view a particular meal-->
+                <TextView
+                    android:id="@+id/track_view_meal_date_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
+                    android:text="DD/MM/YYYY"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <!-- Button to pick date to view a particular meal -->
+                <Button
+                    android:id="@+id/track_view_meal_set_date_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:text="Set date"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- LinearLayout for meal selection and display to view a particular meal-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="4">
+
+            <!-- Button for selecting previous meal to view a particular meal-->
+            <Button
+                android:id="@+id/track_view_meal_previous_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:text="&lt;"
+                android:textSize="24sp" />
+
+            <!-- TextView for displaying selected meal and number to view a particular meal-->
+            <TextView
+                android:id="@+id/track_view_meal_meal_number_field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="Meal: 0/0"
+                android:textAlignment="center"
+                android:textColor="#49569E"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <!-- Button for selecting next meal to view a particular meal-->
+            <Button
+                android:id="@+id/track_view_meal_next_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:text="&gt;"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+
+        <!-- Card View for meal name, image, and type to view a particular meal -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/track_view_meal_image_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            app:cardElevation="50dp">
+
+
+            <!-- LinearLayout for meal name, image, and type to view a particular meal -->
+            <LinearLayout
+                android:id="@+id/track_view_meal_image_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:id="@+id/track_view_meal_meal_image_field"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/home_background"
+                    android:src="@drawable/logo_white_nobg_cropped" />
+
+                <LinearLayout
+                    android:id="@+id/track_view_meal_image_data_linear_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/track_view_meal_name_field"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Meal Name"
+                        android:textColor="#006666"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/track_view_meal_type_field"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Type"
+                        android:textColor="#49569E"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- CardView for meal energy to view a particular meal -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/track_view_meal_energy_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:cardElevation="50dp">
+
+            <!-- LinearLayout for meal energy to view a particular meal -->
+            <LinearLayout
+                android:id="@+id/track_view_meal_energy_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- Label for meal energy to view a particular meal -->
+                <TextView
+                    android:id="@+id/track_view_meal_energy_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:text="Energy"
+                    android:textColor="#49569E"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <!-- Display label for meal energy content to view a particular meal -->
+                <TextView
+                    android:id="@+id/track_view_meal_energy_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:text="0Cal"
+                    android:textColor="#006666"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- CardView for meal protein to view a particular meal -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/track_view_meal_protein_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:cardElevation="50dp">
+
+            <!-- LinearLayout for meal protein to view a particular meal -->
+            <LinearLayout
+                android:id="@+id/track_view_meal_protein_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- Label for meal protein content to view a particular meal -->
+                <TextView
+                    android:id="@+id/track_view_meal_protein_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:text="Protein"
+                    android:textColor="#49569E"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <!-- Display label meal protein content to view a particular meal-->
+                <TextView
+                    android:id="@+id/track_view_meal_protein_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:text="0g"
+                    android:textColor="#006666"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- CardView for meal fats to view a particular meal -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/track_view_meal_fats_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:cardElevation="50dp">
+
+            <!-- LinearLayout for meal fats to view a particular meal -->
+            <LinearLayout
+                android:id="@+id/track_view_meal_fats_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- Label for meal fats content to view a particular meal -->
+                <TextView
+                    android:id="@+id/track_view_meal_fats_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:text="Fats      "
+                    android:textColor="#49569E"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <!-- Display label for meal fats content to view a particular meal -->
+                <TextView
+                    android:id="@+id/track_view_meal_fats_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:text="0g"
+                    android:textColor="#006666"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- CardView for meal carbohydrates to view a particular meal -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/track_view_meal_carbohydrates_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:cardElevation="50dp">
+
+            <!-- LinearLayout for meal carbohydrates to view a particular meal -->
+            <LinearLayout
+                android:id="@+id/track_view_meal_carbohydrates_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- Label for meal carbohydrates content to view a particular meal -->
+                <TextView
+                    android:id="@+id/track_view_meal_carbohydrates_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:text="Carbs."
+                    android:textColor="#49569E"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <!-- Display label for meal carbohydrates content to view a particular meal -->
+                <TextView
+                    android:id="@+id/track_view_meal_carbohydrates_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:text="0g"
+                    android:textColor="#006666"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</ScrollView>
