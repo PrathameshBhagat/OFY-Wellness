@@ -15,17 +15,17 @@ public class AdapterForTabs extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position) {
             case 0:
-                return new TrackDietTab();
-            case 1:
-                return new ServicesOfferedTab();
-            case 2:
                 return new AddMealTab();
+            case 1:
+                return new ViewMealTab();
+            case 2:
+                return new TrackDietTab();
             case 3:
-                return new ViewMeal();
+                return new ServicesOfferedTab();
             case 4:
                 return new ProfileTab();
             default:
-                return new TrackDietTab();
+                return new AddMealTab();
         }
     }
 

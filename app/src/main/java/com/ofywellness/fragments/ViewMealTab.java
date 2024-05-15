@@ -23,7 +23,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class ViewMeal extends Fragment {
+public class ViewMealTab extends Fragment {
     private TextView dietDateLabel, mealEnergyLabel, mealProteinsLabel, mealFatsLabel, mealCarbohydratesLabel, mealTypeLabel, mealNameLabel, mealNumberLabel;
 
     private ImageView mealImageLabel;

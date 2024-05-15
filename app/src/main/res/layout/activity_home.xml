@@ -17,66 +17,12 @@
         android:orientation="vertical"
         app:layout_scrollFlags="">
 
-        <!--Top bar Section Starts -->
-
-        <RelativeLayout
-            android:id="@+id/profile_container"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="5dp"
-                    android:text="prathamesh"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
-
-                <ImageButton
-                    android:id="@+id/profile"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/profile1" />
-
-            </LinearLayout>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="40sp">
-
-                <ImageView
-                    android:id="@+id/heading_image1"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentStart="true"
-                    android:background="#76b5c5"
-                    android:padding="5dp"
-                    android:src="@drawable/home" />
-            </androidx.cardview.widget.CardView>
-        </RelativeLayout>
-
-        <!--Top Bar Ends -->
         <!--Head Section Starts -->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingBottom="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/profile_container">
 
@@ -113,6 +59,7 @@
                         android:textColor="#ffffff"
                         android:textSize="35sp"
                         android:textStyle="bold" />
+
                 </LinearLayout>
 
                 <TextView
@@ -124,61 +71,61 @@
                     android:textAlignment="center"
                     android:textColor="#ffffff"
                     android:textSize="20sp" />
+
             </LinearLayout>
 
             <ImageView
                 android:id="@+id/heading_image"
                 android:layout_width="wrap_content"
-                android:layout_height="160dp"
-                android:layout_marginEnd="5dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
                 android:layout_weight="2"
-                android:background="@drawable/headimage"
-                android:onClick="categorystart" />
+                android:background="@drawable/headimage" />
 
         </LinearLayout>
+
     </LinearLayout>
     <!--Top Bar Ends -->
 
-    <!-- Layout to show the tab head  -->
+    <!-- Layout to show the tab bar-->
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/top_container"
-        android:backgroundTint="#4e54ff"
-        app:tabIndicatorColor="@color/white"
-        app:tabTextColor="@color/white">
+        android:backgroundTint="@color/white"
+        app:tabIndicatorColor="#0000ff">
 
         <!-- Tab items -->
-        <!-- Track Tab -->
+        <!-- Add meal Tab -->
         <com.google.android.material.tabs.TabItem
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Track" />
-
-        <!-- Services Tab -->
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Services" />
-
-        <!-- Meal Tab -->
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add" />
+            android:icon="@drawable/food_icon" />
 
         <!-- View Meal Tab -->
         <com.google.android.material.tabs.TabItem
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="View"/>
+            android:icon="@drawable/view_icon" />
+
+        <!-- Track diet Tab -->
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/track_icon" />
+
+        <!-- Services Tab -->
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/services_icon" />
 
         <!-- Profile Tab -->
         <com.google.android.material.tabs.TabItem
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:icon="@drawable/headimage"/>
+            android:icon="@drawable/profile_icon" />
 
     </com.google.android.material.tabs.TabLayout>
 
