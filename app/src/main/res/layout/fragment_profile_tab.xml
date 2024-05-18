@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".fragments.ProfileTab">
 
+    <!-- Card View for Log Out functionality -->
     <androidx.cardview.widget.CardView
         android:id="@+id/profile_logout_card"
         android:layout_width="match_parent"
@@ -16,7 +17,7 @@
         app:cardCornerRadius="100dp"
         tools:ignore="MissingConstraints">
 
-        <!-- TextView for display date selection to view a particular meal-->
+        <!-- TextView for Log Out functionality -->
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
