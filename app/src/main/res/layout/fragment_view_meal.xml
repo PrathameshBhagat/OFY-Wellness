@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!-- LinearLayout for meal selection and display to view a particular meal-->
         <!-- TextView for progress tracking label-->
         <TextView
             android:id="@+id/meal_add_meal_label"
@@ -21,72 +22,65 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <!-- LinearLayout for meal selection and display to view a particular meal-->
-        <androidx.cardview.widget.CardView
+        <!-- LinearLayout for selecting and viewing a particular meal -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:backgroundTint="@android:color/transparent">
+            android:layout_marginHorizontal="10dp">
 
-            <!-- LinearLayout for selecting and viewing a particular meal -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <!-- CardView for selecting previous meal to view a particular meal -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/view_meal_previous_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="30dp">
 
-                <!-- CardView for selecting previous meal to view a particular meal -->
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/view_meal_previous_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    app:cardCornerRadius="30dp">
+                <!-- ImageView for uploading the image -->
+                <ImageView
+                    android:id="@+id/view_meal_previous_button_image"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#4e54ff"
+                    android:rotation="180"
+                    android:src="@drawable/next_icon" />
 
-                    <!-- ImageView for uploading the image -->
-                    <ImageView
-                        android:id="@+id/view_meal_previous_button_image"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="#4e54ff"
-                        android:rotation="180"
-                        android:src="@drawable/next_icon" />
+            </androidx.cardview.widget.CardView>
 
-                </androidx.cardview.widget.CardView>
+            <!-- TextView for displaying selected meal and number to view a particular meal-->
+            <TextView
+                android:id="@+id/view_meal_meal_number_field"
+                android:layout_width="229dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="Meal: 0/0"
+                android:textAlignment="center"
+                android:textColor="#49569E"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-                <!-- TextView for displaying selected meal and number to view a particular meal-->
-                <TextView
-                    android:id="@+id/view_meal_meal_number_field"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:text="Meal: 0/0"
-                    android:textAlignment="center"
-                    android:textColor="#49569E"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
+            <!-- CardView for selecting next meal to view a particular meal -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/view_meal_next_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="30dp">
 
-                <!-- CardView for selecting next meal to view a particular meal -->
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/view_meal_next_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    app:cardCornerRadius="30dp">
+                <!-- ImageView for selecting to view a particular meal -->
+                <ImageView
+                    android:id="@+id/view_meal_next_button_image"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#4e54ff"
+                    android:src="@drawable/next_icon" />
 
-                    <!-- ImageView for selecting to view a particular meal -->
-                    <ImageView
-                        android:id="@+id/view_meal_next_button_image"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="#4e54ff"
-                        android:src="@drawable/next_icon" />
+            </androidx.cardview.widget.CardView>
 
-                </androidx.cardview.widget.CardView>
+        </LinearLayout>
 
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
 
         <!-- Card View for selecting date to view a particular meal -->
         <androidx.cardview.widget.CardView
@@ -109,11 +103,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_weight="2"
+                    android:layout_weight="3"
                     android:text="DD/MM/YYYY"
                     android:textAlignment="center"
                     android:textColor="#000000"
-                    android:textSize="14sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <androidx.cardview.widget.CardView
@@ -121,7 +115,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:backgroundTint="#1EB026"
+                    android:backgroundTint="#350069"
                     app:cardCornerRadius="10dp">
 
                     <!-- Button to pick date to view a particular meal -->

@@ -121,7 +121,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:layout_margin="20dp"
+                        android:layout_margin="10dp"
                         android:background="#c0c0c0" />
 
                     <!-- LinearLayout for meal energy and protein -->
@@ -129,8 +129,7 @@
                         android:id="@+id/meal_energy_protein_linear_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:backgroundTint="@android:color/transparent">
+                        android:layout_margin="10dp">
 
                         <!-- Label for meal energy content -->
                         <TextView
@@ -280,9 +279,8 @@
                 android:id="@+id/meal_upload_meal_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_margin="40dp"
                 android:backgroundTint="#1EB026"
-                android:padding="40dp"
                 app:cardCornerRadius="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

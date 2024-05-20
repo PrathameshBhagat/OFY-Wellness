@@ -17,10 +17,10 @@
             android:id="@+id/track_name_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="25dp"
-            android:text="Total diet intake :"
+            android:layout_margin="20dp"
+            android:text="Total diet intake"
             android:textColor="#2A2AA5"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -28,11 +28,10 @@
         <!-- CardView for energy -->
         <androidx.cardview.widget.CardView
             android:id="@+id/track_energy_display_card"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            app:cardElevation="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/track_protein_display_card"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/track_name_label">
 
@@ -40,28 +39,27 @@
             <LinearLayout
                 android:id="@+id/track_energy_linear_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
 
                 <!-- Label for tracking energy content -->
                 <TextView
                     android:id="@+id/track_energy_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="25dp"
                     android:text="Energy : "
                     android:textColor="#49569E"
-                    android:textSize="24sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <!-- Field for tracking energy content-->
                 <TextView
                     android:id="@+id/track_energy_display_label"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
                     android:text="0Cal"
                     android:textColor="#006666"
-                    android:textSize="24sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -71,40 +69,38 @@
         <!-- CardView for protein -->
         <androidx.cardview.widget.CardView
             android:id="@+id/track_protein_display_card"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            app:cardElevation="50dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/track_energy_display_card">
+            app:layout_constraintStart_toEndOf="@+id/track_energy_display_card"
+            app:layout_constraintTop_toBottomOf="@+id/track_name_label">
 
             <!-- LinearLayout for tracking energy -->
             <LinearLayout
                 android:id="@+id/track_protein_linear_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
 
                 <!-- Label for tracking protein content -->
                 <TextView
                     android:id="@+id/track_protein_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="25dp"
                     android:text="Protein : "
                     android:textColor="#49569E"
-                    android:textSize="24sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <!-- Field for tracking protein content-->
                 <TextView
                     android:id="@+id/track_protein_display_label"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
                     android:text="0g"
                     android:textColor="#006666"
-                    android:textSize="24sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -114,11 +110,10 @@
         <!-- CardView for fats -->
         <androidx.cardview.widget.CardView
             android:id="@+id/track_fats_display_card"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            app:cardElevation="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/track_carbohydrates_display_card"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/track_protein_display_card">
 
@@ -126,28 +121,27 @@
             <LinearLayout
                 android:id="@+id/track_fats_linear_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
 
                 <!-- Label for tracking fats content -->
                 <TextView
                     android:id="@+id/track_fats_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="25dp"
                     android:text="Fats :     "
                     android:textColor="#49569E"
-                    android:textSize="24sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <!-- Field for tracking fats content -->
                 <TextView
                     android:id="@+id/track_fats_display_label"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
                     android:text="0g"
                     android:textColor="#006666"
-                    android:textSize="24sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -157,69 +151,81 @@
         <!-- CardView for carbohydrates -->
         <androidx.cardview.widget.CardView
             android:id="@+id/track_carbohydrates_display_card"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            app:cardElevation="50dp"
+            app:layout_constraintBottom_toTopOf="@+id/track_update_button"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/track_fats_display_card">
+            app:layout_constraintStart_toEndOf="@+id/track_fats_display_card"
+            app:layout_constraintTop_toBottomOf="@+id/track_protein_display_card">
 
             <!-- LinearLayout for tracking energy -->
             <LinearLayout
                 android:id="@+id/track_carbohydrates_linear_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
 
                 <!-- Label for tracking carbohydrates content -->
                 <TextView
                     android:id="@+id/track_carbohydrates_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="25dp"
                     android:text="Carbs. : "
                     android:textColor="#49569E"
-                    android:textSize="24sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <!-- Field for tracking carbohydrates content -->
                 <TextView
                     android:id="@+id/track_carbohydrates_display_label"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
                     android:text="0g"
                     android:textColor="#006666"
-                    android:textSize="24sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Button to update tracking data  -->
-        <Button
+        <!-- Card View for update tracking data  button -->
+        <androidx.cardview.widget.CardView
             android:id="@+id/track_update_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="24dp"
-            android:text="Update intake"
-            android:textSize="24sp"
-            android:textStyle="bold"
+            android:layout_margin="20dp"
+            android:backgroundTint="#4e54ff"
+            app:cardCornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/track_carbohydrates_display_card" />
+            app:layout_constraintTop_toBottomOf="@+id/track_carbohydrates_display_card">
 
+            <!-- TextView to update tracking data -->
+            <TextView
+                android:id="@+id/track_update_button_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="20dp"
+                android:text="Update intake"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+        </androidx.cardview.widget.CardView>
+        <!-- Button  -->
         <!-- TextView for progress tracking label-->
         <TextView
             android:id="@+id/track_progress_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="50dp"
-            android:text="Target progress :"
+            android:layout_marginTop="40dp"
+            android:text="Target progress"
             android:textColor="#2A2AA5"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/track_update_button" />
@@ -230,7 +236,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            app:cardElevation="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/track_progress_label">
@@ -238,17 +243,17 @@
             <!-- Linear Layout for energy progress bar and label -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp">
 
                 <!-- TextView for energy tracking progress bar-->
                 <TextView
                     android:id="@+id/track_energy_progress_bar_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
                     android:text="Energy : "
                     android:textColor="#49569E"
-                    android:textSize="24sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/track_update_button" />
@@ -260,7 +265,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:max="100"
-                    android:padding="30dp"
+                    android:padding="5dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/track_energy_progress_bar_label"
@@ -276,7 +281,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            app:cardElevation="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/track_energy_card">
@@ -284,17 +288,17 @@
             <!-- Linear Layout for protein progress bar and label -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp">
 
                 <!-- TextView for protein tracking progress bar-->
                 <TextView
                     android:id="@+id/track_protein_progress_bar_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
                     android:text="Protein : "
                     android:textColor="#49569E"
-                    android:textSize="24sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/track_update_button" />
@@ -306,7 +310,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:max="100"
-                    android:padding="30dp"
+                    android:padding="5dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/track_energy_progress_bar_label" />
 
@@ -320,7 +324,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            app:cardElevation="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/track_protein_card">
@@ -328,17 +331,17 @@
             <!-- Linear Layout for fats progress bar and label -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp">
 
                 <!-- TextView for fats tracking progress bar-->
                 <TextView
                     android:id="@+id/track_fats_progress_bar_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
                     android:text="Fats :      "
                     android:textColor="#49569E"
-                    android:textSize="24sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/track_update_button" />
@@ -350,7 +353,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:max="100"
-                    android:padding="30dp"
+                    android:padding="5dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/track_energy_progress_bar_label" />
 
@@ -364,7 +367,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            app:cardElevation="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/track_fats_card">
@@ -372,17 +374,17 @@
             <!-- Linear Layout for carbohydrates progress bar and label -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp">
 
                 <!-- TextView for carbohydrates tracking progress bar-->
                 <TextView
                     android:id="@+id/track_carbohydrates_progress_bar_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
                     android:text="Carbs. : "
                     android:textColor="#49569E"
-                    android:textSize="24sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/track_update_button" />
@@ -394,7 +396,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:max="100"
-                    android:padding="30dp"
+                    android:padding="5dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/track_energy_progress_bar_label"
@@ -406,48 +408,55 @@
 
         <!-- Card View for update progress button -->
         <androidx.cardview.widget.CardView
-            android:id="@+id/track_update_progress_card"
-            android:layout_width="match_parent"
+            android:id="@+id/track_update_progress_button"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:backgroundTint="@android:color/transparent"
-            app:cardElevation="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="50dp"
+            android:backgroundTint="#350069"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/track_update_target_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/track_carbohydrates_card">
 
-            <!-- Button to update progress -->
-            <Button
-                android:id="@+id/track_update_progress_button"
+            <!-- TextView to update progress -->
+            <TextView
+                android:id="@+id/track_update_progress_button_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Update progress"
-                android:textSize="24sp"
+                android:padding="20dp"
+                android:text="Update Progress"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Card View for update target button -->
+        <!-- Card View for update diet target button -->
         <androidx.cardview.widget.CardView
-            android:id="@+id/track_update_target_card"
+            android:id="@+id/track_update_target_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            android:backgroundTint="@android:color/transparent"
-            app:cardElevation="50dp"
+            android:layout_margin="20dp"
+            android:backgroundTint="#350069"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/track_update_progress_card">
+            app:layout_constraintStart_toEndOf="@+id/track_update_progress_button"
+            app:layout_constraintTop_toBottomOf="@+id/track_carbohydrates_card">
 
-            <!-- Button to update target -->
-            <Button
-                android:id="@+id/track_update_target_button"
+            <!-- TextView to  update diet target -->
+            <TextView
+                android:id="@+id/track_update_target_button_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Update target"
-                android:textSize="24sp"
+                android:padding="20dp"
+                android:text="Update Target"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
         </androidx.cardview.widget.CardView>
