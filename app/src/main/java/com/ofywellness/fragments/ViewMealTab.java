@@ -32,26 +32,28 @@ public class ViewMealTab extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        // Inflate the layout for this fragment and store it,
+        // modification for getting the view object
         View view = inflater.inflate(R.layout.fragment_view_meal, container, false);
 
 
         // Assign the views so that the meal can be viewed
-        dietDateLabel = view.findViewById(R.id.track_view_meal_date_field);
-        mealEnergyLabel = view.findViewById(R.id.track_view_meal_energy_field);
-        mealProteinsLabel = view.findViewById(R.id.track_view_meal_protein_field);
-        mealFatsLabel = view.findViewById(R.id.track_view_meal_fats_field);
-        mealCarbohydratesLabel = view.findViewById(R.id.track_view_meal_carbohydrates_field);
-        mealTypeLabel = view.findViewById(R.id.track_view_meal_type_field);
-        mealNameLabel = view.findViewById(R.id.track_view_meal_name_field);
-        mealNumberLabel = view.findViewById(R.id.track_view_meal_meal_number_field);
-        mealImageLabel = view.findViewById(R.id.track_view_meal_meal_image_field);
+        dietDateLabel = view.findViewById(R.id.view_meal_date_field);
+        mealEnergyLabel = view.findViewById(R.id.view_meal_energy_field);
+        mealProteinsLabel = view.findViewById(R.id.view_meal_protein_field);
+        mealFatsLabel = view.findViewById(R.id.view_meal_fats_field);
+        mealCarbohydratesLabel = view.findViewById(R.id.view_meal_carbohydrates_field);
+        mealTypeLabel = view.findViewById(R.id.view_meal_type_field);
+        mealNameLabel = view.findViewById(R.id.view_meal_name_field);
+        mealNumberLabel = view.findViewById(R.id.view_meal_meal_number_field);
+        mealImageLabel = view.findViewById(R.id.view_meal_meal_image_field);
 
 
         // Set the meal viewing index to zero to view the first meal
         INDEX_OF_MEAL_TO_VIEW = 0;
 
         // Add on click listener to the set date button
-        view.findViewById(R.id.track_view_meal_set_date_button).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.view_meal_set_date_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -61,7 +63,8 @@ public class ViewMealTab extends Fragment {
             }
         });
 
-        view.findViewById(R.id.track_view_meal_next_button).setOnClickListener(new View.OnClickListener() {
+        // Add on click listener to the view next meal
+        view.findViewById(R.id.view_meal_next_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -74,7 +77,8 @@ public class ViewMealTab extends Fragment {
             }
         });
 
-        view.findViewById(R.id.track_view_meal_previous_button).setOnClickListener(new View.OnClickListener() {
+        // Add on click listener to the view previous meal
+        view.findViewById(R.id.view_meal_previous_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -154,6 +158,7 @@ public class ViewMealTab extends Fragment {
                     try {
                         // Get the image from internet/database
                         Bitmap mIcon_val = BitmapFactory.decodeStream(newurl.openConnection().getInputStream());
+
                         // Now we need to update the image view,
                         // But for this we need to be on the UI thread so
                         // Set the image on the UI thread
