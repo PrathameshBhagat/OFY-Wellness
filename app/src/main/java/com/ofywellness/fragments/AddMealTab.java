@@ -70,7 +70,7 @@ public class AddMealTab extends Fragment {
         mealUploadProgressBarCardView = view.findViewById(R.id.meal_upload_meal_progress_bar_card);
 
         // Constrained Layout to hide content when uploading/saving content
-        addMealConstrainedLayout = view.findViewById(R.id.content);
+        addMealConstrainedLayout = view.findViewById(R.id.meal_add_meal_content_constraint_layout);
 
         // Hide the progress bar
         mealUploadProgressBarCardView.setVisibility(View.GONE);

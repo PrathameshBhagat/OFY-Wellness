@@ -12,9 +12,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Constrained Layout for responsiveness -->
+        <!-- Constrained Layout for responsiveness of add meal layout -->
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/content"
+            android:id="@+id/meal_add_meal_content_constraint_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:text="Add today's meal"
-                android:textColor="#2A2AA5"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -336,6 +336,7 @@
                     android:id="@+id/meal_upload_progress_bar"
                     android:layout_width="200dp"
                     android:layout_height="200dp"
+                    android:layout_margin="40dp"
                     android:layout_gravity="center"
                     android:backgroundTint="#00ff00"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -345,6 +346,276 @@
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
+
+        <!-- Constraint Layout for adding other measures -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/add_other_content_constraint_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <!-- Add other measures label -->
+            <TextView
+                android:id="@+id/add_other_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Other Measures"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Card View for logging water intake -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/add_other_log_water_card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/add_other_log_weight_card"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_other_label">
+
+                <!-- Linear Layout for log water intake views -->
+                <LinearLayout
+                    android:id="@+id/add_other_log_water_linear_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <!-- Constraint Layout for log water intake cards -->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/add_other_log_water_constraint_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <!-- Card View for removing water intake -->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/add_other_remove_water_card"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="30dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/add_other_water_logo_card"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <!-- Text View for removing water intake -->
+                            <TextView
+                                android:id="@+id/add_other_remove_water_text_view"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:background="#350069"
+                                android:text="-"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <!-- Card View for log water intake logo -->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/add_other_water_logo_card"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            app:cardCornerRadius="30dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/add_other_add_water_card"
+                            app:layout_constraintStart_toEndOf="@+id/add_other_remove_water_card"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <!-- ImageView for log water intake logo -->
+                            <ImageView
+                                android:id="@+id/add_other_water_logo_image"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:background="#FFFFFF"
+                                android:padding="10dp"
+                                android:src="@drawable/water_icon" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <!-- CardView for adding water intake -->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/add_other_add_water_card"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="30dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/add_other_water_logo_card"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <!-- Text View for removing water intake -->
+                            <TextView
+                                android:id="@+id/add_other_add_water_text_view"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:background="#350069"
+                                android:text="+"
+                                android:textAlignment="center"
+                                android:textColor="@color/white" />
+
+                        </androidx.cardview.widget.CardView>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!-- Text View for log water intake label -->
+                    <TextView
+                        android:id="@+id/add_other_water_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Water"
+                        android:textAlignment="center"
+                        android:textColor="#49569E"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <!-- Text View for log water intake detail label -->
+                    <TextView
+                        android:id="@+id/add_other_water_detail_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="1 of 10"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- CardView for logging weight -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/add_other_log_weight_card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/add_other_log_water_card"
+                app:layout_constraintTop_toBottomOf="@+id/add_other_label">
+
+                <!-- Linear Layout for logging weight -->
+                <LinearLayout
+                    android:id="@+id/add_other_log_weight_linear_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <!-- Constraint Layout for logging weight -->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/add_other_log_weight_constraint_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <!-- Card View for removing weight -->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/add_other_remove_weight_card"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="30dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/add_other_weight_logo_card"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <!-- Text View for removing weight -->
+                            <TextView
+                                android:id="@+id/add_other_remove_weight_text_view"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:background="#350069"
+                                android:text="-"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <!-- Card View log weight logo  -->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/add_other_weight_logo_card"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            app:cardCornerRadius="30dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/add_other_add_weight_card"
+                            app:layout_constraintStart_toEndOf="@+id/add_other_remove_weight_card"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <!-- ImageView for log weight logo -->
+                            <ImageView
+                                android:id="@+id/add_other_weight_logo_image"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:background="#FFFFFF"
+                                android:padding="10dp"
+                                android:src="@drawable/weight_icon" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <!-- CardView for adding weight -->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/add_other_add_weight_card"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="30dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/add_other_weight_logo_card"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <!-- Text View for adding weight -->
+                            <TextView
+                                android:id="@+id/add_other_add_weight_text_view"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:background="#350069"
+                                android:text="+"
+                                android:textAlignment="center"
+                                android:textColor="@color/white" />
+
+                        </androidx.cardview.widget.CardView>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!-- Text View for log weight intake label -->
+                    <TextView
+                        android:id="@+id/add_other_weight_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Weight"
+                        android:textAlignment="center"
+                        android:textColor="#49569E"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <!-- Text View for log water intake detail label -->
+                    <TextView
+                        android:id="@+id/add_other_weight_detail_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Lose 10kg"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 
