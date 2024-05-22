@@ -15,7 +15,7 @@ public class AdapterForTabs extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position) {
             case 0:
-                return new AddMealTab();
+                return new AddIntakeTab();
             case 1:
                 return new ViewMealTab();
             case 2:
@@ -25,7 +25,7 @@ public class AdapterForTabs extends FragmentStateAdapter {
             case 4:
                 return new ProfileTab();
             default:
-                return new AddMealTab();
+                return new AddIntakeTab();
         }
     }
 
