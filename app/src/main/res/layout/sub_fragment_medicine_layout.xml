@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Text View for medicine logging  -->
+    <TextView
+        android:id="@+id/add_medicine_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:text="Medicine intake"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <!-- Card View for logging medicine_1 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/add_medicine_card_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="40dp">
+
+        <!-- Constraint Layout for logging medicine_1 -->
+        <LinearLayout
+            android:id="@+id/add_medicine_constraint_layout_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Card View for remove medicine_1 button -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/add_medicine_remove_button_1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:backgroundTint="#444eee"
+                app:cardCornerRadius="20dp">
+
+                <!-- Text View for remove medicine_1 text -->
+                <TextView
+                    android:id="@+id/add_medicine_remove_text_view_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="#444eee"
+                    android:text="-"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Text View for log medicine_1 label -->
+            <TextView
+                android:id="@+id/add_medicine_name_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:text="Paracetamol"
+                android:textAlignment="center"
+                android:textColor="#350069"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/add_medicine_field_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:text="1 of 10"
+                android:textAlignment="center"
+                android:textColor="#006666"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <!-- CardView for add medicine_1 button -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/add_medicine_add_button_1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:backgroundTint="#444eee"
+                app:cardCornerRadius="30dp">
+
+                <!-- Text View for add medicine_1 text -->
+                <TextView
+                    android:id="@+id/add_medicine_add_button_text_view_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="#444eee"
+                    android:text="+"
+                    android:textColor="@color/white"
+                    android:textSize="25sp" />
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

@@ -22,6 +22,8 @@ public class AddIntakeTab extends Fragment {
         // modification for getting the view object
         View view = inflater.inflate(R.layout.fragment_add_intake_tab, container, false);
 
+
+
         view.findViewById(R.id.add_meal_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

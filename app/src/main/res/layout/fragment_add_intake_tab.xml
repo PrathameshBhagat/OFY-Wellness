@@ -22,9 +22,7 @@
             android:text="Add meal"
             android:textColor="#000000"
             android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textStyle="bold" />
 
         <!-- Card View for adding today's meal -->
         <androidx.cardview.widget.CardView
@@ -32,11 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            app:cardCornerRadius="40dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/add_other_log_weight_card"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_other_label">
+            app:cardCornerRadius="40dp">
 
             <!-- Constraint Layout for adding today's meal -->
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -111,108 +105,9 @@
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Text View for medicine logging  -->
-        <TextView
-            android:id="@+id/add_medicine_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
-            android:text="Medicine intake"
-            android:textColor="#000000"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <!-- Card View for adding today's meal -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/add_medicine_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            app:cardCornerRadius="40dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/add_other_log_weight_card"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_other_label">
-
-            <!-- Constraint Layout for adding today's meal -->
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/add_medicine_constraint_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <!-- Card View for add meal logo  -->
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/add_medicine_logo_card"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="10dp"
-                    android:backgroundTint="#444eee"
-                    app:cardCornerRadius="20dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/add_medicine_text_view"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <!-- ImageView for add meal logo -->
-                    <TextView
-                        android:id="@+id/add_medicine_remove_button_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#444eee"
-                        android:layout_gravity="center"
-                        android:text="-"
-                        android:textColor="@color/white"
-                        android:textStyle="bold"
-                        android:textSize="25sp" />
-
-                </androidx.cardview.widget.CardView>
-
-                <!-- Text View for add meal text -->
-                <TextView
-                    android:id="@+id/add_medicine_text_view"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="Paracetamol"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/add_medicine_button"
-                    app:layout_constraintStart_toEndOf="@+id/add_medicine_logo_card"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <!-- CardView for add meal button -->
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/add_medicine_button"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="10dp"
-                    android:backgroundTint="#444eee"
-                    app:cardCornerRadius="30dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <!-- Text View for add meal button -->
-                    <TextView
-                        android:id="@+id/add_medicine_button_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#444eee"
-                        android:layout_gravity="center"
-                        android:text="+"
-                        android:textColor="@color/white"
-                        android:textSize="25sp" />
-
-                </androidx.cardview.widget.CardView>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.cardview.widget.CardView>
+        <!-- Below line imports layouts for logging medicine from other file,
+             as it was unnecessarily elongating the code to 1000 lines -->
+       <include layout="@layout/sub_fragment_medicine_layout"/>
 
         <!-- Constraint Layout for adding other measures -->
         <androidx.constraintlayout.widget.ConstraintLayout
