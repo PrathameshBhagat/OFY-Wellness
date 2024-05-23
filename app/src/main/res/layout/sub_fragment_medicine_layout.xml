@@ -35,8 +35,8 @@
             <!-- Card View for remove medicine_1 button -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/add_medicine_remove_button_1"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_margin="10dp"
                 android:backgroundTint="#444eee"
                 app:cardCornerRadius="20dp">
@@ -50,7 +50,7 @@
                     android:background="#444eee"
                     android:text="-"
                     android:textColor="@color/white"
-                    android:textSize="25sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
             </androidx.cardview.widget.CardView>
@@ -85,8 +85,8 @@
             <!-- CardView for add medicine_1 button -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/add_medicine_add_button_1"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_margin="10dp"
                 android:backgroundTint="#444eee"
                 app:cardCornerRadius="30dp">
@@ -100,7 +100,371 @@
                     android:background="#444eee"
                     android:text="+"
                     android:textColor="@color/white"
-                    android:textSize="25sp" />
+                    android:textSize="15sp" />
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Card View for logging medicine_2 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/add_medicine_card_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="40dp">
+
+        <!-- Constraint Layout for logging medicine_2 -->
+        <LinearLayout
+            android:id="@+id/add_medicine_constraint_layout_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Card View for remove medicine_2 button -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/add_medicine_remove_button_2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:backgroundTint="#444eee"
+                app:cardCornerRadius="20dp">
+
+                <!-- Text View for remove medicine_2 text -->
+                <TextView
+                    android:id="@+id/add_medicine_remove_text_view_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="#444eee"
+                    android:text="-"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Text View for log medicine_2 label -->
+            <TextView
+                android:id="@+id/add_medicine_name_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:text="Paracetamol"
+                android:textAlignment="center"
+                android:textColor="#350069"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/add_medicine_field_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:text="1 of 10"
+                android:textAlignment="center"
+                android:textColor="#006666"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <!-- CardView for add medicine_2 button -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/add_medicine_add_button_2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:backgroundTint="#444eee"
+                app:cardCornerRadius="30dp">
+
+                <!-- Text View for add medicine_2 text -->
+                <TextView
+                    android:id="@+id/add_medicine_add_button_text_view_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="#444eee"
+                    android:text="+"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Card View for logging medicine_3 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/add_medicine_card_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="40dp">
+
+        <!-- Constraint Layout for logging medicine_3 -->
+        <LinearLayout
+            android:id="@+id/add_medicine_constraint_layout_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Card View for remove medicine_3 button -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/add_medicine_remove_button_3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:backgroundTint="#444eee"
+                app:cardCornerRadius="20dp">
+
+                <!-- Text View for remove medicine_3 text -->
+                <TextView
+                    android:id="@+id/add_medicine_remove_text_view_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="#444eee"
+                    android:text="-"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Text View for log medicine_3 label -->
+            <TextView
+                android:id="@+id/add_medicine_name_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:text="Paracetamol"
+                android:textAlignment="center"
+                android:textColor="#350069"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/add_medicine_field_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:text="1 of 10"
+                android:textAlignment="center"
+                android:textColor="#006666"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <!-- CardView for add medicine_3 button -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/add_medicine_add_button_3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:backgroundTint="#444eee"
+                app:cardCornerRadius="30dp">
+
+                <!-- Text View for add medicine_3 text -->
+                <TextView
+                    android:id="@+id/add_medicine_add_button_text_view_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="#444eee"
+                    android:text="+"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Card View for logging medicine_4 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/add_medicine_card_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="40dp">
+
+        <!-- Constraint Layout for logging medicine_4 -->
+        <LinearLayout
+            android:id="@+id/add_medicine_constraint_layout_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Card View for remove medicine_4 button -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/add_medicine_remove_button_4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:backgroundTint="#444eee"
+                app:cardCornerRadius="20dp">
+
+                <!-- Text View for remove medicine_4 text -->
+                <TextView
+                    android:id="@+id/add_medicine_remove_text_view_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="#444eee"
+                    android:text="-"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Text View for log medicine_4 label -->
+            <TextView
+                android:id="@+id/add_medicine_name_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:text="Paracetamol"
+                android:textAlignment="center"
+                android:textColor="#350069"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/add_medicine_field_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:text="1 of 10"
+                android:textAlignment="center"
+                android:textColor="#006666"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <!-- CardView for add medicine_4 button -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/add_medicine_add_button_4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:backgroundTint="#444eee"
+                app:cardCornerRadius="30dp">
+
+                <!-- Text View for add medicine_4 text -->
+                <TextView
+                    android:id="@+id/add_medicine_add_button_text_view_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="#444eee"
+                    android:text="+"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Card View for logging medicine_5 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/add_medicine_card_5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="40dp">
+
+        <!-- Constraint Layout for logging medicine_5 -->
+        <LinearLayout
+            android:id="@+id/add_medicine_constraint_layout_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Card View for remove medicine_5 button -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/add_medicine_remove_button_5"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:backgroundTint="#444eee"
+                app:cardCornerRadius="20dp">
+
+                <!-- Text View for remove medicine_5 text -->
+                <TextView
+                    android:id="@+id/add_medicine_remove_text_view_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="#444eee"
+                    android:text="-"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Text View for log medicine_5 label -->
+            <TextView
+                android:id="@+id/add_medicine_name_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:text="Paracetamol"
+                android:textAlignment="center"
+                android:textColor="#350069"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/add_medicine_field_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:text="1 of 10"
+                android:textAlignment="center"
+                android:textColor="#006666"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <!-- CardView for add medicine_5 button -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/add_medicine_add_button_5"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:backgroundTint="#444eee"
+                app:cardCornerRadius="30dp">
+
+                <!-- Text View for add medicine_5 text -->
+                <TextView
+                    android:id="@+id/add_medicine_add_button_text_view_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="#444eee"
+                    android:text="+"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
 
             </androidx.cardview.widget.CardView>
 
