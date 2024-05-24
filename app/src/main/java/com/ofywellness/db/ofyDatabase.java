@@ -5,6 +5,7 @@ import static androidx.core.content.ContextCompat.startActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -342,10 +343,104 @@ public class ofyDatabase {
     }
 
     /**
-     *   Get all the meals eaten in a day which was stored earlier */
+     * Get all the meals eaten in a day which was stored earlier
+     */
     public static ArrayList<Meal> getMeals() {
 
         return allMealsFound;
 
     }
+
+    /**
+     * Saves the provided intake to the database
+     *
+     * @param context   Context to show toast message
+     * @param ofyIntake Intake data to save
+     */
+    public static void saveMedicineIntake(HashMap<String, Integer> ofyIntake, Context context) {
+
+        // Simple try catch block
+        try {
+            // Add medicine intake to proper location,
+            // Database ref is already pointing current user
+            ofyDatabaseref.child("Medicine").child(String.valueOf(LocalDate.now())).setValue(ofyIntake);
+
+            // Show a toast message on success
+            Toast.makeText(context, "Saved", Toast.LENGTH_SHORT).show();
+
+        } catch (Exception e) {
+            // Catch exception, show a toast error message and print error stack
+            Toast.makeText(context, "Error saving intake ", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+
+    }
+
+    /**
+     * Updates the prescription to the database
+     *
+     * @param context             Context to show toast message
+     * @param medicineLayoutGroup Layout containing the views to update
+     */
+    public static void getAndUpdatePrescription(ViewGroup medicineLayoutGroup, Context context) {
+
+        // Get the prescription from database and update the respective fields
+        ofyDatabaseref.child("Medicine").child("Prescription").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NotNull Task<DataSnapshot> task) {
+
+                // Simple try catch block
+                try {
+
+                    // Check if the task to get data was successful
+                    if (task.isSuccessful()) {
+
+                        // Store the prescription coming from database
+                        HashMap<String, Integer> prescription = (HashMap<String, Integer>) task.getResult().getValue();
+
+                        // Get the prescription's length (size)
+                        int count = prescription.size();
+
+                        // Iterate for each medicine prescription
+                        for (HashMap.Entry<String, Integer> entry : prescription.entrySet()) {
+
+                            // Get the linear layout of containing individual medicine's views by decrementing index
+                            ViewGroup linearLayout = (ViewGroup) ((ViewGroup) medicineLayoutGroup.getChildAt(count--)).getChildAt(0);
+
+                            // Set the medicine's name to the medicine's medicine name text view
+                            ((TextView) linearLayout.getChildAt(1)).setText(entry.getKey());
+
+                            // Get medicine's "field" text view
+                            TextView medicineFieldTextView = (TextView) linearLayout.getChildAt(2);
+
+                            // Get the current field text string from field
+                            String newFieldText = medicineFieldTextView.getText().toString();
+
+                            // Trim the text
+                            newFieldText = newFieldText.substring(0, newFieldText.lastIndexOf(" "));
+
+
+                            // Update the field text with the values form database
+                            newFieldText += " " + entry.getValue();
+
+                            // Set the field with the updated text
+                            medicineFieldTextView.setText(newFieldText);
+
+                        }
+
+                        // Show a toast message on success
+                        Toast.makeText(context, "Updated the prescription", Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (Exception e) {
+                    // Catch exception, show a toast error message and print error stack
+                    Toast.makeText(context, "Error in updating the prescription ", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+
+                }
+            }
+        });
+
+    }
+
 }

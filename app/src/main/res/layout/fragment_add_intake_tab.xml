@@ -155,9 +155,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <!-- Card View for removing water intake -->
+                        <!-- Card View for reducing water intake -->
                         <androidx.cardview.widget.CardView
-                            android:id="@+id/add_other_remove_water_card"
+                            android:id="@+id/add_other_reduce_water_card"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:cardCornerRadius="30dp"
@@ -166,9 +166,9 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
 
-                            <!-- Text View for removing water intake -->
+                            <!-- Text View for reducing water intake -->
                             <TextView
-                                android:id="@+id/add_other_remove_water_text_view"
+                                android:id="@+id/add_other_reduce_water_text_view"
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:background="#505050"
@@ -188,7 +188,7 @@
                             app:cardCornerRadius="30dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@id/add_other_add_water_card"
-                            app:layout_constraintStart_toEndOf="@+id/add_other_remove_water_card"
+                            app:layout_constraintStart_toEndOf="@+id/add_other_reduce_water_card"
                             app:layout_constraintTop_toTopOf="parent">
 
                             <!-- ImageView for log water intake logo -->
@@ -279,9 +279,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <!-- Card View for removing weight -->
+                        <!-- Card View for reducing weight -->
                         <androidx.cardview.widget.CardView
-                            android:id="@+id/add_other_remove_weight_card"
+                            android:id="@+id/add_other_reduce_weight_card"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:cardCornerRadius="30dp"
@@ -290,9 +290,9 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
 
-                            <!-- Text View for removing weight -->
+                            <!-- Text View for reducing weight -->
                             <TextView
-                                android:id="@+id/add_other_remove_weight_text_view"
+                                android:id="@+id/add_other_reduce_weight_text_view"
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:background="#505050"
@@ -312,7 +312,7 @@
                             app:cardCornerRadius="30dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@id/add_other_add_weight_card"
-                            app:layout_constraintStart_toEndOf="@+id/add_other_remove_weight_card"
+                            app:layout_constraintStart_toEndOf="@+id/add_other_reduce_weight_card"
                             app:layout_constraintTop_toTopOf="parent">
 
                             <!-- ImageView for log weight logo -->
