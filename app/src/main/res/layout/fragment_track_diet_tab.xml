@@ -19,11 +19,33 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:text="Total diet intake"
-            android:textColor="#2A2AA5"
-            android:textSize="20sp"
+            android:textColor="#000000"
+            android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Card View for update diet intake button -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/track_update_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintStart_toEndOf="@+id/track_name_label"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- Image View for update diet intake button image -->
+            <ImageView
+                android:id="@+id/track_update_button_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/refresh_icon"
+                android:textColor="@color/white" />
+
+        </androidx.cardview.widget.CardView>
 
         <!-- CardView for energy -->
         <androidx.cardview.widget.CardView
@@ -154,7 +176,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/track_update_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/track_fats_display_card"
             app:layout_constraintTop_toBottomOf="@+id/track_protein_display_card">
@@ -190,32 +211,6 @@
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Card View for update tracking data  button -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/track_update_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:backgroundTint="#4e54ff"
-            app:cardCornerRadius="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/track_carbohydrates_display_card">
-
-            <!-- TextView to update tracking data -->
-            <TextView
-                android:id="@+id/track_update_button_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:padding="20dp"
-                android:text="Update intake"
-                android:textColor="#FFFFFF"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-        </androidx.cardview.widget.CardView>
-        <!-- Button  -->
         <!-- TextView for progress tracking label-->
         <TextView
             android:id="@+id/track_progress_label"
@@ -224,11 +219,33 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="40dp"
             android:text="Target progress"
-            android:textColor="#2A2AA5"
-            android:textSize="20sp"
+            android:textColor="#000000"
+            android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/track_update_button" />
+            app:layout_constraintTop_toBottomOf="@id/track_carbohydrates_display_card" />
+
+        <!-- Card View for update progress button -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/track_update_progress_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="40dp"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintStart_toEndOf="@+id/track_progress_label"
+            app:layout_constraintTop_toBottomOf="@+id/track_carbohydrates_display_card">
+
+            <!-- Image View to update progress button image -->
+            <ImageView
+                android:id="@+id/track_update_progress_button_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/refresh_icon"
+                android:textColor="@color/white" />
+
+        </androidx.cardview.widget.CardView>
 
         <!-- Card View for energy progress-->
         <androidx.cardview.widget.CardView
@@ -254,9 +271,7 @@
                     android:text="Energy : "
                     android:textColor="#49569E"
                     android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/track_update_button" />
+                    android:textStyle="bold" />
 
                 <!-- Progress bar for energy tracking-->
                 <ProgressBar
@@ -265,11 +280,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:max="100"
-                    android:padding="5dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/track_energy_progress_bar_label"
-                    app:layout_constraintTop_toBottomOf="@+id/track_update_button" />
+                    android:padding="5dp" />
 
             </LinearLayout>
 
@@ -299,9 +310,7 @@
                     android:text="Protein : "
                     android:textColor="#49569E"
                     android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/track_update_button" />
+                    android:textStyle="bold" />
 
                 <!-- Progress bar for protein tracking-->
                 <ProgressBar
@@ -310,9 +319,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:max="100"
-                    android:padding="5dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/track_energy_progress_bar_label" />
+                    android:padding="5dp" />
 
             </LinearLayout>
 
@@ -342,9 +349,7 @@
                     android:text="Fats :      "
                     android:textColor="#49569E"
                     android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/track_update_button" />
+                    android:textStyle="bold" />
 
                 <!-- Progress bar for fats tracking-->
                 <ProgressBar
@@ -353,9 +358,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:max="100"
-                    android:padding="5dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/track_energy_progress_bar_label" />
+                    android:padding="5dp" />
 
             </LinearLayout>
 
@@ -385,9 +388,7 @@
                     android:text="Carbs. : "
                     android:textColor="#49569E"
                     android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/track_update_button" />
+                    android:textStyle="bold" />
 
                 <!-- Progress bar for carbohydrates tracking-->
                 <ProgressBar
@@ -396,41 +397,9 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:max="100"
-                    android:padding="5dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/track_energy_progress_bar_label"
-                    app:layout_constraintTop_toBottomOf="@+id/track_update_button" />
+                    android:padding="5dp" />
 
             </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <!-- Card View for update progress button -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/track_update_progress_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginVertical="50dp"
-            android:backgroundTint="#350069"
-            app:cardCornerRadius="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/track_update_target_button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/track_carbohydrates_card">
-
-            <!-- TextView to update progress -->
-            <TextView
-                android:id="@+id/track_update_progress_button_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:padding="20dp"
-                android:text="Update Progress"
-                android:textColor="#FFFFFF"
-                android:textSize="15sp"
-                android:textStyle="bold" />
 
         </androidx.cardview.widget.CardView>
 
