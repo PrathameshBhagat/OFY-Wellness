@@ -53,7 +53,7 @@ public class ViewMealTab extends Fragment {
         INDEX_OF_MEAL_TO_VIEW = 0;
 
         // Add on click listener to the set date button
-        view.findViewById(R.id.view_meal_set_date_button).setOnClickListener(new View.OnClickListener() {
+        dietDateLabel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -64,7 +64,7 @@ public class ViewMealTab extends Fragment {
         });
 
         // Add on click listener to the view next meal
-        view.findViewById(R.id.view_meal_next_button).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.view_meal_next_button_image).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -78,7 +78,7 @@ public class ViewMealTab extends Fragment {
         });
 
         // Add on click listener to the view previous meal
-        view.findViewById(R.id.view_meal_previous_button).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.view_meal_previous_button_image ).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -130,7 +130,7 @@ public class ViewMealTab extends Fragment {
 
             // Set the text views to display the meal to the user
             mealNameLabel.setText(mealToView.getName());
-            mealNumberLabel.setText(String.format("Meal: %s/%s", INDEX_OF_MEAL_TO_VIEW + 1, obtainedMeals.size()));
+            mealNumberLabel.setText(String.format("%s/%s", INDEX_OF_MEAL_TO_VIEW + 1, obtainedMeals.size()));
             mealEnergyLabel.setText(String.format("%sCal", mealToView.getEnergy()));
             mealProteinsLabel.setText(String.format("%sg", mealToView.getProteins()));
             mealFatsLabel.setText(String.format("%sg", mealToView.getFats()));
