@@ -19,6 +19,9 @@
             android:name=".UpdateDietTargetActivity"
             android:exported="false" />
         <activity
+            android:name=".UpdateMedicinePrescriptionActivity"
+            android:exported="false" />
+        <activity
             android:name=".HomeActivity"
             android:exported="false" />
         <activity

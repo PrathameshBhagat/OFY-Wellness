@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Constrained layout for responsiveness -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Label for updating  diet target -->
+        <TextView
+            android:id="@+id/target_update_target_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Update prescription"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <!-- CardView for updating medicine_1 prescription -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/prescription_update_medicine_1_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="20dp">
+
+            <!-- LinearLayout for updating medicine_1 prescription -->
+            <LinearLayout
+                android:id="@+id/prescription_update_medicine_1_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp">
+
+                <!-- Label for updating medicine_1 name -->
+                <EditText
+                    android:id="@+id/prescription_update_medicine_1_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="2"
+                    android:hint="Medicine 1"
+                    android:textColor="#49569E"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <!-- EditText to updating medicine_1 recommended intake -->
+                <EditText
+                    android:id="@+id/prescription_update_medicine_1_r_intake"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_weight="1"
+                    android:hint="5 Tablets"
+                    android:inputType="number|numberDecimal"
+                    android:textColor="#006666"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <!-- CardView for updating medicine_2 prescription -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/prescription_update_medicine_2_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="20dp">
+
+            <!-- LinearLayout for updating medicine_2 prescription -->
+            <LinearLayout
+                android:id="@+id/prescription_update_medicine_2_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp">
+
+                <!-- Label for updating medicine_2 name -->
+                <EditText
+                    android:id="@+id/prescription_update_medicine_2_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="2"
+                    android:hint="Medicine 2"
+                    android:textColor="#49569E"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <!-- EditText to updating medicine_2 recommended intake -->
+                <EditText
+                    android:id="@+id/prescription_update_medicine_2_r_intake"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_weight="1"
+                    android:hint="5 Tablets"
+                    android:inputType="number|numberDecimal"
+                    android:textColor="#006666"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- CardView for updating medicine_3 prescription -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/prescription_update_medicine_3_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="20dp">
+
+            <!-- LinearLayout for updating medicine_3 prescription -->
+            <LinearLayout
+                android:id="@+id/prescription_update_medicine_3_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp">
+
+                <!-- Label for updating medicine_3 name -->
+                <EditText
+                    android:id="@+id/prescription_update_medicine_3_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="2"
+                    android:hint="Medicine 3"
+                    android:textColor="#49569E"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <!-- EditText to updating medicine_3 recommended intake -->
+                <EditText
+                    android:id="@+id/prescription_update_medicine_3_r_intake"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_weight="1"
+                    android:hint="5 Tablets"
+                    android:inputType="number|numberDecimal"
+                    android:textColor="#006666"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- CardView for updating medicine_4 prescription -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/prescription_update_medicine_4_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="20dp">
+
+            <!-- LinearLayout for updating medicine_4 prescription -->
+            <LinearLayout
+                android:id="@+id/prescription_update_medicine_4_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp">
+
+                <!-- Label for updating medicine_4 name -->
+                <EditText
+                    android:id="@+id/prescription_update_medicine_4_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="2"
+                    android:hint="Medicine 4"
+                    android:textColor="#49569E"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <!-- EditText to updating medicine_4 recommended intake -->
+                <EditText
+                    android:id="@+id/prescription_update_medicine_4_r_intake"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_weight="1"
+                    android:hint="5 Tablets"
+                    android:inputType="number|numberDecimal"
+                    android:textColor="#006666"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- CardView for updating medicine_5 prescription -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/prescription_update_medicine_5_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="20dp">
+
+            <!-- LinearLayout for updating medicine_5 prescription -->
+            <LinearLayout
+                android:id="@+id/prescription_update_medicine_5_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp">
+
+                <!-- Label for updating medicine_5 name -->
+                <EditText
+                    android:id="@+id/prescription_update_medicine_5_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="2"
+                    android:hint="Medicine 5"
+                    android:textColor="#49569E"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <!-- EditText to updating medicine_5 recommended intake -->
+                <EditText
+                    android:id="@+id/prescription_update_medicine_5_r_intake"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_weight="1"
+                    android:hint="5 Tablets"
+                    android:inputType="number|numberDecimal"
+                    android:textColor="#006666"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Button to submit updated prescription -->
+
+
+        <!-- Card View to upload meal -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/prescription_update_prescription_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:backgroundTint="#4e54ff"
+            app:cardCornerRadius="10dp">
+
+            <!-- TextView for update prescription button text -->
+            <TextView
+                android:id="@+id/target_update_prescription_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:padding="10dp"
+                android:text="Update Prescription"
+                android:textSize="25sp"
+                android:textColor="#ffffff"/>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</ScrollView>

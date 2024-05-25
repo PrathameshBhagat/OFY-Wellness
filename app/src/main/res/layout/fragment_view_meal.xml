@@ -21,7 +21,7 @@
                 android:id="@+id/view_meal_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="View meals"
+                android:text="View meals taken on"
                 android:textColor="#000000"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -82,18 +82,6 @@
                     android:layout_margin="10dp"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/view_meal_meal_number_field"
-                        android:layout_width="229dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:text="0/0"
-                        android:textAlignment="center"
-                        android:textColor="#49569E"
-                        android:textSize="24sp"
-                        android:textStyle="bold" />
-
                     <!-- LinearLayout for meal name, image, and type to view a particular meal -->
                     <LinearLayout
                         android:id="@+id/view_meal_image_data_linear_layout"
@@ -107,6 +95,7 @@
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:layout_margin="10dp"
+                            android:layout_gravity="center"
                             android:background="#000000"
                             android:src="@drawable/logo_white_nobg_cropped"
                             app:cardCornerRadius="20dp" />
@@ -134,6 +123,15 @@
                                 android:text="Type"
                                 android:textColor="#49569E"
                                 android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/view_meal_meal_number_field"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0/0"
+                                android:textAlignment="center"
+                                android:textSize="15sp"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -169,7 +167,7 @@
                                 android:textStyle="bold" />
 
                             <!-- Meal energy content field -->
-                            <EditText
+                            <TextView
                                 android:id="@+id/view_meal_energy_field"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -193,7 +191,7 @@
                                 android:textStyle="bold" />
 
                             <!-- Meal protein content field -->
-                            <EditText
+                            <TextView
                                 android:id="@+id/view_meal_protein_field"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -234,7 +232,7 @@
                                 android:textStyle="bold" />
 
                             <!-- Meal fats content field -->
-                            <EditText
+                            <TextView
                                 android:id="@+id/view_meal_fats_field"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -258,7 +256,7 @@
                                 android:textStyle="bold" />
 
                             <!-- Meal content carbohydrates field -->
-                            <EditText
+                            <TextView
                                 android:id="@+id/view_meal_carbohydrates_field"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"

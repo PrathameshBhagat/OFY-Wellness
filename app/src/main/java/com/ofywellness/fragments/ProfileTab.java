@@ -16,6 +16,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.ofywellness.LoginActivity;
 import com.ofywellness.R;
+import com.ofywellness.UpdateDietTargetActivity;
+import com.ofywellness.UpdateMedicinePrescriptionActivity;
 
 /**
  */
@@ -58,6 +60,22 @@ public class ProfileTab extends Fragment {
                         }
                     })
                     .setNegativeButton("No", null).show();
+        });
+
+        view.findViewById(R.id.profile_update_prescription_card).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start new activity with intent to move to update prescription activity
+                startActivity(new Intent(requireActivity(), UpdateMedicinePrescriptionActivity.class));
+            }
+        });
+
+        view.findViewById(R.id.profile_update_target_linear_layout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start new activity with intent to move to update diet target activity
+                startActivity(new Intent(requireActivity(), UpdateDietTargetActivity.class));
+            }
         });
 
         // Inflate the layout for this fragment

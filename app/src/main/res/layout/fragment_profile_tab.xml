@@ -1,32 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".fragments.ProfileTab">
+
+    <!-- Card View for for update functionality -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/profile_update_prescription_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
+        app:cardCornerRadius="25dp">
+
+        <!-- Linear Layout for update functionality -->
+        <LinearLayout
+            android:id="@+id/profile_update_linear_layout_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:orientation="vertical">
+
+            <!--- Linear Layout for update medicine prescription -->
+            <LinearLayout
+                android:id="@+id/profile_update_prescription_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- Image View for update medicine prescription functionality -->
+                <ImageView
+                    android:id="@+id/profile_update_prescription_image_view"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/medicine_icon"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <!-- Text View for update medicine prescription functionality -->
+                <TextView
+                    android:id="@+id/profile_update_prescription_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Update prescription"
+                    android:textColor="#000000"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <!-- View to get horizontal line in the layout -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginHorizontal="20dp"
+                android:background="#f3f3f3" />
+
+            <!-- Linear Layout for update diet target functionality -->
+            <LinearLayout
+                android:id="@+id/profile_update_target_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- Image View for update diet target functionality -->
+                <ImageView
+                    android:id="@+id/profile_update_target_image_view"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/target_icon"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <!-- Text View for update diet target functionality -->
+                <TextView
+                    android:id="@+id/profile_update_target_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Update diet target"
+                    android:textColor="#000000"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
     <!-- Card View for Log Out functionality -->
     <androidx.cardview.widget.CardView
         android:id="@+id/profile_logout_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="10dp"
-        app:cardCornerRadius="100dp"
-        tools:ignore="MissingConstraints">
+        app:cardCornerRadius="25dp">
 
-        <!-- TextView for Log Out functionality -->
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:paddingHorizontal="30dp"
-            android:text="Log Out"
-            android:textColor="#000000"
-            android:textSize="14sp" />
+        <!-- Linear Layout for Log Out functionality -->
+        <LinearLayout
+            android:id="@+id/profile_logout_linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Image View for Log Out functionality -->
+            <ImageView
+                android:id="@+id/profile_logout_image_view"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/logout_icon"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <!-- Text View for Log Out functionality -->
+            <TextView
+                android:id="@+id/profile_logout_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Log Out"
+                android:textColor="#000000"
+                android:textSize="15sp" />
+
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 

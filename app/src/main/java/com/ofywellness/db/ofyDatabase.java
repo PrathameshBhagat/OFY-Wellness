@@ -377,12 +377,12 @@ public class ofyDatabase {
     }
 
     /**
-     * Updates the prescription to the database
+     * Updates views with the prescription from the database
      *
      * @param context             Context to show toast message
      * @param medicineLayoutGroup Layout containing the views to update
      */
-    public static void getAndUpdatePrescription(ViewGroup medicineLayoutGroup, Context context) {
+    public static void getPrescriptionAndUpdateViews(ViewGroup medicineLayoutGroup, Context context) {
 
         // Get the prescription from database and update the respective fields
         ofyDatabaseref.child("Medicine").child("Prescription").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -443,4 +443,28 @@ public class ofyDatabase {
 
     }
 
+    /**
+     * Updates the prescription in the database
+     *
+     * @param context             Context to show toast message
+     * @param prescription        HashMap with the new prescription
+     * */
+    public static void setPrescription(HashMap<String, Integer> prescription, Context context) {
+
+        // Simple try catch block
+        try {
+            // Add prescription to proper location,
+            // Database ref is already pointing current user
+            ofyDatabaseref.child("Medicine").child("Prescription").setValue(prescription);
+
+            // Show a toast message on success
+            Toast.makeText(context, "Updated the prescription", Toast.LENGTH_SHORT).show();
+
+        } catch (Exception e) {
+            // Catch exception, show a toast error message and print error stack
+            Toast.makeText(context, "Error updating prescription ", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+
+    }
 }

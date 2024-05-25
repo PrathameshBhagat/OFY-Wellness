@@ -39,7 +39,7 @@ public class AddIntakeTab extends Fragment {
         addLocalMedicineAndOtherFieldUpdatingFunctionality(view);
 
         // Call the method to update the prescription ( 10 in "1 of 10" ) as soon as the page loads
-        ofyDatabase.getAndUpdatePrescription(view.findViewById(R.id.sub_fragment_medicine_linear_layout)
+        ofyDatabase.getPrescriptionAndUpdateViews(view.findViewById(R.id.sub_fragment_medicine_linear_layout)
                 , requireActivity());
 
         // On Click Listener to update today's medicine intake "on database"
@@ -65,7 +65,7 @@ public class AddIntakeTab extends Fragment {
             public void onClick(View v) {
 
                 // Call the method to update the medicine prescription from the database
-                ofyDatabase.getAndUpdatePrescription(view.findViewById(R.id.sub_fragment_medicine_linear_layout)
+                ofyDatabase.getPrescriptionAndUpdateViews(view.findViewById(R.id.sub_fragment_medicine_linear_layout)
                         , requireActivity());
             }
         });
