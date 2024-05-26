@@ -9,7 +9,7 @@
     <!-- TODO:Add proper comments till tab layout-->
 
     <!--Top bar Starts -->
-    <!-- LinearLayout for image and contents of top bar -->
+    <!-- LinearLayout for top bar -->
     <LinearLayout
         android:id="@+id/top_container"
         android:layout_width="match_parent"
@@ -17,66 +17,25 @@
         android:background="@drawable/home_background"
         android:orientation="horizontal">
 
-        <!-- LinearLayout for contents of top bar -->
-        <LinearLayout
+        <!-- ImageView for logo of top bar -->
+        <ImageView
+            android:id="@+id/top_logo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/logo_white_nobg_cropped" />
+
+        <!-- TextView for text of top bar -->
+        <TextView
+            android:id="@+id/top_company_name_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <!-- LinearLayout for logo, company and tag line of top bar -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <!-- ImageView for logo of top bar -->
-                <ImageView
-                    android:id="@+id/top_logo"
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_marginVertical="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/logo_white_nobg_cropped" />
-
-                <!-- TextView for logo of top bar -->
-                <TextView
-                    android:id="@+id/top_company_name_text_view"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginVertical="10dp"
-                    android:layout_weight="1"
-                    android:text="OFY Clinics"
-                    android:textAlignment="center"
-                    android:textColor="#ffffff"
-                    android:textSize="35sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <!-- TextView for tagline of top bar -->
-            <TextView
-                android:id="@+id/topic1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Meet a better you"
-                android:textAlignment="center"
-                android:textColor="#ffffff"
-                android:textSize="20sp" />
-
-        </LinearLayout>
-
-        <!-- ImageView for additional girl image of top bar -->
-        <ImageView
-            android:id="@+id/heading_image"
-            android:layout_width="wrap_content"
-            android:layout_height="150dp"
-            android:layout_margin="5dp"
-            android:layout_weight="2"
-            android:background="@drawable/headimage" />
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="OFY Clinics"
+            android:textColor="#ffffff"
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -87,7 +46,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/top_container"
         android:backgroundTint="@color/white"
-        app:tabIndicatorColor="#0000ff">
+        app:tabIndicatorColor="@color/black"
+        app:tabGravity="fill"
+        app:tabIndicatorFullWidth="true"
+        app:tabMaxWidth="0dp"
+        app:tabMode="fixed">
 
         <!-- Tab items -->
         <!-- Add meal Tab -->

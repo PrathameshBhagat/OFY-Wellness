@@ -27,6 +27,8 @@ import com.google.firebase.storage.UploadTask;
 import com.ofywellness.db.ofyDatabase;
 import com.ofywellness.modals.Meal;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +41,7 @@ public class AddMealActivity extends AppCompatActivity {
     private EditText mealNameEditText, mealEnergyEditText, mealProteinsEditText, mealFatsEditText, mealCarbohydratesEditText;
     private CardView mealUploadProgressBarCardView;
     private ConstraintLayout addMealConstrainedLayout;
+    private String Uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,9 @@ public class AddMealActivity extends AppCompatActivity {
 
         // Add working to the meal type spinner
         addSpinnerForMealType();
+
+        // Set the received userID
+        Uid = getIntent().getStringExtra("ID");
 
         // Get all objects required from layout
         mealNameEditText = findViewById(R.id.meal_name_field);
@@ -112,7 +118,9 @@ public class AddMealActivity extends AppCompatActivity {
         }
 
         // Get Firebase Storage Reference to upload image
-        StorageReference fileReference = FirebaseStorage.getInstance().getReference().child("Images/Meals").child(System.currentTimeMillis() + "." + getFileExtension(uri));
+        StorageReference fileReference = FirebaseStorage.getInstance().getReference()
+                .child("Images/Meals/" + Uid + "/" + LocalDate.now())
+                .child(LocalTime.now().withNano(0) + "." + getFileExtension(uri));
 
         // Add event listener to execute code on successful image upload and hence upload the meal
         fileReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

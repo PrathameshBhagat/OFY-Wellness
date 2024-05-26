@@ -5,6 +5,7 @@ import static androidx.core.content.ContextCompat.startActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -95,7 +96,7 @@ public class ofyDatabase {
                                 // Make the database reference point to this user
                                 ofyDatabaseref = individualUser.getRef();
                                 // And move to next activity and provide UserID (currently has no usage)
-                                startActivity(context, new Intent(context, HomeActivity.class).putExtra("UserID", individualUser.getKey()), null);
+                                startActivity(context, new Intent(context, HomeActivity.class).putExtra("ID", individualUser.getKey()), null);
 
                                 // Also  set this boolean to indicate we moved to next activity
                                 moved = true;
@@ -400,6 +401,19 @@ public class ofyDatabase {
 
                         // Get the prescription's length (size)
                         int count = prescription.size();
+
+                        // Loop through all the 5 medicine card views and hide or un-hide them accordingly
+                        for(int i = 0 ; i <= 5 ; i++)
+
+                            if(i<=count)
+                                // If the current medicine index is less than medicines count in prescription
+                                // Then make the card visible
+                                ((ViewGroup) medicineLayoutGroup.getChildAt(i)).setVisibility(View.VISIBLE);
+
+                            else
+                                // Else hide the medicine card
+                                ((ViewGroup) medicineLayoutGroup.getChildAt(i)).setVisibility(View.GONE);
+
 
                         // Iterate for each medicine prescription
                         for (HashMap.Entry<String, Integer> entry : prescription.entrySet()) {

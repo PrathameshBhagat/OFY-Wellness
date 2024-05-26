@@ -31,7 +31,7 @@ public class AddIntakeTab extends Fragment {
             @Override
             public void onClick(View v) {
                 // Start new activity with intent to move to add meal activity
-                startActivity(new Intent(requireActivity(), AddMealActivity.class));
+                startActivity(new Intent(requireActivity(), AddMealActivity.class).putExtra("ID",getActivity().getIntent().getStringExtra("ID")));
             }
         });
 
