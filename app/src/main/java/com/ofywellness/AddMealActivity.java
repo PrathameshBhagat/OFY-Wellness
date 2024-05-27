@@ -1,9 +1,13 @@
 package com.ofywellness;
 
+import android.app.AlertDialog;
 import android.content.ContentResolver;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.ArrayAdapter;
@@ -27,6 +31,7 @@ import com.google.firebase.storage.UploadTask;
 import com.ofywellness.db.ofyDatabase;
 import com.ofywellness.modals.Meal;
 
+import java.io.ByteArrayOutputStream;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -90,18 +95,48 @@ public class AddMealActivity extends AppCompatActivity {
             }
         });
 
+        // Add listener to button for selecting today's meal
         findViewById(R.id.meal_select_image_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Create Intent to get image from user
                 Intent galleryIntent = new Intent();
-                // set Intent to get content from user
-                galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
-                // set content type to image
-                galleryIntent.setType("image/*");
-                // start activity and pass a request code
-                startActivityForResult(galleryIntent, 2);
-                // above line takes the flow to onActivityResult method
+
+                // Create a dialog and add respective properties to get ask user's preference for image source
+                new AlertDialog.Builder(AddMealActivity.this)
+                        // Add title to dialog
+                        .setTitle("Image")
+                        // Add message to dialog
+                        .setMessage("Select image from ")
+                        // Add button to take photo from camera
+                        .setPositiveButton("Take Photo", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                // Set Intent to capture image from camera
+                                galleryIntent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+                                // Start activity with intent and pass a request code of 3
+                                // Takes the flow to onActivityResult method with code 3
+                                startActivityForResult(galleryIntent, 3);
+                            }
+                        })
+                        // Add button to take photo from gallery
+                        .setNegativeButton("Gallery", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                // Set Intent to get content from gallery
+                                galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+                                // Set content type to image
+                                galleryIntent.setType("image/*");
+                                // Start activity and pass a request code of 2
+                                // Takes the flow to onActivityResult method with code 2
+                                startActivityForResult(galleryIntent, 2);
+
+                            }
+                        })
+                        // Show the alert dialog
+                        .show();
             }
         });
 
@@ -114,6 +149,27 @@ public class AddMealActivity extends AppCompatActivity {
         if (mealUploadProgressBarCardView.getVisibility() == View.VISIBLE) {
             // Show toast messages
             Toast.makeText(AddMealActivity.this, "Please wait until previous upload", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Create temp meal object
+        Meal tempMeal;
+
+        // Simple try catch block to check if inputs can be converted to integer
+        try {
+
+            // Store meal data in proper format for use in future in temp meal object
+            tempMeal = new Meal("",
+                    mealNameEditText.getText().toString(),
+                    Integer.parseInt(mealEnergyEditText.getText().toString()),
+                    Integer.parseInt(mealProteinsEditText.getText().toString()),
+                    Integer.parseInt(mealFatsEditText.getText().toString()),
+                    Integer.parseInt(mealCarbohydratesEditText.getText().toString()));
+
+        } catch (Exception e) {
+            // Catch exception and show toast message
+            Toast.makeText(AddMealActivity.this, "Please do not enter decimals", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
             return;
         }
 
@@ -137,15 +193,15 @@ public class AddMealActivity extends AppCompatActivity {
                             // Now uri points to firebase location, if it has http
                             if (linkToFirebaseStorageImage.toString().contains("http")) {
 
-                                // Create new meal object to add to database with image url
+                                // Create new meal object with image url and data from temp Meal
                                 Meal newMeal = new Meal(linkToFirebaseStorageImage.toString(),
-                                        mealNameEditText.getText().toString(),
-                                        Integer.parseInt(mealEnergyEditText.getText().toString()),
-                                        Integer.parseInt(mealProteinsEditText.getText().toString()),
-                                        Integer.parseInt(mealFatsEditText.getText().toString()),
-                                        Integer.parseInt(mealCarbohydratesEditText.getText().toString()));
+                                        tempMeal.getName(),
+                                        tempMeal.getEnergy(),
+                                        tempMeal.getProteins(),
+                                        tempMeal.getFats(),
+                                        tempMeal.getCarbohydrates());
 
-                                // Add meal to the database
+                                // Add meal object to the database
                                 ofyDatabase.addMeal(newMeal, mealTypeSpinner.getSelectedItem().toString(), AddMealActivity.this);
 
                                 // Show toast messages
@@ -153,11 +209,11 @@ public class AddMealActivity extends AppCompatActivity {
 
                             } else {
                                 // Show toast messages
-                                Toast.makeText(AddMealActivity.this, "Successfully added the meal, but unable to retrive link, aborted", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AddMealActivity.this, "Saved image, but unable to retrieve link, aborted", Toast.LENGTH_SHORT).show();
                             }
                         } catch (Exception e) {
                             // Catch exception and show toast message
-                            Toast.makeText(AddMealActivity.this, "Please check inputs and internet", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AddMealActivity.this, "Error in saving", Toast.LENGTH_SHORT).show();
                             e.printStackTrace();
                         }
 
@@ -225,14 +281,32 @@ public class AddMealActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         // Check if successfully got image
         if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
+            // If request code is two i.e image was obtained from gallery
             // Save url to upload to data base
             mealImageUri = data.getData();
             // Set image view to selected image
             mealImageView.setImageURI(mealImageUri);
+
+        } else if (requestCode == 3 && resultCode == RESULT_OK && data != null) {
+            // If request code is three i.e image was captured from camera
+            // Set image view to captured image
+            mealImageView.setImageBitmap((Bitmap) data.getExtras().get("data"));
+
+            // Save url to upload to data base
+            mealImageUri = getImageUri((Bitmap) data.getExtras().get("data"));
+
         } else {
             // Show error message
             Toast.makeText(AddMealActivity.this, "Unable to select image ", Toast.LENGTH_SHORT).show();
         }
+    }
+    // Method to store image and get its uri
+    public Uri getImageUri(Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(AddMealActivity.this.getContentResolver(), inImage,
+                "Title", null);
+        return Uri.parse(path);
     }
 
 }
