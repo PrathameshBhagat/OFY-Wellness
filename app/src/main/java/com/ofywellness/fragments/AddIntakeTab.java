@@ -255,25 +255,35 @@ public class AddIntakeTab extends Fragment {
 
         // Add all medicine names and their respective intake to the provided HashMap
 
-        // Add the name and intake of medicine number 1
-        intake.put(((TextView) view.findViewById(R.id.add_medicine_name_1))
-                .getText().toString(), getIntake(view.findViewById(R.id.add_medicine_field_1)));
+        // If intake of medicine number 1 is not 0 then
+        if (getIntake(view.findViewById(R.id.add_medicine_field_1)) != 0)
+            // Add the name and intake of medicine number 1
+            intake.put(((TextView) view.findViewById(R.id.add_medicine_name_1))
+                    .getText().toString(), getIntake(view.findViewById(R.id.add_medicine_field_1)));
 
-        // Add the name and intake of medicine number 2
-        intake.put(((TextView) view.findViewById(R.id.add_medicine_name_2))
-                .getText().toString(), getIntake(view.findViewById(R.id.add_medicine_field_2)));
+        // If intake of medicine number 1 is not 0 then
+        if (getIntake(view.findViewById(R.id.add_medicine_field_2)) != 0)
+            // Add the name and intake of medicine number 2
+            intake.put(((TextView) view.findViewById(R.id.add_medicine_name_2))
+                    .getText().toString(), getIntake(view.findViewById(R.id.add_medicine_field_2)));
 
-        // Add the name and intake of medicine number 3
-        intake.put(((TextView) view.findViewById(R.id.add_medicine_name_3))
-                .getText().toString(), getIntake(view.findViewById(R.id.add_medicine_field_3)));
+        // If intake of medicine number 3 is not 0 then
+        if (getIntake(view.findViewById(R.id.add_medicine_field_3)) != 0)
+            // Add the name and intake of medicine number 3
+            intake.put(((TextView) view.findViewById(R.id.add_medicine_name_3))
+                    .getText().toString(), getIntake(view.findViewById(R.id.add_medicine_field_3)));
 
-        // Add the name and intake of medicine number 4
-        intake.put(((TextView) view.findViewById(R.id.add_medicine_name_4))
-                .getText().toString(), getIntake(view.findViewById(R.id.add_medicine_field_4)));
+        // If intake of medicine number 4 is not 0 then
+        if (getIntake(view.findViewById(R.id.add_medicine_field_4)) != 0)
+            // Add the name and intake of medicine number 4
+            intake.put(((TextView) view.findViewById(R.id.add_medicine_name_4))
+                    .getText().toString(), getIntake(view.findViewById(R.id.add_medicine_field_4)));
 
-        // Add the name and intake of medicine number 5
-        intake.put(((TextView) view.findViewById(R.id.add_medicine_name_5))
-                .getText().toString(), getIntake(view.findViewById(R.id.add_medicine_field_5)));
+        // If intake of medicine number 5 is not 0 then
+        if (getIntake(view.findViewById(R.id.add_medicine_field_5)) != 0)
+            // Add the name and intake of medicine number 5
+            intake.put(((TextView) view.findViewById(R.id.add_medicine_name_5))
+                    .getText().toString(), getIntake(view.findViewById(R.id.add_medicine_field_5)));
 
     }
 

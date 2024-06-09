@@ -1,15 +1,9 @@
 package com.ofywellness.fragments;
 
-import android.app.DatePickerDialog;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.DatePicker;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,13 +11,8 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.ofywellness.R;
-import com.ofywellness.UpdateDietTargetActivity;
 import com.ofywellness.db.ofyDatabase;
 import com.ofywellness.modals.Meal;
-
-import java.net.URL;
-import java.time.LocalDate;
-import java.util.ArrayList;
 
 /**
  * Fragment for DietTrack tab in Home page
@@ -64,15 +53,6 @@ public class TrackDietTab extends Fragment {
             }
         });
 
-        // Add on click listener to the update diet target button
-        view.findViewById(R.id.track_update_target_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Move to update diet target activity
-                startActivity(new Intent(requireActivity(),UpdateDietTargetActivity.class));
-
-            }
-        });
 
         // Add on click listener to the update the progress
         view.findViewById(R.id.track_update_progress_button).setOnClickListener(new View.OnClickListener() {

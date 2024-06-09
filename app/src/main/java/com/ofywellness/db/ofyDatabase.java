@@ -5,8 +5,10 @@ import static androidx.core.content.ContextCompat.startActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.annotations.NotNull;
 import com.ofywellness.HomeActivity;
+import com.ofywellness.R;
 import com.ofywellness.RegisterActivity;
 import com.ofywellness.modals.Meal;
 import com.ofywellness.modals.User;
@@ -403,9 +406,9 @@ public class ofyDatabase {
                         int count = prescription.size();
 
                         // Loop through all the 5 medicine card views and hide or un-hide them accordingly
-                        for(int i = 0 ; i <= 5 ; i++)
+                        for (int i = 0; i <= 5; i++)
 
-                            if(i<=count)
+                            if (i <= count)
                                 // If the current medicine index is less than medicines count in prescription
                                 // Then make the card visible
                                 ((ViewGroup) medicineLayoutGroup.getChildAt(i)).setVisibility(View.VISIBLE);
@@ -449,6 +452,74 @@ public class ofyDatabase {
                 } catch (Exception e) {
                     // Catch exception, show a toast error message and print error stack
                     Toast.makeText(context, "Error in updating the prescription ", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+
+                }
+            }
+        });
+
+    }
+
+
+    /**
+     * Gets the medicine intake from the database and adds it view in the form of cards to show it to the user
+     *
+     * @param context      Context to show toast message
+     * @param linearLayout LinearLayout to add the card views with medicine intake data
+     * @param date         Date to get the medicine intake of
+     */
+    public static void getMedicineAndUpdateViews(ViewGroup linearLayout, Activity context, String date) {
+
+        // Get the medicine intake of the respective date from database and add the respective card views
+        ofyDatabaseref.child("Medicine").child(date).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NotNull Task<DataSnapshot> task) {
+
+                // Simple try catch block
+                try {
+
+                    // Check if the task to get data was successful
+                    if (task.isSuccessful()) {
+
+                        // Store the medicine intake coming from database
+                        HashMap<String, Integer> medicineIntake = (HashMap<String, Integer>) task.getResult().getValue();
+
+                        // First remove all existing views
+                        linearLayout.removeAllViews();
+
+                        // If medicine intake is found then
+                        if (medicineIntake != null) {
+
+                            // Iterate through all the intake values
+                            for (HashMap.Entry<String, Integer> entry : medicineIntake.entrySet()) {
+
+                                // First get the linear layout surrounding the card
+                                // This was added to have margins in the card view
+                                ViewGroup linearLayoutSurroundingTheCard = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.view_medicine_card_layout, null);
+
+                                // Now get the card view
+                                ViewGroup cardView = (ViewGroup) linearLayoutSurroundingTheCard.getChildAt(0);
+
+                                // Now set the medicine name by getting the entry's key
+                                ((TextView) ((LinearLayout) cardView.getChildAt(0)).getChildAt(0)).setText(entry.getKey());
+
+                                // Now set the medicine intake by getting the entry's value
+                                ((TextView) ((LinearLayout) cardView.getChildAt(0)).getChildAt(1)).setText(entry.getValue() + " units");
+
+                                // Now add the card to the layout provided earlier
+                                linearLayout.addView(linearLayoutSurroundingTheCard, 0);
+
+                            }
+                            // Show a toast message on success
+                            Toast.makeText(context, "Updated", Toast.LENGTH_SHORT).show();
+                        }
+                    } else
+                        // Show a toast message if no medicine found
+                        Toast.makeText(context, "No medicine intake found", Toast.LENGTH_SHORT).show();
+
+                } catch (Exception e) {
+                    // Catch exception, show a toast error message and print error stack
+                    Toast.makeText(context, "Error while updating medicine intake ", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
 
                 }

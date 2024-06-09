@@ -4,9 +4,6 @@ import android.app.DatePickerDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,19 +12,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+
 import com.ofywellness.R;
 import com.ofywellness.db.ofyDatabase;
 import com.ofywellness.modals.Meal;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 
 public class ViewMealTab extends Fragment {
     private TextView dietDateLabel, mealEnergyLabel, mealProteinsLabel, mealFatsLabel, mealCarbohydratesLabel, mealTypeLabel, mealNameLabel, mealNumberLabel;
 
     private ImageView mealImageLabel;
-    private int INDEX_OF_MEAL_TO_VIEW;
+    private int INDEX_OF_MEAL_TO_VIEW, YEAR, MONTH, DAY;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -50,7 +51,17 @@ public class ViewMealTab extends Fragment {
 
 
         // Set the meal viewing index to zero to view the first meal
-        INDEX_OF_MEAL_TO_VIEW = 0;
+        INDEX_OF_MEAL_TO_VIEW = 1;
+
+        // Set today's date
+        YEAR = LocalDate.now().getYear();
+        MONTH = LocalDate.now().getMonthValue();
+        DAY = LocalDate.now().getDayOfMonth();
+
+        // Update the data for the first time
+        // Subsequent updates will be triggered by onclick and other listeners
+        updateMealAndMedicineData(view);
+
 
         // Add on click listener to the set date button
         dietDateLabel.setOnClickListener(new View.OnClickListener() {
@@ -58,7 +69,7 @@ public class ViewMealTab extends Fragment {
             public void onClick(View v) {
 
                 // Function to set date and update the meal data
-                setDateAndUpdateData();
+                setDateAndUpdateData(view);
 
             }
         });
@@ -92,7 +103,7 @@ public class ViewMealTab extends Fragment {
         });
 
 
-        // Inflate the layout for this fragment
+        // return the view for this fragment
         return view;
     }
 
@@ -108,7 +119,9 @@ public class ViewMealTab extends Fragment {
                 return;
             }
 
-            // Obtain all meals ( of a particular day, from cache not database)
+            // Obtain all meals of a particular day
+            // ( Meals already obtained from the database and saved in allMeals Found variable )
+            // ( We just get the meals from that variable )
             ArrayList<Meal> obtainedMeals = ofyDatabase.getMeals();
 
             // If  meals not found, show toast message and return
@@ -190,25 +203,71 @@ public class ViewMealTab extends Fragment {
     }
 
 
-    // Method to set date and update the meals
-    void setDateAndUpdateData() {
+    // Method to set date and update the medicine and meal data according to the date
+    void setDateAndUpdateData(View view) {
 
         // Create a date picker dialog and set onchange listener
         new DatePickerDialog(requireActivity(), new DatePickerDialog.OnDateSetListener() {
             @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+            public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
 
-                // Set the date in the text view for user
-                // Remember LocalDate's month is deviating due to nature of LocalDate....getMonthValue()
-                dietDateLabel.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
+                // Set the date variables with the selected date values
+                // Set year
+                YEAR = year;
+                // Set month but be careful as date picker lags by one month
+                MONTH = month + 1 ;
+                // Set the day
+                DAY = dayOfMonth;
 
-                // Set the meals according to the day
-                ofyDatabase.setMealsOfTheDay(requireActivity(), year, month, dayOfMonth);
+                // Call the method to set the meal data and update medicine intake
+                updateMealAndMedicineData(view);
 
             }
         }, LocalDate.now().getYear(), LocalDate.now().getMonthValue() - 1, LocalDate.now().getDayOfMonth()).show();
 
     }
 
+    // Method to update meals and medicine intake and show it to the user
+    private void updateMealAndMedicineData(View view) {
 
+        // Set the date in the text view for user to view it
+        dietDateLabel.setText(DAY + " " + Month.of(MONTH) + " " + YEAR);
+
+        // Call the method to show the medicine intake of updated date
+        showUpdatedMedicineIntake(view);
+
+        // Now we set the meals from the database according to the day
+        //
+        // This procedure is very different from others
+        // Below method gets the meal data and updates it in the variable called allMealsFound
+        // We then read this allMealsFound variable and show meals to the user
+        // via the getMeals method on click of the next and previous buttons
+        ofyDatabase.setMealsOfTheDay(requireActivity(), YEAR, MONTH - 1, DAY);
+
+    }
+
+    // Method to show updated medicine intake
+    private void showUpdatedMedicineIntake(View view) {
+
+        // Simple try catch block
+        try {
+
+            // Call database method to show medicine intake of the date,
+            // For this we provide the layout to add medicine cards to
+            ofyDatabase.getMedicineAndUpdateViews(
+                    // Provide the method with the view to add medicine intake display cards to
+                    view.findViewById(R.id.view_medicine_container_linear_layout),
+                    // Provide context
+                    requireActivity(),
+                    // Provide the date of which medicine intake is to be viewed
+                    LocalDate.of(YEAR, MONTH, DAY).toString());
+
+        }catch (Exception e) {
+            // Catch exception, show a toast error message and print error stack
+            Toast.makeText(requireActivity(), "Error in getting medicine intake ", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+
+        }
+
+    }
 }

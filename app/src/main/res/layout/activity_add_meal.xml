@@ -32,16 +32,39 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <!-- CardView for meal image -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/meal_select_image_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:backgroundTint="#000000"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/meal_add_meal_label">
+
+                <!-- ImageView for uploading the image -->
+                <ImageView
+                    android:id="@+id/meal_add_image_view"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:background="#000000"
+                    android:padding="10dp"
+                    android:src="@drawable/add_image_icon" />
+
+            </androidx.cardview.widget.CardView>
+
             <!-- CardView for meal name and type -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/meal_name_type_card"
+                android:id="@+id/meal_information_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 app:cardCornerRadius="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/meal_add_meal_label">
+                app:layout_constraintTop_toBottomOf="@+id/meal_select_image_button">
 
                 <!-- LinearLayout for meal name and type -->
                 <LinearLayout
@@ -252,28 +275,6 @@
 
             </androidx.cardview.widget.CardView>
 
-            <!-- CardView for meal image -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/meal_select_image_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:backgroundTint="#000000"
-                app:cardCornerRadius="30dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/meal_name_type_card">
-
-                <!-- ImageView for uploading the image -->
-                <ImageView
-                    android:id="@+id/meal_add_image_view"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:background="#000000"
-                    android:padding="10dp"
-                    android:src="@drawable/add_image_icon" />
-
-            </androidx.cardview.widget.CardView>
 
             <!-- Card View to upload meal -->
             <androidx.cardview.widget.CardView
@@ -286,7 +287,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/meal_select_image_button">
+                app:layout_constraintTop_toBottomOf="@+id/meal_information_card">
 
                 <!-- TextView to upload meal -->
                 <TextView

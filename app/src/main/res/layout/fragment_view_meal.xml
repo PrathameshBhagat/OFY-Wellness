@@ -6,14 +6,17 @@
 
     <!-- Linear Layout (Vertical) to contain all other Layouts and views -->
     <LinearLayout
+        android:id="@+id/view_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <!-- Relative Layout to contain date layouts and view meal label -->
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
             <!-- Text View for view meal label -->
@@ -21,8 +24,9 @@
                 android:id="@+id/view_meal_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="View meals taken on"
-                android:textColor="#000000"
+                android:layout_alignParentStart="true"
+                android:text="View meals"
+                android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -31,14 +35,23 @@
                 android:id="@+id/view_meal_date_field"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="20dp"
+                android:layout_toStartOf="@+id/view_meal_date_field_image"
                 android:text="DD/MM/YYYY"
                 android:textAlignment="center"
                 android:textColor="#350069"
                 android:textSize="15sp" />
 
-        </LinearLayout>
+            <!-- Image View for date logo for date to view a particular meal -->
+            <ImageView
+                android:id="@+id/view_meal_date_field_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/date_icon" />
+
+        </RelativeLayout>
+
         <!-- LinearLayout for selecting and viewing a particular meal -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -285,6 +298,51 @@
             </LinearLayout>
 
         </LinearLayout>
+
+        <!-- Text View for view medicine intake label -->
+        <TextView
+            android:id="@+id/view_medicine_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="View medicines"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <!-- Grid Layout for card views of medicine intake -->
+        <GridLayout
+            android:id="@+id/view_medicine_container_linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnCount="2">
+
+            <!-- Card View for asking user to update date -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/view_medicine_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="15dp">
+
+                <!-- Text View for default text asking user to update the date -->
+                <TextView
+                    android:id="@+id/view_medicine_default_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:text="Please reset the date"
+                    android:textAlignment="center"
+                    android:textColor="#49569E"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+            </androidx.cardview.widget.CardView>
+
+        </GridLayout>
 
     </LinearLayout>
 

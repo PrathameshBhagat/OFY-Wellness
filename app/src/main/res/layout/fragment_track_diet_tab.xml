@@ -403,33 +403,6 @@
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Card View for update diet target button -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/track_update_target_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:backgroundTint="#350069"
-            app:cardCornerRadius="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/track_update_progress_button"
-            app:layout_constraintTop_toBottomOf="@+id/track_carbohydrates_card">
-
-            <!-- TextView to  update diet target -->
-            <TextView
-                android:id="@+id/track_update_target_button_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:padding="20dp"
-                android:text="Update Target"
-                android:textColor="#FFFFFF"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-        </androidx.cardview.widget.CardView>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
