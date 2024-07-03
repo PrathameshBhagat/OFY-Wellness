@@ -22,8 +22,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.google.ai.client.generativeai.GenerativeModel;
+import com.google.ai.client.generativeai.type.Content;
+import com.google.ai.client.generativeai.java.GenerativeModelFutures;
+import com.google.ai.client.generativeai.type.GenerateContentResponse;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.common.util.concurrent.FutureCallback;
+import com.google.common.util.concurrent.Futures;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -31,15 +37,25 @@ import com.google.firebase.storage.UploadTask;
 import com.ofywellness.db.ofyDatabase;
 import com.ofywellness.modals.Meal;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class AddMealActivity extends AppCompatActivity {
 
     /* TODO : Database operation to proper files and folder */
+    /* Decimals in nutrients, very important
+    *  Method extraction and effective tests
+    *  Proper progress bars and re-detect meal "button" needed
+    *   */
     private Spinner mealTypeSpinner;
     private Uri mealImageUri;
     private ImageView mealImageView;
@@ -279,6 +295,10 @@ public class AddMealActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        // Simple try catch block
+        try {
+
         // Check if successfully got image
         if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
             // If request code is two i.e image was obtained from gallery
@@ -287,6 +307,9 @@ public class AddMealActivity extends AppCompatActivity {
             // Set image view to selected image
             mealImageView.setImageURI(mealImageUri);
 
+            // Now detect nutrients from the image vi AI and set the views
+            detectNutrientsAndSetViews(MediaStore.Images.Media.getBitmap(this.getContentResolver(), mealImageUri));
+
         } else if (requestCode == 3 && resultCode == RESULT_OK && data != null) {
             // If request code is three i.e image was captured from camera
             // Set image view to captured image
@@ -294,19 +317,79 @@ public class AddMealActivity extends AppCompatActivity {
 
             // Save url to upload to data base
             mealImageUri = getImageUri((Bitmap) data.getExtras().get("data"));
-
+            detectNutrientsAndSetViews((Bitmap) data.getExtras().get("data"));
         } else {
             // Show error message
             Toast.makeText(AddMealActivity.this, "Unable to select image ", Toast.LENGTH_SHORT).show();
         }
+
+        } catch (Exception e) {
+            // Print error message
+            e.printStackTrace();
+            // Show error message to user
+            Toast.makeText(AddMealActivity.this, "Unable to select image ", Toast.LENGTH_SHORT).show();
+
+        }
     }
+
     // Method to store image and get its uri
     public Uri getImageUri(Bitmap inImage) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
         String path = MediaStore.Images.Media.insertImage(AddMealActivity.this.getContentResolver(), inImage,
-                "Title", null);
+                "OFY_" + new SimpleDateFormat("yyyy_MM_dd_hh_mm_ss", Locale.getDefault()).format(new Date()), null);
         return Uri.parse(path);
+    }
+
+    void detectNutrientsAndSetViews(Bitmap mealImage) {
+
+        // Create Generative AI Model to detect meal and its nutrients
+        GenerativeModelFutures model = GenerativeModelFutures.from(
+                new GenerativeModel( "gemini-pro-vision",
+                        "AIzaSyAwjEo5vcCVqcIORNuHDws2TrB_TkOUSbk"));
+
+        // Generate content for the Gen AI model and add query text and meal image
+        Content content = new Content.Builder()
+                .addText("Identify the meal in the image, calculate energy, proteins, fats and carbohydrates content in it and return JSON object with no extra text, with meal name and do not add units to the values.")
+                .addImage(mealImage)
+                .build();
+
+        // Now add a callback and generate response
+        Futures.addCallback( model.generateContent(content) , new FutureCallback<GenerateContentResponse>() {
+            @Override
+            public void onSuccess(GenerateContentResponse result) {
+
+                // On Success get the result string and replace unnecessary content
+                String resultText = result.getText().replace("```","").replace("json","");;
+
+                // Now try to convert result in to JSON object to get and set nutrient data
+                try {
+                    // Convert to JSON object
+                    JSONObject mealnutrientJSON = new JSONObject(resultText);
+
+                    // Get the values from the JSON Object and set the text views
+                    mealNameEditText.setText(mealnutrientJSON.getString("name"));
+                    mealEnergyEditText.setText(mealnutrientJSON.getString("energy"));
+                    mealProteinsEditText.setText(mealnutrientJSON.getString("proteins"));
+                    mealFatsEditText.setText(mealnutrientJSON.getString("fats"));
+                    mealCarbohydratesEditText.setText(mealnutrientJSON.getString("carbohydrates"));
+
+                } catch (JSONException e) {
+                    // Print Error message
+                    e.printStackTrace();
+                    // Show user error message
+                    Toast.makeText(AddMealActivity.this, "Unable to detect meal and nutrients. Please reselect image or enter manually", Toast.LENGTH_SHORT ).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                // On failure print Error message
+                t.printStackTrace();
+                // Show user error message
+                Toast.makeText(AddMealActivity.this, "Unable to detect meal and nutrients. Please reselect image or enter manually", Toast.LENGTH_SHORT ).show();
+            }
+        }, Runnable::run);
     }
 
 }

@@ -41,4 +41,9 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
+
+    // below are implementations for the meal image detection, optimize the dependencies
+    implementation libs.generativeai
+    implementation libs.guava
+    implementation libs.reactive.streams
 }
