@@ -55,6 +55,7 @@ public class AddMealActivity extends AppCompatActivity {
     /* Decimals in nutrients, very important
     *  Method extraction and effective tests
     *  Proper progress bars and re-detect meal "button" needed
+    *  Try Catch block indentation repair
     *   */
     private Spinner mealTypeSpinner;
     private Uri mealImageUri;
@@ -156,6 +157,23 @@ public class AddMealActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    // Method to add spinner for meal type to layout
+    private void addSpinnerForMealType() {
+
+        // Array List to add options to spinner
+        List<String> options = new ArrayList<>();
+        options.add("Breakfast");
+        options.add("Lunch");
+        options.add("Snacks");
+        options.add("Dinner");
+
+        // Create adapter for spinner and add adapter to spinner and set default value
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(AddMealActivity.this, android.R.layout.simple_spinner_item, options);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mealTypeSpinner.setAdapter(arrayAdapter);
+        mealTypeSpinner.setSelection(0);
     }
 
     // Method to upload Meal to Firebase
@@ -274,23 +292,6 @@ public class AddMealActivity extends AppCompatActivity {
         return mime.getExtensionFromMimeType(cr.getType(uri));
     }
 
-    // Method to add spinner for meal type to layout
-    private void addSpinnerForMealType() {
-
-        // Array List to add options to spinner
-        List<String> options = new ArrayList<>();
-        options.add("Breakfast");
-        options.add("Lunch");
-        options.add("Dinner");
-
-        // Create adapter for spinner and add adapter to spinner and set default value
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(AddMealActivity.this, android.R.layout.simple_spinner_item, options);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mealTypeSpinner.setAdapter(arrayAdapter);
-        mealTypeSpinner.setSelection(0);
-    }
-
-
     // Method to check and operate input image from user
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -307,7 +308,7 @@ public class AddMealActivity extends AppCompatActivity {
             // Set image view to selected image
             mealImageView.setImageURI(mealImageUri);
 
-            // Now detect nutrients from the image vi AI and set the views
+            // Now detect nutrients from the image via AI and set the views
             detectNutrientsAndSetViews(MediaStore.Images.Media.getBitmap(this.getContentResolver(), mealImageUri));
 
         } else if (requestCode == 3 && resultCode == RESULT_OK && data != null) {
@@ -317,7 +318,10 @@ public class AddMealActivity extends AppCompatActivity {
 
             // Save url to upload to data base
             mealImageUri = getImageUri((Bitmap) data.getExtras().get("data"));
+
+            // Now detect nutrients from the image via AI and set the views
             detectNutrientsAndSetViews((Bitmap) data.getExtras().get("data"));
+
         } else {
             // Show error message
             Toast.makeText(AddMealActivity.this, "Unable to select image ", Toast.LENGTH_SHORT).show();
@@ -346,7 +350,7 @@ public class AddMealActivity extends AppCompatActivity {
         // Create Generative AI Model to detect meal and its nutrients
         GenerativeModelFutures model = GenerativeModelFutures.from(
                 new GenerativeModel( "gemini-pro-vision",
-                        "AIzaSyAwjEo5vcCVqcIORNuHDws2TrB_TkOUSbk"));
+                        BuildConfig.GEMINI_API_KEY));
 
         // Generate content for the Gen AI model and add query text and meal image
         Content content = new Content.Builder()
@@ -365,14 +369,14 @@ public class AddMealActivity extends AppCompatActivity {
                 // Now try to convert result in to JSON object to get and set nutrient data
                 try {
                     // Convert to JSON object
-                    JSONObject mealnutrientJSON = new JSONObject(resultText);
+                    JSONObject mealNutrients = new JSONObject(resultText);
 
                     // Get the values from the JSON Object and set the text views
-                    mealNameEditText.setText(mealnutrientJSON.getString("name"));
-                    mealEnergyEditText.setText(mealnutrientJSON.getString("energy"));
-                    mealProteinsEditText.setText(mealnutrientJSON.getString("proteins"));
-                    mealFatsEditText.setText(mealnutrientJSON.getString("fats"));
-                    mealCarbohydratesEditText.setText(mealnutrientJSON.getString("carbohydrates"));
+                    mealNameEditText.setText(mealNutrients.getString("name"));
+                    mealEnergyEditText.setText(mealNutrients.getString("energy"));
+                    mealProteinsEditText.setText(mealNutrients.getString("proteins"));
+                    mealFatsEditText.setText(mealNutrients.getString("fats"));
+                    mealCarbohydratesEditText.setText(mealNutrients.getString("carbohydrates"));
 
                 } catch (JSONException e) {
                     // Print Error message
