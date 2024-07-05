@@ -46,8 +46,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/top_container"
         android:backgroundTint="@color/white"
-        app:tabIndicatorColor="@color/black"
         app:tabGravity="fill"
+        app:tabIndicatorColor="@color/black"
         app:tabIndicatorFullWidth="true"
         app:tabMaxWidth="0dp"
         app:tabMode="fixed">
@@ -55,30 +55,35 @@
         <!-- Tab items -->
         <!-- Add meal Tab -->
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/home_add_meal_tab_item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:icon="@drawable/food_icon" />
 
         <!-- View Meal Tab -->
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/home_view_meal_tab_item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:icon="@drawable/view_icon" />
 
         <!-- Track diet Tab -->
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/home_track_meal_tab_item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:icon="@drawable/track_icon" />
 
         <!-- Services Tab -->
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/home_services_tab_item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:icon="@drawable/services_icon" />
 
         <!-- Profile Tab -->
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/home_profile_tab_item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:icon="@drawable/profile_icon" />

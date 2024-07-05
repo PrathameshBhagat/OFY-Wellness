@@ -1,4 +1,21 @@
 <resources>
     <string name="app_name">OFYWellness</string>
     <string name="price">₹<b><big><big>100</big></big></b>/hr</string>
+
+
+    <!--String for show casing the tabs -->
+    <!-- Tab hints  -->
+    <string name="Tab_Hint_1">This is add intake tab.</string>
+    <string name="Tab_Hint_2">This is view intake tab.</string>
+    <string name="Tab_Hint_3">This is track intake tab.</string>
+    <string name="Tab_Hint_4">This is services tab.</string>
+    <string name="Tab_Hint_5">This is profile tab.</string>
+
+    <!--Tab description -->
+    <string name="Tab_Description_1">You can add all your intakes here</string>
+    <string name="Tab_Description_2">You can view all your intakes here</string>
+    <string name="Tab_Description_3">You can track all your intakes here</string>
+    <string name="Tab_Description_4">You can find all of our services here</string>
+    <string name="Tab_Description_5">You can view and edit profile details here</string>
+
 </resources>

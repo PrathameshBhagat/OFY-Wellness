@@ -46,4 +46,7 @@ dependencies {
     implementation libs.generativeai
     implementation libs.guava
     implementation libs.reactive.streams
+
+    // implementations for Tap Targets, the hints for views
+    implementation libs.taptargetview
 }
