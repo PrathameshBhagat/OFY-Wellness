@@ -1,5 +1,7 @@
 package com.ofywellness.fragments;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +11,8 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.ofywellness.AddMealActivity;
 import com.ofywellness.R;
 import com.ofywellness.db.ofyDatabase;
@@ -20,11 +24,45 @@ import java.util.HashMap;
  */
 public class AddIntakeTab extends Fragment {
 
+    // Context for tap target sequence, needs to removed on optimization
+    static Context context;
+
+    // View for tap target sequence, needs to removed on optimization
+    static View view;
+
+    /**
+     * Lets users know what a button does and what are its features
+     */
+    public static void educateUserAboutButtons() {
+
+        // Create a sequence to let users know what buttons do
+        new TapTargetSequence((Activity) context).targets(
+
+                // Now add tap targets to the sequence to show
+                TapTarget.forView(view.findViewById(R.id.add_meal_button), "This is add meal intake button ", "You can add all your meals by clicking here "),
+                TapTarget.forView(view.findViewById(R.id.add_medicine_add_button_1), "This is increment medicine intake button ", "You can add all your medicine intake and increment particular intake by clicking here "),
+                TapTarget.forView(view.findViewById(R.id.add_medicine_reduce_button_1), "This is decrement medicine intake button ", "You can decrement your medicine intake by clicking here ")
+
+        )
+        // Now start the sequence
+        .start();
+
+        // Set the objects to null as they can lead to memory leaks
+        view = null;
+        context = null;
+
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment and store it,
         // modification for getting the view object
         View view = inflater.inflate(R.layout.fragment_add_intake_tab, container, false);
+
+        // Assign context and view for use by Home Activity
+        context = requireActivity();
+
+        AddIntakeTab.view = view;
 
         // Button for moving to add meal activity
         view.findViewById(R.id.add_meal_button).setOnClickListener(new View.OnClickListener() {

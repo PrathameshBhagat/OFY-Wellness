@@ -11,6 +11,7 @@ import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.google.android.material.tabs.TabLayout;
 import com.ofywellness.fragments.AdapterForTabs;
+import com.ofywellness.fragments.AddIntakeTab;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -88,7 +89,22 @@ public class HomeActivity extends AppCompatActivity {
                         getTapTarget(tablayout.getTabAt(4).view, R.string.Tab_Hint_5, "You can view and edit profile details here")
 
 
-                )
+                ).listener(new TapTargetSequence.Listener() {
+                    @Override
+                    public void onSequenceFinish() {
+                        AddIntakeTab.educateUserAboutButtons();
+                    }
+
+                    @Override
+                    public void onSequenceStep(TapTarget lastTarget, boolean targetClicked) {
+
+                    }
+
+                    @Override
+                    public void onSequenceCanceled(TapTarget lastTarget) {
+
+                    }
+                })
                 // Now start the sequence
                 .start();
     }
