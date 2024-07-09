@@ -4,12 +4,248 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Linear Layout (Vertical) to contain all other Layouts and views -->
+    <!-- Linear Layout to contain all other Layouts and views -->
     <LinearLayout
         android:id="@+id/view_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <!-- Text View for summary label -->
+        <TextView
+            android:id="@+id/view_summary_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Summary"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <!-- Card View for summary card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/view_summary_card"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="5"
+            app:cardCornerRadius="20dp">
+
+            <!-- Linear Layout for summary -->
+            <LinearLayout
+                android:id="@+id/view_summary_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <!-- Linear Layout for energy -->
+                <LinearLayout
+                    android:id="@+id/view_summary_energy_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <!-- Text View for energy consumed -->
+                    <TextView
+                        android:id="@+id/view_summary_energy_consumed_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="400 KCal \n done"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <!-- Relative Layout for energy percentage  -->
+                    <RelativeLayout
+                        android:id="@+id/view_summary_energy_percent_relative_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <!-- Progress Bar for energy percentage  -->
+                        <ProgressBar
+                            android:id="@+id/view_summary_energy_percent_circular_progressbar"
+                            android:layout_width="150dp"
+                            android:layout_height="150dp"
+                            android:indeterminateOnly="false"
+                            android:progress="50"
+                            android:progressDrawable="@drawable/progressbar_circular" />
+
+                        <!-- Text View for energy percentage label  -->
+                        <TextView
+                            android:id="@+id/view_summary_energy_percent_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="100%"
+                            android:textAlignment="center"
+                            android:textColor="#006666"
+                            android:textSize="30sp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                    <!-- Text View for energy intake left -->
+                    <TextView
+                        android:id="@+id/view_summary_energy_remainging_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="200 KCal\nleft"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <!-- Linear Layout for other nutrients -->
+                <LinearLayout
+                    android:id="@+id/view_summary_nutrients_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- Linear Layout for protein intake -->
+                    <LinearLayout
+                        android:id="@+id/view_summary_proteins_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <!-- Text View for protein label -->
+                        <TextView
+                            android:id="@+id/view_summary_protein_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Proteins"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <!-- Progress Bar for protein percentage progress -->
+                        <ProgressBar
+                            android:id="@+id/view_summary_protein_progressbar"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:progress="50"
+                            android:progressDrawable="@drawable/progressbar_horizontal" />
+
+                        <!-- Text View for protein intake progress -->
+                        <TextView
+                            android:id="@+id/view_summary_protein_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="10g/60g"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <!-- Linear Layout for fats intake -->
+                    <LinearLayout
+                        android:id="@+id/view_summary_fats_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <!-- Text View for fats label -->
+                        <TextView
+                            android:id="@+id/view_summary_fats_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Fats"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <!-- Progress Bar for fats percentage progress -->
+                        <ProgressBar
+                            android:id="@+id/view_summary_fats_progressbar"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:progress="50"
+                            android:progressDrawable="@drawable/progressbar_horizontal" />
+
+                        <!-- Text View for protein fats intake progress -->
+                        <TextView
+                            android:id="@+id/view_summary_fats_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="26g/60g"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <!-- Linear Layout for carbohydrates intake -->
+                    <LinearLayout
+                        android:id="@+id/view_summary_carbohydrates_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <!-- Text View for carbohydrates label -->
+                        <TextView
+                            android:id="@+id/view_summary_carbohydrates_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Carbs"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <!-- Progress Bar for carbohydrates percentage progress -->
+                        <ProgressBar
+                            android:id="@+id/view_summary_carbohydrates_progressbar"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:progress="50"
+                            android:progressDrawable="@drawable/progressbar_horizontal" />
+
+                        <!-- Text View for protein carbohydrates intake progress -->
+                        <TextView
+                            android:id="@+id/view_summary_carbohydrates_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="6g/60g"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
 
         <!-- Relative Layout to contain date layouts and view meal label -->
         <RelativeLayout
@@ -315,7 +551,8 @@
             android:id="@+id/view_medicine_container_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:columnCount="2">
+            android:columnCount="2"
+            android:minHeight="300dp">
 
             <!-- Card View for asking user to update date -->
             <androidx.cardview.widget.CardView
