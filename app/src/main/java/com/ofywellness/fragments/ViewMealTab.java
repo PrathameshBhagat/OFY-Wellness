@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,8 +25,10 @@ import java.time.Month;
 import java.util.ArrayList;
 
 public class ViewMealTab extends Fragment {
+    ArrayList<Meal> obtainedMeals;
     private TextView dietDateLabel, mealEnergyLabel, mealProteinsLabel, mealFatsLabel, mealCarbohydratesLabel, mealTypeLabel, mealNameLabel, mealNumberLabel;
-
+    private TextView summaryEnergyPercentLabel, summaryEnergyRemainsLabel, summaryEnergyConsumedLabel, summaryProteinsLabel, summaryFatsLabel, summaryCarbohydratesLabel;
+    private ProgressBar summaryEnergyProgressBar, summaryProteinsProgressBar, summaryFatsProgressBar, summaryCarbohydratesProgressBar;
     private ImageView mealImageLabel;
     private int INDEX_OF_MEAL_TO_VIEW, YEAR, MONTH, DAY;
 
@@ -48,6 +51,20 @@ public class ViewMealTab extends Fragment {
         mealNameLabel = view.findViewById(R.id.view_meal_name_field);
         mealNumberLabel = view.findViewById(R.id.view_meal_meal_number_field);
         mealImageLabel = view.findViewById(R.id.view_meal_meal_image_field);
+
+        // Views for summary card
+        summaryEnergyPercentLabel = view.findViewById(R.id.view_summary_energy_percent_label);
+        summaryEnergyRemainsLabel = view.findViewById(R.id.view_summary_energy_remainging_label);
+        summaryEnergyConsumedLabel = view.findViewById(R.id.view_summary_energy_consumed_label);
+        summaryProteinsLabel = view.findViewById(R.id.view_summary_protein_value);
+        summaryFatsLabel = view.findViewById(R.id.view_summary_fats_value);
+        summaryCarbohydratesLabel = view.findViewById(R.id.view_summary_carbohydrates_value);
+
+        // Progress bars for summary card
+        summaryEnergyProgressBar = view.findViewById(R.id.view_summary_energy_percent_circular_progressbar);
+        summaryProteinsProgressBar = view.findViewById(R.id.view_summary_protein_progressbar);
+        summaryFatsProgressBar = view.findViewById(R.id.view_summary_fats_progressbar);
+        summaryCarbohydratesProgressBar = view.findViewById(R.id.view_summary_carbohydrates_progressbar);
 
 
         // Set the meal viewing index to zero to view the first meal
@@ -122,7 +139,7 @@ public class ViewMealTab extends Fragment {
             // Obtain all meals of a particular day
             // ( Meals already obtained from the database and saved in allMeals Found variable )
             // ( We just get the meals from that variable )
-            ArrayList<Meal> obtainedMeals = ofyDatabase.getMeals();
+            obtainedMeals = ofyDatabase.getMeals();
 
             // If  meals not found, show toast message and return
             if (obtainedMeals.isEmpty()) {
@@ -140,6 +157,9 @@ public class ViewMealTab extends Fragment {
 
             // Get the meal data to display to the user
             Meal mealToView = obtainedMeals.get(INDEX_OF_MEAL_TO_VIEW);
+
+            // Now set the summary card
+            setSummary();
 
             // Set the text views to display the meal to the user
             mealNameLabel.setText(mealToView.getName());
@@ -200,6 +220,45 @@ public class ViewMealTab extends Fragment {
             Toast.makeText(requireActivity(), "Error in getting and setting data", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
+    }
+
+    // Method to set the summary card
+    private void setSummary() {
+
+        // Obtain all meals the day
+        // ( Meals already obtained from the database and saved in allMealsFound variable )
+        // ( We just get the meals from that variable )
+        obtainedMeals = ofyDatabase.getMeals();
+
+        // Variables to store calculated values
+        int[] totalNutrients = new int[4];
+
+        // Loop through all meals and calculate total nutrient intake
+        for (Meal meal : obtainedMeals) {
+
+            // Calculate total nutrients
+            totalNutrients[0] += meal.getEnergy();
+            totalNutrients[1] += meal.getProteins();
+            totalNutrients[2] += meal.getFats();
+            totalNutrients[3] += meal.getCarbohydrates();
+
+        }
+
+        // Now set the labels with appropriate data
+        summaryEnergyPercentLabel.setText(String.format("%d", (int) (((float) totalNutrients[0] / 2500) * 100)) + "%");
+        summaryEnergyRemainsLabel.setText((totalNutrients[0] > 2500 ? 0 : 2500 - totalNutrients[0]) + "Kcal\n Left");
+        summaryEnergyConsumedLabel.setText(totalNutrients[0] + "Kcal\n Taken");
+        summaryProteinsLabel.setText(totalNutrients[1] + "g/55g");
+        summaryFatsLabel.setText(totalNutrients[2] + "g/25g");
+        summaryCarbohydratesLabel.setText(totalNutrients[3] + "g/275g");
+
+        // Now set progressbar  labels with appropriate data
+        summaryEnergyProgressBar.setProgress(100 * totalNutrients[0] / 2500);
+        summaryProteinsProgressBar.setProgress(100 * totalNutrients[1] / 55);
+        summaryFatsProgressBar.setProgress(100 * totalNutrients[2] / 25);
+        summaryCarbohydratesProgressBar.setProgress(100 * totalNutrients[3] / 275);
+
+
     }
 
 
