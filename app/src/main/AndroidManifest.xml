@@ -25,7 +25,7 @@
             android:name=".HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".register.RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".MeetActivity"

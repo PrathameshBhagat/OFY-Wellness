@@ -25,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.annotations.NotNull;
 import com.ofywellness.HomeActivity;
 import com.ofywellness.R;
-import com.ofywellness.RegisterActivity;
+import com.ofywellness.register.RegisterActivity;
 import com.ofywellness.fragments.ViewMealTab;
 import com.ofywellness.modals.Meal;
 import com.ofywellness.modals.User;

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Text View for register age label -->
+    <TextView
+        android:id="@+id/register_gender_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/register_gender_linear_layout"
+        android:layout_centerInParent="true"
+        android:text="Enter your gender"
+        android:textAlignment="center"
+        android:textColor="#006666"
+        android:textSize="50sp"
+        android:textStyle="bold" />
+
+    <!-- Linear Layout for register age contents -->
+    <LinearLayout
+        android:id="@+id/register_gender_linear_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/register_gender_male_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="20dp"
+            >
+
+            <!-- Text View for male label -->
+            <TextView
+                android:id="@+id/register_gender_male_label"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:text="Male"
+                android:textColor="#49569E"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/register_gender_female_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="20dp">
+
+            <!-- Text View for male label -->
+            <TextView
+                android:id="@+id/register_gender_female_label"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:text="Female"
+                android:textColor="#49569E"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    <!-- Button for moving to next page -->
+    <Button
+        android:id="@+id/register_next_gender_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="30dp"
+        android:backgroundTint="#1B7C9A"
+        android:text="Next"
+        android:textSize="30sp" />
+
+</RelativeLayout>
