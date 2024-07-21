@@ -13,15 +13,20 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.annotations.NotNull;
 import com.ofywellness.HomeActivity;
 import com.ofywellness.R;
 import com.ofywellness.RegisterActivity;
+import com.ofywellness.fragments.ViewMealTab;
 import com.ofywellness.modals.Meal;
 import com.ofywellness.modals.User;
 
@@ -294,24 +299,26 @@ public class ofyDatabase {
      * @param month The month of the date
      * @param dayOfMonth The day of the date
      */
-    public static void setMealsOfTheDay(Context context, int year, int month, int dayOfMonth) {
+    public static void setMealsOfTheDay(Context context, int year, int month, int dayOfMonth, ViewMealTab viewMealTab) {
 
         // Initialise the ArrayList object
         allMealsFound = new ArrayList<>();
 
         // Get all the meals eaten on the date provided and them to the ArrayList
-        ofyDatabaseref.child("Diet").child(LocalDate.of(year, month + 1, dayOfMonth).toString()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-
+        ofyDatabaseref.child("Diet").child(LocalDate.of(year, month + 1, dayOfMonth).toString()).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onComplete(Task<DataSnapshot> task) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 // Simple try catch block
                 try {
                     // Check if the task to get data was successful
-                    if (task.isSuccessful()) {
+                    if (snapshot.exists()) {
+
+                        // Clear all the existing meals
+                        allMealsFound.clear();
 
                         // Loop through all the days
-                        for (DataSnapshot ofyDateDataSnapshot : task.getResult().getChildren()) {
+                        for (DataSnapshot ofyDateDataSnapshot : snapshot.getChildren()) {
 
                             // Get the meal from DataSnapshot and convert to HashMap
                             HashMap received = (HashMap) ofyDateDataSnapshot.getValue();
@@ -333,14 +340,25 @@ public class ofyDatabase {
 
                     } else {
                         // Show a toast error message
-                        Toast.makeText(context, "Error, Please set the date again", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Empty meal data received", Toast.LENGTH_SHORT).show();
                     }
+
+                    // Now display all the meals
+                    viewMealTab.displayTheMeal();
+
                 } catch (Exception e) {
                     // Catch exception, show a toast error message and print error stack
                     Toast.makeText(context, "Error, Please set the date again", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
 
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Catch exception, show a toast error message and print error stack
+                Toast.makeText(context, "Database error", Toast.LENGTH_SHORT).show();
+                error.toException().printStackTrace();
             }
         });
 
@@ -471,18 +489,18 @@ public class ofyDatabase {
     public static void getMedicineAndUpdateViews(ViewGroup linearLayout, Activity context, String date) {
 
         // Get the medicine intake of the respective date from database and add the respective card views
-        ofyDatabaseref.child("Medicine").child(date).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        ofyDatabaseref.child("Medicine").child(date).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onComplete(@NotNull Task<DataSnapshot> task) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 // Simple try catch block
                 try {
 
-                    // Check if the task to get data was successful
-                    if (task.isSuccessful()) {
+                    // Check if the data exists
+                    if (snapshot.exists()) {
 
                         // Store the medicine intake coming from database
-                        HashMap<String, Integer> medicineIntake = (HashMap<String, Integer>) task.getResult().getValue();
+                        HashMap<String, Integer> medicineIntake = (HashMap<String, Integer>) snapshot.getValue();
 
                         // First remove all existing views
                         linearLayout.removeAllViews();
@@ -513,16 +531,27 @@ public class ofyDatabase {
                             // Show a toast message on success
                             Toast.makeText(context, "Updated", Toast.LENGTH_SHORT).show();
                         }
-                    } else
+                    } else {
+
+                        // Remove all medicine views
+                        linearLayout.removeAllViews();
+
                         // Show a toast message if no medicine found
                         Toast.makeText(context, "No medicine intake found", Toast.LENGTH_SHORT).show();
-
+                    }
                 } catch (Exception e) {
                     // Catch exception, show a toast error message and print error stack
                     Toast.makeText(context, "Error while updating medicine intake ", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
 
                 }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Catch exception, show a toast error message and print error stack
+                Toast.makeText(context, "Database error", Toast.LENGTH_SHORT).show();
+                error.toException().printStackTrace();
             }
         });
 

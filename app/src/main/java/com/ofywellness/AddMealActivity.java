@@ -347,14 +347,24 @@ public class AddMealActivity extends AppCompatActivity {
 
     void detectNutrientsAndSetViews(Bitmap mealImage) {
 
+        // Create alert dialog to show user we are detecting the meal and its nutrients
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setTitle("Please wait ...")
+                .setCancelable(false)
+                .setMessage("Detecting meal and nutrients")
+                .create();
+
+        // Show the alert dialog
+        alertDialog.show();
+
         // Create Generative AI Model to detect meal and its nutrients
         GenerativeModelFutures model = GenerativeModelFutures.from(
-                new GenerativeModel( "gemini-pro-vision",
+                new GenerativeModel( "gemini-1.5-pro",
                         BuildConfig.GEMINI_API_KEY));
 
         // Generate content for the Gen AI model and add query text and meal image
         Content content = new Content.Builder()
-                .addText("Identify the meal in the image, calculate energy, proteins, fats and carbohydrates content in it and return JSON object with no extra text, with meal name and do not add units to the values.")
+                .addText("Identify the meal in the image, calculate energy, proteins, fats and carbohydrates content in it and return JSON object with no extra text, with meal name and do not add units to the values. Object names should be name, energy, proteins, fats, carbohydrates and only detect if proper meal identification was done.")
                 .addImage(mealImage)
                 .build();
 
@@ -384,10 +394,17 @@ public class AddMealActivity extends AppCompatActivity {
                     // Show user error message
                     Toast.makeText(AddMealActivity.this, "Unable to detect meal and nutrients. Please reselect image or enter manually", Toast.LENGTH_SHORT ).show();
                 }
+
+                // Now dismiss/remove the alert dialog
+                alertDialog.dismiss();
             }
 
             @Override
             public void onFailure(Throwable t) {
+
+                // First dismiss/remove the alert dialog
+                alertDialog.dismiss();
+
                 // On failure print Error message
                 t.printStackTrace();
                 // Show user error message

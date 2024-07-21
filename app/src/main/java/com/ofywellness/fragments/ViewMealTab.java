@@ -125,8 +125,8 @@ public class ViewMealTab extends Fragment {
     }
 
 
-    // Function to get all meals and display meal at index to user
-    private void displayTheMeal() {
+    // Function to get all meals and display meal at index to user, is public for ofyDatabase.setMealsOfTheDay method
+    public void displayTheMeal() {
 
         try {
 
@@ -143,7 +143,24 @@ public class ViewMealTab extends Fragment {
 
             // If  meals not found, show toast message and return
             if (obtainedMeals.isEmpty()) {
-                Toast.makeText(requireActivity(), "Error, Please change/reset the date", Toast.LENGTH_SHORT).show();
+
+                // Show the toast message
+                Toast.makeText(requireActivity(), "No meals found for this date", Toast.LENGTH_SHORT).show();
+
+                // Set the text views to display that no meal was found
+                mealNameLabel.setText("Not found");
+                mealTypeLabel.setText("Sorry");
+                mealNumberLabel.setText(String.format("%s/%s", 0,0));
+                mealEnergyLabel.setText(String.format("%sCal", 0));
+                mealProteinsLabel.setText(String.format("%sg", 0));
+                mealFatsLabel.setText(String.format("%sg", 0));
+                mealCarbohydratesLabel.setText(String.format("%sg", 0));
+                mealImageLabel.setImageResource(R.drawable.food_icon);
+
+                // Now set the summary card to empty values
+                setSummary();
+
+                // Now return as no need to display the contents
                 return;
             }
 
@@ -252,7 +269,7 @@ public class ViewMealTab extends Fragment {
         summaryFatsLabel.setText(totalNutrients[2] + "g/25g");
         summaryCarbohydratesLabel.setText(totalNutrients[3] + "g/275g");
 
-        // Now set progressbar  labels with appropriate data
+        // Now set the progress bars with appropriate data
         summaryEnergyProgressBar.setProgress(100 * totalNutrients[0] / 2500);
         summaryProteinsProgressBar.setProgress(100 * totalNutrients[1] / 55);
         summaryFatsProgressBar.setProgress(100 * totalNutrients[2] / 25);
@@ -298,10 +315,10 @@ public class ViewMealTab extends Fragment {
         // Now we set the meals from the database according to the day
         //
         // This procedure is very different from others
-        // Below method gets the meal data and updates it in the variable called allMealsFound
+        // Below method gets the meal data from database and updates it in the variable called allMealsFound
         // We then read this allMealsFound variable and show meals to the user
-        // via the getMeals method on click of the next and previous buttons
-        ofyDatabase.setMealsOfTheDay(requireActivity(), YEAR, MONTH - 1, DAY);
+        // by calling the displayTheMeal method and getting allMealsFound data by the getMeals method
+        ofyDatabase.setMealsOfTheDay(requireActivity(), YEAR, MONTH - 1, DAY, this);
 
     }
 
