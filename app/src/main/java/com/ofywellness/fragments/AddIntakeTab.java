@@ -80,35 +80,6 @@ public class AddIntakeTab extends Fragment {
         ofyDatabase.getPrescriptionAndUpdateViews(view.findViewById(R.id.sub_fragment_medicine_linear_layout)
                 , requireActivity());
 
-        // On Click Listener to update today's medicine intake "on database"
-        view.findViewById(R.id.add_medicine_save_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                // Get a hash map to store all medicine intakes
-                HashMap<String, Integer> tempIntake = new HashMap<>();
-
-                // Call the method to add medicine name and intake to the HashMap
-                addMedicineNameAndIntake(tempIntake, view);
-
-                // Call the method to save medicine intake to the database
-                ofyDatabase.saveMedicineIntake(tempIntake, requireActivity());
-
-            }
-        });
-
-        // On Click Listener to  update the medicine prescription from the database ( 10 in "1 of 10" values )
-        view.findViewById(R.id.add_medicine_reload_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                // Call the method to update the medicine prescription from the database
-                ofyDatabase.getPrescriptionAndUpdateViews(view.findViewById(R.id.sub_fragment_medicine_linear_layout)
-                        , requireActivity());
-            }
-        });
-
-
         return view;
     }
 
@@ -195,6 +166,16 @@ public class AddIntakeTab extends Fragment {
                     // And intake is greater than zero then decrement intake
                     // And call setIntake to set the decremented intake
                     setIntake(field, intakeCount - 1);
+
+
+                // Get a hash map to store all medicine intakes
+                HashMap<String, Integer> tempIntake = new HashMap<>();
+
+                // Call the method to add medicine name and intake to the HashMap
+                addMedicineNameAndIntake(tempIntake, view);
+
+                // Call the method to save medicine intake to the database
+                ofyDatabase.saveMedicineIntake(tempIntake, requireActivity());
 
             }
         };

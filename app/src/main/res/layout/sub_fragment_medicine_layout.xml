@@ -24,50 +24,6 @@
             android:textSize="15sp"
             android:textStyle="bold" />
 
-        <!-- Card View for medicine prescription reloading -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/add_medicine_reload_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="10dp"
-            app:cardCornerRadius="20dp">
-
-            <!-- Text View medicine prescription reloading text -->
-            <ImageView
-                android:id="@+id/add_medicine_reload_image_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/refresh_icon"
-                android:textColor="@color/white" />
-
-        </androidx.cardview.widget.CardView>
-
-        <!-- Card View for saving medicine intake -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/add_medicine_save_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="10dp"
-            android:backgroundTint="#00ff00"
-            app:cardCornerRadius="20dp">
-
-            <!-- Text View for saving medicine intake text -->
-            <TextView
-                android:id="@+id/add_medicine_save_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginHorizontal="10dp"
-                android:background="#00ff00"
-                android:text="Save"
-                android:textColor="@color/black" />
-
-        </androidx.cardview.widget.CardView>
-
     </LinearLayout>
     <!-- Card View for logging medicine_1 -->
     <androidx.cardview.widget.CardView

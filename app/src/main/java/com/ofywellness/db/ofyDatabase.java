@@ -407,18 +407,15 @@ public class ofyDatabase {
     public static void getPrescriptionAndUpdateViews(ViewGroup medicineLayoutGroup, Context context) {
 
         // Get the prescription from database and update the respective fields
-        ofyDatabaseref.child("Medicine").child("Prescription").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        ofyDatabaseref.child("Medicine").child("Prescription").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onComplete(@NotNull Task<DataSnapshot> task) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                // Simple try catch block
-                try {
-
-                    // Check if the task to get data was successful
-                    if (task.isSuccessful()) {
+                    // Check if the data exists
+                    if (snapshot.exists()) {
 
                         // Store the prescription coming from database
-                        HashMap<String, Integer> prescription = (HashMap<String, Integer>) task.getResult().getValue();
+                        HashMap<String, Integer> prescription = (HashMap<String, Integer>) snapshot.getValue();
 
                         // Get the prescription's length (size)
                         int count = prescription.size();
@@ -466,13 +463,12 @@ public class ofyDatabase {
                         // Show a toast message on success
                         Toast.makeText(context, "Updated the prescription", Toast.LENGTH_SHORT).show();
                     }
-
-                } catch (Exception e) {
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
                     // Catch exception, show a toast error message and print error stack
                     Toast.makeText(context, "Error in updating the prescription ", Toast.LENGTH_SHORT).show();
-                    e.printStackTrace();
-
-                }
+                    error.toException().printStackTrace();
             }
         });
 
