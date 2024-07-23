@@ -120,21 +120,21 @@ public class AddIntakeTab extends Fragment {
                 .setOnClickListener(getListener(view, R.id.add_medicine_field_5, false));
 
 
-        // Now functionality for other fields
+        // Now functionality for other fields ( these are quite different from others )
         // Functionality for water intake (here water intake has same listeners as of medicine buttons )
         view.findViewById(R.id.add_other_add_water_card)
-                .setOnClickListener(getListener(view, R.id.add_other_water_detail_label, true));
+                .setOnClickListener(getOtherListener(view, R.id.add_other_water_detail_label, true));
         view.findViewById(R.id.add_other_reduce_water_card)
-                .setOnClickListener(getListener(view, R.id.add_other_water_detail_label, false));
+                .setOnClickListener(getOtherListener(view, R.id.add_other_water_detail_label, false));
 
-        // Now we add functionality for water intake ( this is quite different from others )
+        // Now we add functionality for weight
         // Now we set the listener for adding weight 
         view.findViewById(R.id.add_other_add_weight_card)
-                .setOnClickListener(getWeightListener(view, true));
+                .setOnClickListener(getOtherListener(view, R.id.add_other_weight_detail_label, true));
 
         // Now we set the listener for reducing weight
         view.findViewById(R.id.add_other_reduce_weight_card)
-                .setOnClickListener(getWeightListener(view, false));
+                .setOnClickListener(getOtherListener(view, R.id.add_other_weight_detail_label, false));
     }
 
     // Method to get on click listeners for buttons to update respective fields
@@ -224,49 +224,81 @@ public class AddIntakeTab extends Fragment {
 
     }
 
-    // Method to get on click listeners for buttons to update users weight field
-    private View.OnClickListener getWeightListener(View view, boolean increment) {
+    // Method to get on click listeners for buttons to update users other measures
+    private View.OnClickListener getOtherListener(View view, int rID, boolean increment) {
 
-        // Create new OnClickListener to return via method so as to add clicking functionality to button
-        View.OnClickListener newOnClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        // Create new OnClickListener and return via method to add clicking functionality to other button
+        // But as onclick listener is a functional interface we converted it to a lambda function
+        return v -> {
 
-                // First we get the weight label
-                TextView weightLabel = view.findViewById(R.id.add_other_weight_detail_label);
+            // First we get the measure's data field
+            TextView measureField = view.findViewById(rID);
 
-                // Now we get the current weight detail
-                String weightDetail = weightLabel.getText().toString();
+            // Now we get the measure's detail
+            String measureDetail = measureField.getText().toString();
 
-                // If current weight detail has default text then input sample weight and return
-                if (weightDetail.contains("Lose")) {
-                    // Set the sample weight
-                    weightLabel.setText("50Kg");
-                    return;
-                }
+            // Variable to save measure's count
+            int currentCount = 0;
 
-                // As weight detail has current weight (and not default text), get current weight
-                int currentWeight = Integer.parseInt(weightDetail.substring(0, weightDetail.indexOf("Kg")));
+            // Now we extract the measure's values
+            if (measureDetail.contains("- Kg")) {
+                // If current measure's detail has default text then we input sample values
+                measureField.setText("50 Kg");
+                currentCount = 50;
 
-                // Now we update weight accordingly
-                if (increment)
-                    // If the need is to increment the weight, increment it
-                    currentWeight++;
-                else
-                    // Else reduce current weight, but only if it is greater than zero to avoid negative weight
-                    currentWeight = currentWeight > 0 ? currentWeight - 1 : 0;
+            } else if (measureDetail.contains("Kg")) {
+                // Else if the measure's detail has weight value extract it and parse as integer
+                currentCount = Integer.parseInt(measureDetail.substring(0, measureDetail.indexOf(" Kg")));
 
-                // Assign new weight detail
-                weightDetail = currentWeight + "Kg";
-
-                // Set new weight detail
-                weightLabel.setText(weightDetail);
+            } else if (measureDetail.contains("Glass")){
+                // Else if the measure's detail has water value extract it and parse as integer
+                currentCount = Integer.parseInt(measureDetail.substring(0, measureDetail.indexOf(" Glass")));
 
             }
-        };
 
-        // Return the created on click listener
-        return newOnClickListener;
+
+            // Now we have extracted the value of current measure in the currentCount variable
+            // Now we update its value count accordingly
+            if (increment)
+                // If the need is to increment the count, increment it
+                currentCount++;
+            else
+                // Else reduce current count, but only if it's greater than zero to avoid negative's
+                currentCount = currentCount > 0 ? currentCount - 1 : 0;
+
+
+            // Now we assign new updated values
+            if (measureDetail.contains("Kg"))
+                // Append Kg if the it's the weight and set the measure
+                measureDetail = currentCount + " Kg";
+            else
+                // Append glass if the it's the water intake and set the measure
+                measureDetail = currentCount + " Glass";
+
+            // Set new measure details in text view
+            measureField.setText(measureDetail);
+
+
+            // Now we prepare to send all measure counts to database
+            // Get a map to store values
+            HashMap<String, Integer> allOtherValues = new HashMap<>();
+
+            // Add all the measures to the map (weight and water)
+            // Add weight measure
+            allOtherValues.put("Weight", Integer.valueOf(
+                    ((TextView) view.findViewById(R.id.add_other_weight_detail_label))
+                            .getText().toString().replace(" Kg", "")
+                            .replace("-","0")));
+
+            // Add water intake
+            allOtherValues.put("Water", Integer.valueOf(
+                    ((TextView) view.findViewById(R.id.add_other_water_detail_label))
+                            .getText().toString().replace(" Glass", "")));
+
+            // Call the method to save the measure values to the database
+            ofyDatabase.saveOtherCounts(allOtherValues, requireActivity());
+
+        };
     }
 
     // Method to add medicine's name and intake to the provided HashMap

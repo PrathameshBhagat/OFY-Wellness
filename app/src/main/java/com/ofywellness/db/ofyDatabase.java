@@ -577,4 +577,24 @@ public class ofyDatabase {
         }
 
     }
+
+    /**
+     * Updates all the other measures like water intake and weight in the database
+     *
+     * @param otherCounts HashMap with the data of all other measures
+     * @param context    Context to show toast message
+     */
+    public static void saveOtherCounts(HashMap<String, Integer> otherCounts, Context context) {
+        // Simple try catch block
+        try {
+            // Add values to proper location,
+            // Database ref is already pointing current user
+            ofyDatabaseref.child("Other").child(String.valueOf(LocalDate.now())).setValue(otherCounts);
+
+        } catch (Exception e) {
+            // Catch exception, show a toast error message and print error stack
+            Toast.makeText(context, "Error updating other counts ", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+    }
 }
