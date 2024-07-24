@@ -43,27 +43,6 @@ public class TrackDietTab extends Fragment {
 
         // Update tracking tracking data as soon as this tab loads
         updateDietTrackingData();
-
-        // Add on click listener to the update tracking data
-        view.findViewById(R.id.track_update_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Update tracking data each time user clicks update intake button
-                updateDietTrackingData();
-            }
-        });
-
-
-        // Add on click listener to the update the progress
-        view.findViewById(R.id.track_update_progress_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Update progress each time user clicks update progress button
-                updateProgress();
-
-            }
-        });
-
         // Return view to onCreateView method and the method
         return view;
     }
@@ -76,7 +55,7 @@ public class TrackDietTab extends Fragment {
         try {
 
             // Call the method to get the "updated" tracking data and set the text views to the tracking data
-            ofyDatabase.getTrackDietDataAndSetData(requireActivity(), energyValueLabel, proteinsValueLabel, fatsValueLabel, carbohydratesValueLabel);
+            ofyDatabase.getTrackDietDataAndSetData(this, energyValueLabel, proteinsValueLabel, fatsValueLabel, carbohydratesValueLabel);
 
         } catch (Exception e) {
             // Catch exception and show toast message
@@ -85,7 +64,7 @@ public class TrackDietTab extends Fragment {
         }
     }
 
-    void updateProgress() {
+    public void updateProgress() {
 
         // Simple try catch block to catch any errors and exceptions
         try {

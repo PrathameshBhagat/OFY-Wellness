@@ -25,6 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.annotations.NotNull;
 import com.ofywellness.HomeActivity;
 import com.ofywellness.R;
+import com.ofywellness.fragments.TrackDietTab;
 import com.ofywellness.register.RegisterActivity;
 import com.ofywellness.fragments.ViewMealTab;
 import com.ofywellness.modals.Meal;
@@ -171,21 +172,21 @@ public class ofyDatabase {
      * @param context          The context to show toast message
      * @param energyValueLabel All others are TextViews and Progress Bars to set tracking data
      */
-    public static void getTrackDietDataAndSetData(Context context, TextView energyValueLabel, TextView proteinsValueLabel, TextView fatsValueLabel, TextView carbohydratesValueLabel) {
+    public static void getTrackDietDataAndSetData(TrackDietTab context, TextView energyValueLabel, TextView proteinsValueLabel, TextView fatsValueLabel, TextView carbohydratesValueLabel) {
 
         // Get the DataSnapshot to get tracking data, calculate it
         // And display it to user by updating the text views
-        ofyDatabaseref.child("Diet").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        ofyDatabaseref.child("Diet").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onComplete(@NotNull Task<DataSnapshot> task) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
                 try {
-                    // Check if the task to get data was successful
-                    if (task.isSuccessful()) {
+                    // Check if the data exists
+                    if (snapshot.exists()) {
                         // Tracking data variables
                         int totalEnergy = 0, totalProteins = 0, totalFats = 0, totalCarbohydrates = 0;
 
                         // Loop through all the days
-                        for (DataSnapshot ofyDateDataSnapshot : task.getResult().getChildren()) {
+                        for (DataSnapshot ofyDateDataSnapshot : snapshot.getChildren()) {
                             // Loop through all the meals
                             for (DataSnapshot ofyMealSnapshot : ofyDateDataSnapshot.getChildren()) {
                                 // Get the content in the HashMap
@@ -207,17 +208,23 @@ public class ofyDatabase {
                         fatsValueLabel.setText(String.format("%sg", totalFats));
                         carbohydratesValueLabel.setText(String.format("%sg", totalCarbohydrates));
 
-                        // Show a toast message
-                        Toast.makeText(context, "Updated the data", Toast.LENGTH_SHORT).show();
+                        // Now show the updated progress to the user
+                        context.updateProgress();
                     } else {
                         // Show a toast error message
-                        Toast.makeText(context, "Error getting data from firebase", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context.requireActivity(), "Error getting data from firebase", Toast.LENGTH_SHORT).show();
                     }
                 } catch (Exception e) {
                     // Catch exception, show a toast error message and print error stack
-                    Toast.makeText(context, "Error in getting and setting data", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context.requireActivity(), "Error in getting and setting data", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Catch exception, show a toast error message and print error stack
+                Toast.makeText(context.requireActivity(), "Error in getting and setting data", Toast.LENGTH_SHORT).show();
+                error.toException().printStackTrace();
             }
         });
     }
