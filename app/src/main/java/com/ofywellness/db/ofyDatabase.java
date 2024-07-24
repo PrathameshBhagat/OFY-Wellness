@@ -55,8 +55,17 @@ public class ofyDatabase {
             ofyDatabaseref = ofyDatabaseref.child("Users").push();
             // Add the user to database
             ofyDatabaseref.setValue(ofyUser);
+
+            // Get the user's key (currently UserID) to identify individual user
+            String key = ofyDatabaseref.getKey();
+
+            // Now we move the database reference to a new location
+            // So that all the other data gets stored in a separate location to avoid data congestion
+            // So we first get to the root and then move to desired location
+            ofyDatabaseref = ofyDatabaseref.getRoot().child("Intake").child(key);
+
             // Return the UserID
-            return ofyDatabaseref.getKey();
+            return key;
 
         } catch (Exception e) {
             // Catch exception, show a toast error message and print error stack
@@ -75,10 +84,10 @@ public class ofyDatabase {
     public static void findUserInFirebaseAndNext(Context context, String ofyUserEmail) {
 
         // Get the Firebase Database reference to users
-        ofyDatabaseref = FirebaseDatabase.getInstance().getReference().child("Users");
+        ofyDatabaseref = FirebaseDatabase.getInstance().getReference();
 
         // Get the users data and add on complete listener to run method on obtaining data
-        ofyDatabaseref.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        ofyDatabaseref.child("Users").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NotNull Task<DataSnapshot> task) {
                 // Simple try catch block
@@ -102,7 +111,7 @@ public class ofyDatabase {
                                 ((Activity) context).finish();
 
                                 // Make the database reference point to this user
-                                ofyDatabaseref = individualUser.getRef();
+                                ofyDatabaseref = ofyDatabaseref.getRoot().child("Intake").child(individualUser.getKey());
                                 // And move to next activity and provide UserID (currently has no usage)
                                 startActivity(context, new Intent(context, HomeActivity.class).putExtra("ID", individualUser.getKey()), null);
 
