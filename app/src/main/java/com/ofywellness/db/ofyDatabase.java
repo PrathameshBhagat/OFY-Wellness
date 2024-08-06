@@ -21,20 +21,22 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.annotations.NotNull;
 import com.ofywellness.HomeActivity;
 import com.ofywellness.R;
 import com.ofywellness.fragments.TrackDietTab;
-import com.ofywellness.register.RegisterActivity;
 import com.ofywellness.fragments.ViewMealTab;
 import com.ofywellness.modals.Meal;
 import com.ofywellness.modals.User;
+import com.ofywellness.register.RegisterActivity;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 // Single class for all database operations
 public class ofyDatabase {
@@ -389,6 +391,114 @@ public class ofyDatabase {
 
     }
 
+
+    /**
+     * Gets all the diet intake data and sets the charts
+     *
+     * @param trackDietTab Track Diet tab object to call it's methods
+     */
+    public static void getDietDataAndSetNutrientCharts(TrackDietTab trackDietTab) {
+
+        // Get context for showing toast messages
+        Context context = trackDietTab.getContext();
+
+        // Query the last 7 records of the required data, ordered by their keys
+        Query query = ofyDatabaseref.child("Diet").orderByKey().limitToLast(7);
+
+        // Add a listener to listen to all changes to the data and show updated data to the user
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                // Check if the data exists
+                if (snapshot.exists()) {
+
+                    // Create linked hash maps to store the total intake of each day in an orderly manner
+                    // Map to store energy
+                    LinkedHashMap<String, Float> energyMap = new LinkedHashMap<>();
+                    // Map to store proteins intake
+                    LinkedHashMap<String, Float> proteinsMap = new LinkedHashMap<>();
+                    // Map to store fats intake
+                    LinkedHashMap<String, Float> fatsMap = new LinkedHashMap<>();
+                    // Map to store carbohydrate intake
+                    LinkedHashMap<String, Float> carbohydratesMap = new LinkedHashMap<>();
+
+                    // Variables to calculate and store total nutrient of a particular day
+                    float totalEnergy, totalProteins, totalFats, totalCarbohydrates;
+
+                    // Loop through all the days
+                    for (DataSnapshot ofyDateDataSnapshot : snapshot.getChildren()) {
+
+                        // Reset the variables for "this" day
+                        totalEnergy = 0;
+                        totalProteins = 0;
+                        totalFats = 0;
+                        totalCarbohydrates = 0;
+
+                        // Loop through all the meals taken on this day
+                        for (DataSnapshot ofyMealSnapshot : ofyDateDataSnapshot.getChildren()) {
+
+                            // Convert meal data into a HashMap
+                            HashMap mealContent = (HashMap) ofyMealSnapshot.getValue();
+
+                            // Calculate the total intake of "this" day
+                            totalEnergy += (Long) mealContent.get("energy");
+                            totalProteins += (Long) mealContent.get("proteins");
+                            totalFats += (Long) mealContent.get("fats");
+                            totalCarbohydrates += (Long) mealContent.get("carbohydrates");
+
+                        }
+                        // Get the current date, which is the key of this location
+                        String date = ofyDateDataSnapshot.getKey();
+
+                        // Add this days intake to the corresponding maps
+                        energyMap.put(date, totalEnergy);
+                        proteinsMap.put(date, totalProteins);
+                        fatsMap.put(date, totalFats);
+                        carbohydratesMap.put(date, totalCarbohydrates);
+
+                    }
+
+                    // Get a linked hash map to store current nutrient map to display,
+                    // As only one nutrient's data is to be shown to the user
+                    LinkedHashMap<String, Float> nutrientMapToDisplay = new LinkedHashMap<>();
+
+                    // Switch the map to be displayed according to current nutrient mode
+                    switch (trackDietTab.nutrientLineChartMode) {
+                        // Select appropriate maps for each mode
+                        // And then break out of the switch statement
+                        case ENERGY:
+                            nutrientMapToDisplay = energyMap;
+                            break;
+                        case PROTEINS:
+                            nutrientMapToDisplay = proteinsMap;
+                            break;
+                        case FATS:
+                            nutrientMapToDisplay = fatsMap;
+                            break;
+                        case CARBOHYDRATES:
+                            nutrientMapToDisplay = carbohydratesMap;
+                            break;
+                    }
+
+                    // Set the line chart with appropriate nutrient map
+                    trackDietTab.setLineChartWithDietIntakeData(nutrientMapToDisplay, context);
+
+                } else {
+                    // If data does not exists throw an error
+                    Toast.makeText(context, "Error: Data not found", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Catch exception, show a toast error message and print error stack
+                Toast.makeText(context, "Error:" + error.getMessage(), Toast.LENGTH_SHORT).show();
+                error.toException().printStackTrace();
+            }
+        });
+
+    }
+
     /**
      * Saves the provided intake to the database
      *
@@ -612,5 +722,70 @@ public class ofyDatabase {
             Toast.makeText(context, "Error updating other counts ", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Gets all the other measures like water and weight from database and sets the charts
+     *
+     * @param trackDietTab Track Diet tab object to call it's methods
+     */
+    public static void getOtherDataAndSetCharts(TrackDietTab trackDietTab) {
+        // Get context for showing toast messages
+        Context context = trackDietTab.getContext();
+
+        // Query the required data, ordered by their keys
+        Query query = ofyDatabaseref.child("Other").orderByKey().limitToLast(7);
+
+        // Add a listener to listen to all changes to the data and show updated data to the user
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                // Check if the data exists 
+                if (snapshot.exists()) {
+
+                    // Create linked hash maps to store the "other" data in an orderly manner
+                    // Map to store water intake
+                    LinkedHashMap<String, Integer> waterMap = new LinkedHashMap<>();
+
+                    // Map to store weight data
+                    LinkedHashMap<String, Integer> weightMap = new LinkedHashMap<>();
+
+                    // Iterate for each date and get the data
+                    for (DataSnapshot loggedDataForIndividualDate : snapshot.getChildren()) {
+
+                        // Store the date, which is the key for this location
+                        String key = loggedDataForIndividualDate.getKey();
+
+                        // Get the logged "other" data in the form of a map
+                        HashMap tempMap = (HashMap) loggedDataForIndividualDate.getValue();
+
+                        // Store water intake data in the water map
+                        waterMap.put(key, ((Long) tempMap.get("Water")).intValue());
+
+                        // Store weight data in the  weight map
+                        weightMap.put(key, ((Long) tempMap.get("Weight")).intValue());
+
+                    }
+
+                    // Set the bar chart with water intake data
+                    trackDietTab.setBarChartWithWaterIntakeData(waterMap);
+
+                    // Set the curved line chart with daily weight data
+                    trackDietTab.setCurvedLineChartWithDailyWeightData(weightMap, context);
+
+                } else {
+                    // If data does not exists throw an error
+                    Toast.makeText(context, "Error: Data not found", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Catch exception, show a toast error message and print error stack
+                Toast.makeText(context, "Error:" + error.getMessage(), Toast.LENGTH_SHORT).show();
+                error.toException().printStackTrace();
+            }
+        });
+
     }
 }
