@@ -1,6 +1,6 @@
 # OFY Wellness Android App
 This is an Android project developed in Java during internship at OFY Wellness.  
-The code lies in the Dev branch but would be soon moved to a private repository.  
+The source code lies in the dev-auto branch.  
 # Pre-Release Downloads
 You can download the app with the progress till date from [here](https://github.com/PrathameshBhagat/OFY-Wellness/blob/master/base.apk) or from [this](https://github.com/PrathameshBhagat/OFY-Wellness/blob/master/base.apk) release  
 # Snapshots
