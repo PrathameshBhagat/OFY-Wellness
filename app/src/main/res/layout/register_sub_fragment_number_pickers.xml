@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_centerInParent="true">
+
+    <!-- Number picker for hundredth place-->
+    <NumberPicker
+        android:id="@+id/register_number_picker_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp" />
+
+    <!-- Number picker for tenth place-->
+    <NumberPicker
+        android:id="@+id/register_number_picker_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp" />
+
+    <!-- Number picker for one's place-->
+    <NumberPicker
+        android:id="@+id/register_number_picker_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp" />
+
+</LinearLayout>

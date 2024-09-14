@@ -4,33 +4,20 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- Text View for register age label -->
-    <TextView
-        android:id="@+id/register_gender_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/register_gender_linear_layout"
-        android:layout_centerInParent="true"
-        android:text="Enter your gender"
-        android:textAlignment="center"
-        android:textColor="#006666"
-        android:textSize="50sp"
-        android:textStyle="bold" />
-
-    <!-- Linear Layout for register age contents -->
+    <!-- Linear Layout for gender selection content -->
     <LinearLayout
         android:id="@+id/register_gender_linear_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true">
 
+        <!-- Card View for male card -->
         <androidx.cardview.widget.CardView
             android:id="@+id/register_gender_male_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            app:cardCornerRadius="20dp"
-            >
+            app:cardCornerRadius="20dp">
 
             <!-- Text View for male label -->
             <TextView
@@ -40,11 +27,12 @@
                 android:layout_margin="20dp"
                 android:text="Male"
                 android:textColor="#49569E"
-                android:textSize="40sp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
 
         </androidx.cardview.widget.CardView>
 
+        <!-- Card View for female card -->
         <androidx.cardview.widget.CardView
             android:id="@+id/register_gender_female_card"
             android:layout_width="wrap_content"
@@ -52,7 +40,7 @@
             android:layout_margin="10dp"
             app:cardCornerRadius="20dp">
 
-            <!-- Text View for male label -->
+            <!-- Text View for female label -->
             <TextView
                 android:id="@+id/register_gender_female_label"
                 android:layout_width="wrap_content"
@@ -60,7 +48,7 @@
                 android:layout_margin="20dp"
                 android:text="Female"
                 android:textColor="#49569E"
-                android:textSize="40sp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
 
         </androidx.cardview.widget.CardView>

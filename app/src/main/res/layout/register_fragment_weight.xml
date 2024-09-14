@@ -3,50 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Text View for register weight label -->
-    <TextView
-        android:id="@+id/register_weight_label"
+    <!-- Include number picker fragment for selecting weight -->
+    <include
+        layout="@layout/register_sub_fragment_number_pickers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/register_weight_linear_layout"
-        android:layout_centerInParent="true"
-        android:text="Enter your weight"
-        android:textAlignment="center"
-        android:textColor="#006666"
-        android:textSize="50sp"
-        android:textStyle="bold" />
-
-    <!-- Linear Layout for register weight contents -->
-    <LinearLayout
-        android:id="@+id/register_weight_linear_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
-
-        <!-- Edit Text for weight field -->
-        <EditText
-            android:id="@+id/register_weight_field"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="  50  "
-            android:inputType="number"
-            android:maxLength="3"
-            android:textColor="#49569E"
-            android:textSize="40sp"
-            android:textStyle="bold" />
-
-        <!-- Text View for weight completion label -->
-        <TextView
-            android:id="@+id/register_weight_completion_label"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:text="Kg"
-            android:textColor="#49569E"
-            android:textSize="40sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
+        android:layout_centerInParent="true" />
 
     <!-- Button for moving to next page -->
     <Button

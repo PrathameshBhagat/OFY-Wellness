@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".register.RegisterActivity">
 
+    <!-- Linear Layout for top bar -->
     <LinearLayout
         android:id="@+id/top_container"
         android:layout_width="match_parent"
@@ -39,6 +40,7 @@
 
     </LinearLayout>
 
+    <!-- Progress Bar for indicating current tab position -->
     <ProgressBar
         android:id="@+id/register_progressBar"
         style="?android:attr/progressBarStyleHorizontal"
@@ -51,22 +53,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/top_container" />
 
+    <!-- Text View for label to ask user for various inputs -->
+    <TextView
+        android:id="@+id/register_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="Please enter your details"
+        android:textAlignment="center"
+        android:textColor="#006666"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_progressBar" />
+
+    <!-- View pager for tab content -->
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/register_view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/register_progressBar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register_progressBar"
-        app:layout_constraintVertical_bias="1.0">
-
-    </androidx.viewpager2.widget.ViewPager2>
-
-
-    <!--
-        android:backgroundTint="#1EC826"-->
+        app:layout_constraintTop_toBottomOf="@+id/register_progressBar"  />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

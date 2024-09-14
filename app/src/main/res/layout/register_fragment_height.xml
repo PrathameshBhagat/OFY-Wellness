@@ -3,50 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Text View for register height label -->
-    <TextView
-        android:id="@+id/register_height_label"
+    <!-- Include number picker fragment for selecting height -->
+    <include
+        layout="@layout/register_sub_fragment_number_pickers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/register_height_linear_layout"
-        android:layout_centerInParent="true"
-        android:text="Enter Height"
-        android:textAlignment="center"
-        android:textColor="#006666"
-        android:textSize="50sp"
-        android:textStyle="bold" />
-
-    <!-- Linear Layout for register height contents -->
-    <LinearLayout
-        android:id="@+id/register_height_linear_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
-
-        <!-- Edit Text for height field -->
-        <EditText
-            android:id="@+id/register_height_field"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="175"
-            android:maxLength="3"
-            android:inputType="number"
-            android:textColor="#49569E"
-            android:textSize="40sp"
-            android:textStyle="bold" />
-
-        <!-- Text View for height completion label -->
-        <TextView
-            android:id="@+id/register_height_completion_label"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:text="cm"
-            android:textColor="#49569E"
-            android:textSize="40sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
+        android:layout_centerInParent="true" />
 
     <!-- Button for moving to next page -->
     <Button

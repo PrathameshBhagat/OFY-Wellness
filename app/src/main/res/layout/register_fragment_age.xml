@@ -3,50 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Text View for register age label -->
-    <TextView
-        android:id="@+id/register_age_label"
+    <!-- Include number picker fragment for selecting age -->
+    <include
+        layout="@layout/register_sub_fragment_number_pickers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/register_age_linear_layout"
-        android:layout_centerInParent="true"
-        android:text="Enter your age"
-        android:textAlignment="center"
-        android:textColor="#006666"
-        android:textSize="50sp"
-        android:textStyle="bold" />
-
-    <!-- Linear Layout for register age contents -->
-    <LinearLayout
-        android:id="@+id/register_age_linear_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
-
-        <!-- Edit Text for age field -->
-        <EditText
-            android:id="@+id/register_age_field"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="35"
-            android:maxLength="3"
-            android:inputType="number"
-            android:textColor="#49569E"
-            android:textSize="40sp"
-            android:textStyle="bold" />
-
-        <!-- Text View for age completion label -->
-        <TextView
-            android:id="@+id/register_age_completion_label"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:text="years"
-            android:textColor="#49569E"
-            android:textSize="40sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
+        android:layout_centerInParent="true" />
 
     <!-- Button for moving to next page -->
     <Button

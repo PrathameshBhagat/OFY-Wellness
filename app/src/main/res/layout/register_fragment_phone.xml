@@ -3,40 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Text View for register phone label -->
-    <TextView
-        android:id="@+id/register_phone_label"
+    <!-- Edit Text for phone field -->
+    <EditText
+        android:id="@+id/register_phone_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/register_phone_linear_layout"
         android:layout_centerInParent="true"
-        android:text="Enter your phone"
-        android:textAlignment="center"
-        android:textColor="#006666"
-        android:textSize="50sp"
+        android:hint="9998887777"
+        android:inputType="phone"
+        android:maxLength="10"
+        android:textColor="#49569E"
+        android:textSize="40sp"
         android:textStyle="bold" />
-
-    <!-- Linear Layout for register phone contents -->
-    <LinearLayout
-        android:id="@+id/register_phone_linear_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
-
-        <!-- Edit Text for phone field -->
-        <EditText
-            android:id="@+id/register_phone_field"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="9998887777"
-            android:maxLength="10"
-            android:inputType="phone"
-            android:textColor="#49569E"
-            android:textSize="40sp"
-            android:textStyle="bold" />
-
-
-    </LinearLayout>
 
     <!-- Button for moving to next page -->
     <Button
