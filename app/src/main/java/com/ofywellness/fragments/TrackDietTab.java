@@ -50,10 +50,11 @@ public class TrackDietTab extends Fragment {
     /* TODO : Remove the TextView assignment and context to database operation method */
 
     public lineChartMode nutrientLineChartMode;
-    private TextView energyValueLabel, proteinsValueLabel, fatsValueLabel, carbohydratesValueLabel;
+    private TextView energyValueLabel, proteinsValueLabel, fatsValueLabel, carbohydratesValueLabel, warningLabel;;
     private ProgressBar energyProgressBar, proteinsProgressBar, fatsProgressBar, carbohydratesProgressBar;
     private BarChart barChart;
     private LineChart lineChart, curvedLineChart;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Get the view for this fragment and inflate it
@@ -71,6 +72,7 @@ public class TrackDietTab extends Fragment {
         fatsProgressBar = view.findViewById(R.id.track_fats_progress_bar);
         carbohydratesProgressBar = view.findViewById(R.id.track_carbohydrates_progress_bar);
 
+
         // Assign the Line Graph
         lineChart = view.findViewById(R.id.track_line_chart);
 
@@ -82,6 +84,12 @@ public class TrackDietTab extends Fragment {
 
         // Assign the Bar Chart
         barChart = view.findViewById(R.id.track_water_intake_bar_chart);
+
+        // Assign the text views so that warning can be shown to update diet target
+        warningLabel = view.findViewById(R.id.track_target_not_found_label);
+
+        // Hide the warning by default. (Warning to update diet target)
+        warning(false);
 
         // Add on tab selected listener to the tab layout
         ((TabLayout) view.findViewById(R.id.track_line_chart_tab_layout)).addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -444,6 +452,18 @@ public class TrackDietTab extends Fragment {
         }
     }
 
+    // Method to show or hide warning to update diet target
+    public void warning(boolean show) {
+
+        // If we are to show the warning then make view with the warning visible
+        if (show)
+            warningLabel.setVisibility(View.VISIBLE);
+        // Else remove the view
+        else
+            warningLabel.setVisibility(View.GONE);
+
+    }
+
     public void updateProgress() {
 
         // Simple try catch block to catch any errors and exceptions
@@ -465,7 +485,7 @@ public class TrackDietTab extends Fragment {
                     currentCarbohydrates );
 
             // Call the method to update the progress
-            ofyDatabase.updateDietProgress( requireActivity(), currentProgress,energyProgressBar, proteinsProgressBar, fatsProgressBar, carbohydratesProgressBar) ;
+            ofyDatabase.updateDietProgress( this, currentProgress,energyProgressBar, proteinsProgressBar, fatsProgressBar, carbohydratesProgressBar) ;
 
         } catch (Exception e) {
             // Catch exception and show toast message

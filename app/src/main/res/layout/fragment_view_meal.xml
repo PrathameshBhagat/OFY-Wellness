@@ -83,7 +83,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:text="400 KCal \n done"
+                        android:text="0 KCal \n done"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="15sp"
@@ -101,7 +101,7 @@
                             android:layout_width="150dp"
                             android:layout_height="150dp"
                             android:indeterminateOnly="false"
-                            android:progress="50"
+                            android:progress="0"
                             android:progressDrawable="@drawable/progressbar_circular" />
 
                         <!-- Text View for energy percentage label  -->
@@ -110,7 +110,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
-                            android:text="100%"
+                            android:text="0%"
                             android:textAlignment="center"
                             android:textColor="#006666"
                             android:textSize="30sp"
@@ -166,7 +166,7 @@
                             style="?android:attr/progressBarStyleHorizontal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:progress="50"
+                            android:progress="0"
                             android:progressDrawable="@drawable/progressbar_horizontal" />
 
                         <!-- Text View for protein intake progress -->
@@ -209,7 +209,7 @@
                             style="?android:attr/progressBarStyleHorizontal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:progress="50"
+                            android:progress="0"
                             android:progressDrawable="@drawable/progressbar_horizontal" />
 
                         <!-- Text View for protein fats intake progress -->
@@ -252,7 +252,7 @@
                             style="?android:attr/progressBarStyleHorizontal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:progress="50"
+                            android:progress="0"
                             android:progressDrawable="@drawable/progressbar_horizontal" />
 
                         <!-- Text View for protein carbohydrates intake progress -->
@@ -343,7 +343,7 @@
                             android:layout_height="80dp"
                             android:layout_margin="10dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/logo_white_nobg_cropped"
+                            android:src="@drawable/food_icon"
                             app:cardCornerRadius="20dp" />
 
                         <LinearLayout

@@ -80,6 +80,9 @@ public class AddIntakeTab extends Fragment {
         ofyDatabase.getPrescriptionAndUpdateViews(view.findViewById(R.id.sub_fragment_medicine_linear_layout)
                 , requireActivity());
 
+        // Call the method to get today's logged all other measures and display them to user by updating views
+        ofyDatabase.getTodaysLoggedOtherMeasuresAndUpdateViews(view, this);
+
         return view;
     }
 

@@ -6,25 +6,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <!-- Text View for medicine logging  -->
+    <TextView
+        android:id="@+id/add_medicine_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:text="Medicine intake"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:textStyle="bold" />
 
-        <!-- Text View for medicine logging  -->
-        <TextView
-            android:id="@+id/add_medicine_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="10dp"
-            android:text="Medicine intake"
-            android:textColor="#000000"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
     <!-- Card View for logging medicine_1 -->
     <androidx.cardview.widget.CardView
         android:id="@+id/add_medicine_card_1"
@@ -72,7 +66,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:text="Medicine_1"
+                android:text="Multivitamin"
                 android:textAlignment="center"
                 android:textColor="#350069"
                 android:textSize="15sp"
@@ -86,7 +80,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:text="0 of 10"
+                android:text="0 of 1"
                 android:textAlignment="center"
                 android:textColor="#006666"
                 android:textSize="15sp"
@@ -165,7 +159,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:text="Medicine_2"
+                android:text="Vitamin D"
                 android:textAlignment="center"
                 android:textColor="#350069"
                 android:textSize="15sp"
@@ -179,7 +173,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:text="0 of 10"
+                android:text="0 of 1"
                 android:textAlignment="center"
                 android:textColor="#006666"
                 android:textSize="15sp"
@@ -258,7 +252,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:text="Medicine_3"
+                android:text="Omega 3"
                 android:textAlignment="center"
                 android:textColor="#350069"
                 android:textSize="15sp"
@@ -272,7 +266,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:text="0 of 10"
+                android:text="0 of 2"
                 android:textAlignment="center"
                 android:textColor="#006666"
                 android:textSize="15sp"
@@ -351,7 +345,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:text="Medicine_4"
+                android:text="Calcium"
                 android:textAlignment="center"
                 android:textColor="#350069"
                 android:textSize="15sp"
@@ -365,7 +359,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:text="0 of 10"
+                android:text="0 of 2"
                 android:textAlignment="center"
                 android:textColor="#006666"
                 android:textSize="15sp"
@@ -444,7 +438,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:text="Medicine_5"
+                android:text="Magnesium"
                 android:textAlignment="center"
                 android:textColor="#350069"
                 android:textSize="15sp"
@@ -458,7 +452,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:text="0 of 10"
+                android:text="0 of 1"
                 android:textAlignment="center"
                 android:textColor="#006666"
                 android:textSize="15sp"

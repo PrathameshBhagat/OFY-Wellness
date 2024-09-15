@@ -26,6 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.annotations.NotNull;
 import com.ofywellness.HomeActivity;
 import com.ofywellness.R;
+import com.ofywellness.fragments.AddIntakeTab;
 import com.ofywellness.fragments.TrackDietTab;
 import com.ofywellness.fragments.ViewMealTab;
 import com.ofywellness.modals.Meal;
@@ -171,11 +172,13 @@ public class ofyDatabase {
     /**
      * Track user's  diet and set TextViews to the tracking data
      *
-     * @param context          The context to show toast message
+     * @param trackDietTab          The trackDiet fragment to show toast message
      * @param energyValueLabel All others are TextViews and Progress Bars to set tracking data
      */
-    public static void getTrackDietDataAndSetData(TrackDietTab context, TextView energyValueLabel, TextView proteinsValueLabel, TextView fatsValueLabel, TextView carbohydratesValueLabel) {
+    public static void getTrackDietDataAndSetData(TrackDietTab trackDietTab, TextView energyValueLabel, TextView proteinsValueLabel, TextView fatsValueLabel, TextView carbohydratesValueLabel) {
 
+        // Context for showing toast messages
+        Context context = trackDietTab.getContext();
         // Get the DataSnapshot to get tracking data, calculate it
         // And display it to user by updating the text views
         ofyDatabaseref.child("Diet").addValueEventListener(new ValueEventListener() {
@@ -211,21 +214,21 @@ public class ofyDatabase {
                         carbohydratesValueLabel.setText(String.format("%sg", totalCarbohydrates));
 
                         // Now show the updated progress to the user
-                        context.updateProgress();
+                        trackDietTab.updateProgress();
                     } else {
                         // Show a toast error message
-                        Toast.makeText(context.requireActivity(), "Error getting data from firebase", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Error in getting Diet target", Toast.LENGTH_SHORT).show();
                     }
                 } catch (Exception e) {
                     // Catch exception, show a toast error message and print error stack
-                    Toast.makeText(context.requireActivity(), "Error in getting and setting data", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Error in getting Diet target", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 // Catch exception, show a toast error message and print error stack
-                Toast.makeText(context.requireActivity(), "Error in getting and setting data", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Error in getting Diet target", Toast.LENGTH_SHORT).show();
                 error.toException().printStackTrace();
             }
         });
@@ -257,16 +260,17 @@ public class ofyDatabase {
      * @param context          The context to show toast message
      * @param currentProgress  The meal object with the current diet data
      */
-    public static void updateDietProgress(Context context, Meal currentProgress, ProgressBar energyProgressBar, ProgressBar proteinsProgressBar, ProgressBar fatsProgressBar, ProgressBar carbohydratesProgressBar) {
+    public static void updateDietProgress(TrackDietTab context, Meal currentProgress, ProgressBar energyProgressBar, ProgressBar proteinsProgressBar, ProgressBar fatsProgressBar, ProgressBar carbohydratesProgressBar) {
 
         // Database ref is already pointing current user just get the target and update progress
-        ofyDatabaseref.child("Target").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        ofyDatabaseref.child("Target").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onComplete(@NotNull Task<DataSnapshot> task) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                 // Simple try catch block
                 try {
                     // Check if the task to get data was successful
-                    if (task.isSuccessful()) {
+                    if (snapshot.exists()) {
                         // Diet target  variables
                         int targetEnergy, targetProteins , targetFats, targetCarbohydrates;
 
@@ -280,7 +284,16 @@ public class ofyDatabase {
                         currentCarbohydrates = currentProgress.getCarbohydrates();
 
                         // Get the diet target from DataSnapshot from the task and convert to HashMap
-                        HashMap target = (HashMap) task.getResult().getValue();
+                        HashMap target = (HashMap) snapshot.getValue();
+
+                        // If the diet target is empty then show the warning and return
+                        if ( target.isEmpty() ) {
+                            context.warning(true);
+                            return;
+                        }
+                        // Else do not show the warning
+                        else
+                            context.warning(false);
 
                         // Get the target values from the map
                         targetEnergy = Integer.parseInt(target.get("energy").toString());
@@ -294,19 +307,29 @@ public class ofyDatabase {
                         fatsProgressBar.setProgress( currentFats * 100 / targetFats );
                         carbohydratesProgressBar.setProgress( currentCarbohydrates * 100 / targetCarbohydrates );
 
-                        // Show a toast message
-                        Toast.makeText(context, "Updated the progress", Toast.LENGTH_SHORT).show();
                     } else {
-                        // Show a toast error message
-                        Toast.makeText(context, "Error getting data from firebase", Toast.LENGTH_SHORT).show();
+                        // If data does not exists then show warning
+                        context.warning(true);
+
+                        // Also throw an error with corresponding  message
+                        throw new RuntimeException("Diet target not found");
                     }
                 } catch (Exception e) {
                     // Catch exception, show a toast error message and print error stack
-                    Toast.makeText(context, "Error in getting and setting data", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context.requireActivity(), e.getMessage() , Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
             }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Catch exception, show a toast error message and print error stack
+                Toast.makeText(context.requireActivity(), "Error," + error.getMessage() , Toast.LENGTH_SHORT).show();
+                error.toException().printStackTrace();
+            }
         });
+
+
     }
 
     /**
@@ -329,13 +352,13 @@ public class ofyDatabase {
 
                 // Simple try catch block
                 try {
+
+                    // Clear all the existing meals
+                    allMealsFound.clear();
+
                     // Check if the task to get data was successful
                     if (snapshot.exists()) {
-
-                        // Clear all the existing meals
-                        allMealsFound.clear();
-
-                        // Loop through all the days
+                        // Loop through data of all the days
                         for (DataSnapshot ofyDateDataSnapshot : snapshot.getChildren()) {
 
                             // Get the meal from DataSnapshot and convert to HashMap
@@ -351,14 +374,11 @@ public class ofyDatabase {
                                     Integer.parseInt(received.get("fats").toString()),
                                     Integer.parseInt(received.get("carbohydrates").toString()));
 
-                            // Add all the meals to later retrieve them received
+                            // Add all the meals received to later retrieve them 
                             allMealsFound.add(receivedMeal);
 
                         }
 
-                    } else {
-                        // Show a toast error message
-                        Toast.makeText(context, "Empty meal data received", Toast.LENGTH_SHORT).show();
                     }
 
                     // Now display all the meals
@@ -366,7 +386,7 @@ public class ofyDatabase {
 
                 } catch (Exception e) {
                     // Catch exception, show a toast error message and print error stack
-                    Toast.makeText(context, "Error, Please set the date again", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
 
@@ -513,9 +533,6 @@ public class ofyDatabase {
             // Database ref is already pointing current user
             ofyDatabaseref.child("Medicine").child(String.valueOf(LocalDate.now())).setValue(ofyIntake);
 
-            // Show a toast message on success
-            Toast.makeText(context, "Saved", Toast.LENGTH_SHORT).show();
-
         } catch (Exception e) {
             // Catch exception, show a toast error message and print error stack
             Toast.makeText(context, "Error saving intake ", Toast.LENGTH_SHORT).show();
@@ -650,8 +667,6 @@ public class ofyDatabase {
                                 linearLayout.addView(linearLayoutSurroundingTheCard, 0);
 
                             }
-                            // Show a toast message on success
-                            Toast.makeText(context, "Updated", Toast.LENGTH_SHORT).show();
                         }
                     } else {
 
@@ -659,7 +674,7 @@ public class ofyDatabase {
                         linearLayout.removeAllViews();
 
                         // Show a toast message if no medicine found
-                        Toast.makeText(context, "No medicine intake found", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "No medicine intake found for this date", Toast.LENGTH_SHORT).show();
                     }
                 } catch (Exception e) {
                     // Catch exception, show a toast error message and print error stack
@@ -788,4 +803,54 @@ public class ofyDatabase {
         });
 
     }
+    /*
+     * Gets today's all the other measures (like water intake) and update's views with logged data
+     *
+     * @param view         AddIntakeTab's view to update its other views
+     * @param addIntakeTab AddIntakeTab for error message display
+     */
+    public static void getTodaysLoggedOtherMeasuresAndUpdateViews(View view, AddIntakeTab addIntakeTab) {
+
+        // Context for showing toast messages
+        Context context = addIntakeTab.getContext();
+
+        // Simple try catch block
+        try {
+
+            // Get today's all the other user measures like weight and water intake and update views
+            ofyDatabaseref.child("Other").child(String.valueOf(LocalDate.now())).get().addOnSuccessListener(task -> {
+
+                // Simple try catch block
+                try {
+
+                    // Map to store all other saved measures
+                    HashMap measures = (HashMap) task.getValue();
+
+                    // If the measures contains water intake
+                    if (measures.containsKey("Water")) {
+                        // Then set today's water intake in the respective text view
+                        ((TextView) view.findViewById(R.id.add_other_water_detail_label))
+                                .setText(addIntakeTab.getString(R.string.Water_Intake, measures.get("Water")));
+                    }
+                    // If the saved measures contains logged weight
+                    if (measures.containsKey("Weight")) {
+                        // Then set today's recorded weight in the respective text view
+                        ((TextView) view.findViewById(R.id.add_other_weight_detail_label))
+                                .setText(addIntakeTab.getString(R.string.Weight_Logged, measures.get("Weight")));
+                    }
+
+                } catch (Exception e) {
+                    // Catch exception, show a toast error message and print error stack
+                    Toast.makeText(context, "Error updating other measures", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+
+            });
+        } catch (Exception e) {
+            // Catch exception, show a toast error message and print error stack
+            Toast.makeText(context, "Error updating other measures", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+    }
+
 }

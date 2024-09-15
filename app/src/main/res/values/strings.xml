@@ -18,4 +18,8 @@
     <string name="Tab_Description_4">You can find all of our services here</string>
     <string name="Tab_Description_5">You can view and edit profile details here</string>
 
+    <!-- Add intake tab -->
+    <string name="Water_Intake">%1$s Glass</string>
+    <string name="Weight_Logged">%1$s Kg</string>
+
 </resources>

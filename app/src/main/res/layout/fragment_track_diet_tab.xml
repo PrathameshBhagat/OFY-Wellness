@@ -203,16 +203,29 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/track_carbohydrates_display_card" />
 
+        <!-- Text view for empty diet target warning -->
+        <TextView
+            android:id="@+id/track_target_not_found_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Please set your diet target in profile tab"
+            android:textColor="#ff0000"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/track_progress_label" />
+
         <!-- Card View for energy progress-->
         <androidx.cardview.widget.CardView
             android:id="@+id/track_energy_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
+            android:layout_margin="20dp"
             app:cardCornerRadius="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/track_progress_label">
+            app:layout_constraintTop_toBottomOf="@+id/track_target_not_found_label">
 
             <!-- Linear Layout for energy progress bar and label -->
             <LinearLayout
