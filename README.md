@@ -16,8 +16,8 @@ or from [this](https://github.com/PrathameshBhagat/OFY-Wellness/releases/tag/v0.
 
 # User Onboarding
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/3e4826dc-4d12-42f2-9f3f-a11b0b0ca043" style="height:30vw;width:15vw">
-<img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/3f16dc98-c789-4cb8-b9df-5fd750b973ab" style="height:30vw;width:15vw">
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/a04584c8-3b96-44d6-b964-1b43403ca659" style="height:30vw;width:15vw">
+<img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/3f16dc98-c789-4cb8-b9df-5fd750b973ab" style="height:30vw;width:15vw">
 
 # Add intake tab
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/f828c2e7-c2d7-4078-aeed-7eba72f2224b" style="height:30vw;width:18vw">
