@@ -12,12 +12,12 @@ or from [this](https://github.com/PrathameshBhagat/OFY-Wellness/releases/tag/v0.
 # Login flow 
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/ad637e53-9e86-4982-8816-9fab8499abba" style="height:30vw;width:15vw">
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/444393be-2859-46c4-8a77-b47f7e70f293" style="height:30vw;width:15vw"> 
-<img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/0f777aff-7e51-4db3-9ee9-4eec2d6613ce" style="height:30vw;width:15vw"> 
+<img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/0f777aff-7e51-4db3-9ee9-4eec2d6613ce" style="height:30vw;width:15vw">  
 
 # User Onboarding
-<img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/dd3669c5-4ec8-499f-8a4d-2a27ae2ab6ed" style="height:30vw;width:15vw">
-<img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/59e52ff9-eab3-4f09-9866-f9a5d8acee9b" style="height:30vw;width:15vw">
-<img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/7b129859-2bff-4502-92b1-fc4c94622f78" style="height:30vw;width:15vw">
+<img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/3e4826dc-4d12-42f2-9f3f-a11b0b0ca043" style="height:30vw;width:15vw">
+<img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/3f16dc98-c789-4cb8-b9df-5fd750b973ab" style="height:30vw;width:15vw">
+<img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/a04584c8-3b96-44d6-b964-1b43403ca659" style="height:30vw;width:15vw">
 
 # Add intake tab
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/f828c2e7-c2d7-4078-aeed-7eba72f2224b" style="height:30vw;width:18vw">
