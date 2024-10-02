@@ -20,8 +20,8 @@ or from [this](https://github.com/PrathameshBhagat/OFY-Wellness/releases/tag/v0.
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/3f16dc98-c789-4cb8-b9df-5fd750b973ab" style="height:30vw;width:15vw">
 
 ### Add intake tab
-<img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/b81bd7f0-5d20-4521-ac0a-ea6f1c427db5" style="height:30vw;width:18vw">
-<img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/e59d0e1d-165a-4b66-9ff4-89eb608cdc4c" style="height:30vw;width:18vw">
+<img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/b81bd7f0-5d20-4521-ac0a-ea6f1c427db5" style="height:30vw;width:15vw">
+<img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/e59d0e1d-165a-4b66-9ff4-89eb608cdc4c" style="height:30vw;width:15vw">
 
 ### Meal adding workflow
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/223b0cf9-562e-48ba-80c3-695fa3f03031" style="height:30vw;width:15vw">
@@ -33,8 +33,8 @@ or from [this](https://github.com/PrathameshBhagat/OFY-Wellness/releases/tag/v0.
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/6da3b553-801b-4309-900d-160a065fafe7" style="height:30vw;width:15vw">
 
 ### View intake tab
-<img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/6d6e6cd3-d65f-4385-a474-e6c6b9785c1c" style="height:30vw;width:18vw">
-<img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/323d65d8-fc26-4a6b-8317-df47bb682332" style="height:30vw;width:18vw">
+<img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/6d6e6cd3-d65f-4385-a474-e6c6b9785c1c" style="height:30vw;width:15vw">
+<img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/323d65d8-fc26-4a6b-8317-df47bb682332" style="height:30vw;width:15vw">
 
 ### Track diet tab 
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/db85c0d7-cbfa-4380-807c-2f4d7f6b99c7" style="height:30vw;width:15vw">
