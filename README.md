@@ -1,5 +1,5 @@
 ## OFY Wellness Android App
-This is an Android project developed in Java during internship at OFY Wellness.  
+An Android project developed in Java during internship at OFY Wellness.  
 The latest source code lies in the dev-auto branch.  
 ## Pre-Release Downloads
 You can download the app with the progress till date from APK file above
