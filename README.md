@@ -9,6 +9,10 @@ or from [this](https://github.com/PrathameshBhagat/OFY-Wellness/releases/tag/v0.
   
 > **Better viewed in a mobile/smart phone**
 
+
+https://github.com/user-attachments/assets/144713dc-03e0-487b-b8ec-8ee56528094f
+
+
 ### Login flow 
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/ad637e53-9e86-4982-8816-9fab8499abba" style="height:30vw;width:15vw">
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/444393be-2859-46c4-8a77-b47f7e70f293" style="height:30vw;width:15vw"> 
