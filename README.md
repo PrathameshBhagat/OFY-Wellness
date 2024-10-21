@@ -3,7 +3,7 @@ A companion in your journey to Wellness.
 An Android project developed in Java during internship at OFY Wellness.  
 (The latest source code lies in the dev-auto branch.)  
 ## Table Of Contents
-- [Downloads](##Snapshots)
+- [Downloads](#Snapshots)
 ## Pre-Release Downloads
 You can download the app with the progress till date from APK file above
 or from [here](https://github.com/PrathameshBhagat/OFY-Wellness/releases/download/v0.5.0/OFYWellness.apk)
