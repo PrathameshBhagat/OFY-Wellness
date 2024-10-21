@@ -1,16 +1,50 @@
 ## OFY Wellness Android App
-A companion in your journey to Wellness.
-An Android project developed in Java during internship at OFY Wellness.  
-(The latest source code lies in the dev-auto branch.)  
-## Table Of Contents
-- [Downloads](#Snapshots)
-## Pre-Release Downloads
-You can download the app with the progress till date from APK file above
-or from [here](https://github.com/PrathameshBhagat/OFY-Wellness/releases/download/v0.5.0/OFYWellness.apk)
-or from [this](https://github.com/PrathameshBhagat/OFY-Wellness/releases/tag/v0.5.0) release  
+A companion in your journey to Wellness.  
+An Android project developed in Java during internship at OFY Wellness.     
+(The latest source code lies in the dev-auto branch.)
+
+## Index
+- [Features](#Features)
+- [Technical details](#Technical-details)
+- [Snapshots and images](#Snapshots)
+- [Downloads](#Pre-Release-Downloads)
+- [Contact](#Contact)
+
+## Features
+Major features provided by the OFY Wellness Android App include :  
+1. Meal and nutrient detection.
+2. Food and medicine intake logging and viewing.
+3. Daily recommended nutrient intake completion progress tracking.
+4. Overall nutrient intake viewing with target setting and progress analysis.
+5. Nutrient and water intake analysis along with weight change analysis.
+6. Medicine prescription and diet target updation.
+7. Offline medicine intake logging.
+8. Interactive user onboarding.
+9. Automatic login and click easy two-click logout.
+ 
+Minor/Other features include :   
+1. User-friendly interface.
+2. Robust transitions between tabs.
+3. Unique and interactive user registration.
+4. Use of Google Sign-in API.
+5. No need to type and provide name, email, and personal details apart from phone number.
+
+## Technical details 
+This project utilizes the following technologies :  
+1. **Firebase Realtime Database** for storing user details and intake data
+2. **Firebase Cloud Storage** for storing meal images.
+3. **Firebase Authentication** for authentication.
+4. **Google Play Services Auth** for authenticating using a Google account.
+5. **Gemini Pro Generative AI/ML model** for image and nutrient detection.
+6. **Keep Safe Tap Target View** for user onboarding.
+7. **MPAndroidChart** for charts and graphs.
+8. **Other Android libraries** for various usages. 
+
+
+
 ## Snapshots
   
-> **Better viewed in a mobile/smart phone**
+> **Better viewed on a mobile/smartphone**
 
 ### Login flow 
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/ad637e53-9e86-4982-8816-9fab8499abba" style="height:30vw;width:15vw">
@@ -47,3 +81,18 @@ or from [this](https://github.com/PrathameshBhagat/OFY-Wellness/releases/tag/v0.
 ### Services & Profile tab 
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/9626fcd3-202c-47df-a4f0-3e68c6844f83" style="height:30vw;width:15vw">
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/ca70d17c-f1e3-4107-a47e-e6d0e05c75f3" style="height:30vw;width:15vw">
+
+## Pre-Release Downloads
+You can download the sample app from the APK file above
+or from [here](https://github.com/PrathameshBhagat/OFY-Wellness/releases/download/v0.5.0/OFYWellness.apk)
+or from [this](https://github.com/PrathameshBhagat/OFY-Wellness/releases/tag/v0.5.0) release  
+
+## Contact 
+For further details and to register in the alpha and beta program contact the developer:-  
+   
+**Name:**&emsp; &emsp; Prathamesh Bhagat  
+**Phone:**&emsp; &emsp; +91 705-803-1648  
+**Email:**&emsp; &emsp; &emsp; prathameshbhagat0608@gmail.com  
+**Website:**&emsp; &emsp; www.prathameshbhagat.github.io  
+**Linkedin:**&emsp; &emsp; www.linkedin.com/in/prathameshvivekbhagat/  
+**What's App:**&emsp; www.wa.me/705801648
