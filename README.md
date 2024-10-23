@@ -2,7 +2,11 @@
 A companion in your journey to Wellness.  
 An Android project developed in Java during internship at OFY Wellness.     
 (The latest source code lies in the dev-auto branch.)
+## YouTube Demo video
+A demo of the app in video format is available on YouTube at :  
+https://youtu.be/KeUw_8UkWuI?feature=shared.
 
+Click [here](https://youtu.be/KeUw_8UkWuI?feature=shared) to view
 ## Index
 - [Features](#Features)
 - [Technical details](#Technical-details)
