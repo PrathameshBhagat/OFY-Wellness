@@ -96,7 +96,7 @@ For further details and to register in the alpha and beta program contact the de
    
 **Name:**&emsp; &emsp; Prathamesh Bhagat  
 **Phone:**&emsp; &emsp; +91 705-803-1648  
-**Email:**&emsp; &emsp; &emsp; prathameshbhagat0608@gmail.com  
-**Website:**&emsp; &emsp; www.prathameshbhagat.github.io  
-**Linkedin:**&emsp; &emsp; www.linkedin.com/in/prathameshvivekbhagat/  
-**What's App:**&emsp; www.wa.me/705801648
+**Email:**&emsp; &emsp; &emsp; [prathameshbhagat0608@gmail.com](mailto:prathameshbhagat0608@gmail.com)  
+**Website:**&emsp; &emsp; [https://prathameshbhagat.github.io](https://prathameshbhagat.github.io)  
+**Linkedin:**&emsp; &emsp; [https://linkedin.com/in/prathameshvivekbhagat/](https://linkedin.com/in/prathameshvivekbhagat/)    
+**What's App:**&emsp; [https://wa.me/917058031648](https://wa.me/917058031648)
