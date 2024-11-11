@@ -1,4 +1,7 @@
 ## OFY Wellness Android App
+> (Comming soon on Google Play Store)
+
+
 A companion in your journey to Wellness.  
 An Android project developed in Java during internship at OFY Wellness.     
 (The latest source code lies in the dev-auto branch.)
