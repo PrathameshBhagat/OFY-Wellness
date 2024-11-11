@@ -89,7 +89,7 @@ This project utilizes the following technologies :
 ## Comming Soon 
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/a8492c7e-41e2-4a22-bbcf-91b0aac3bb75" style="height:30vw;width:15vw">
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/8287695d-3c7f-406b-8434-3cd86ebae0b8" style="height:30vw;width:15vw">
-<img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/4b7235e4-dac6-4875-90af-c40dee73beb7" style="height:30vw;width:15vw">
+<img src="https://github.com/user-attachments/assets/ba8e06a8-e621-476f-8c2d-60e4cdc2d98d" style="height:30vw;width:15vw">
 
 ## Pre-Release Downloads
 You can download the sample app from the APK file above
