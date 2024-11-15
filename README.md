@@ -76,23 +76,26 @@ This project utilizes the following technologies :
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/578d1d58-5d73-4090-b024-9a3ff48b5d81" style="height:30vw;width:15vw">
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/6da3b553-801b-4309-900d-160a065fafe7" style="height:30vw;width:15vw">
 
-### View intake tab
+### View intake & Profile tab  
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/6d6e6cd3-d65f-4385-a474-e6c6b9785c1c" style="height:30vw;width:15vw">
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/323d65d8-fc26-4a6b-8317-df47bb682332" style="height:30vw;width:15vw">
+<img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/ca70d17c-f1e3-4107-a47e-e6d0e05c75f3" style="height:30vw;width:15vw">
 
 ### Track diet tab 
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/db85c0d7-cbfa-4380-807c-2f4d7f6b99c7" style="height:30vw;width:15vw">
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/4ff5f01f-96ad-4c57-8e92-5f413a13ec1d" style="height:30vw;width:15vw">
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/77e69c18-32f0-4913-9ea0-0936d2744d54" style="height:30vw;width:15vw">
 
-### Services & Profile tab 
-<img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/9626fcd3-202c-47df-a4f0-3e68c6844f83" style="height:30vw;width:15vw">
-<img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/ca70d17c-f1e3-4107-a47e-e6d0e05c75f3" style="height:30vw;width:15vw">
-
-## Comming Soon 
+### Comming Soon 
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/a8492c7e-41e2-4a22-bbcf-91b0aac3bb75" style="height:30vw;width:15vw">
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/8287695d-3c7f-406b-8434-3cd86ebae0b8" style="height:30vw;width:15vw">
 <img src="https://github.com/user-attachments/assets/ba8e06a8-e621-476f-8c2d-60e4cdc2d98d" style="height:30vw;width:15vw">
+
+### Deprecated
+
+<img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/9626fcd3-202c-47df-a4f0-3e68c6844f83" style="height:30vw;width:15vw">
+<img src="https://github.com/user-attachments/assets/69ef7daa-e20d-4690-897e-56dff0008050" style="height:30vw;width:15vw">
+<img src="https://github.com/user-attachments/assets/10adaad7-92c5-4846-9486-1b9bfe5757ef" style="height:30vw;width:15vw">
 
 ## Pre-Release Downloads
 You can download the sample app from the APK file above
