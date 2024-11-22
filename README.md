@@ -13,7 +13,7 @@ Click [here](https://youtu.be/KeUw_8UkWuI?feature=shared) to view
 ## Index
 - [Features](#Features)
 - [Technical details](#Technical-details)
-- [Snapshots and images](#Snapshots)
+- [Snapshots **✨Images here✨** ](#Snapshots) 
 - [Downloads](#Pre-Release-Downloads)
 - [Contact](#Contact)
 
