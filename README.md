@@ -67,13 +67,13 @@ This project utilizes the following technologies :
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/b81bd7f0-5d20-4521-ac0a-ea6f1c427db5" style="height:30vw;width:15vw">
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/e59d0e1d-165a-4b66-9ff4-89eb608cdc4c" style="height:30vw;width:15vw">
 
-### Meal adding workflow
+### Meal adding & nutrient detection workflow
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/223b0cf9-562e-48ba-80c3-695fa3f03031" style="height:30vw;width:15vw">
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/0f101c76-b602-4b16-b8da-b8b7400060f2" style="height:30vw;width:15vw">
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/de091d08-8123-41c9-a278-b8091558ebf1" style="height:30vw;width:15vw">
 <br/>
-<img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/89daebf2-b691-4f21-b64b-4f55fb946ac0" style="height:30vw;width:15vw">
-<img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/578d1d58-5d73-4090-b024-9a3ff48b5d81" style="height:30vw;width:15vw">
+<img src="https://github.com/user-attachments/assets/f96dd80d-2b30-48fc-aec1-3be512d11579" style="height:30vw;width:15vw">
+<img src="https://github.com/user-attachments/assets/289b0152-20dd-4866-8d3e-32e0f4b89da6" style="height:30vw;width:15vw">
 <img src="https://github.com/PrathameshBhagat/OFY-Wellness/assets/90595097/6da3b553-801b-4309-900d-160a065fafe7" style="height:30vw;width:15vw">
 
 ### View intake & Profile tab  
